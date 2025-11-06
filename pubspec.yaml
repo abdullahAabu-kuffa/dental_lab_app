@@ -1,0 +1,88 @@
+name: dental_lab_app
+description: "A new Flutter project."
+# The following line prevents the package from being accidentally published to
+# pub.dev using `flutter pub publish`. This is preferred for private packages.
+publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+
+version: 1.0.0+1
+
+environment:
+  sdk: ^3.9.2
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  # The following adds the Cupertino Icons font to your application.
+  # Use with the CupertinoIcons class for iOS style icons.
+  cupertino_icons: ^1.0.8
+  #bloc&cubit for state management
+  flutter_bloc: ^9.1.1
+  #for display svg images =>svqPicture
+  flutter_svg: ^2.2.1
+  #for fetech form apis
+  dio: ^5.9.0
+  #Code generation for immutable classes
+  freezed: ^3.2.3
+  #Annotations for the freezed code-generator
+  freezed_annotation: ^3.1.0
+  #for dependencies injection
+  get_it: ^8.2.0
+  #Classes and helper functions that support JSON code generation
+  json_annotation: ^4.9.0
+  # retrofit.dart is an dio client generator using source_gen and inspired by Chopper and Retrofit.
+  retrofit: ^4.7.3
+  #Pretty Dio logger is a Dio interceptor that logs network calls in a pretty, easy to read format.
+  pretty_dio_logger: ^1.4.0
+  #Contains code to deal with internationalized/localized messages, date and number formatting and parsing
+  intl: ^0.20.2
+  #Easy and Fast internationalizing and localization
+  easy_localization: ^3.0.8
+  #Customize Flutter's default white native splash screen with background color and splash image. Supports dark mode, full screen, and more
+  flutter_native_splash: ^2.4.7
+  #A flutter plugin for adapting screen and font size.Guaranteed to look good on different models
+  flutter_screenutil: ^5.9.3
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  # rules and activating additional ones.
+  flutter_lints: ^5.0.0
+  #A package which simplifies the task of updating your Flutter app's launcher icon
+  flutter_launcher_icons: ^0.14.4
+
+
+flutter_launcher_icons:
+  android: true
+  ios: true
+  image_path: "assets/images/" 
+
+
+flutter:
+
+  # The following line ensures that the Material Icons font is
+  # included with your application, so that you can use the icons in
+  # the material Icons class.
+  uses-material-design: true
+
+  # To add assets to your application, add an assets section, like this:
+  assets:
+    - assets/images/
+    - assets/icons/
+
+
+  # example:
+  # fonts:
+  #   - family: Schyler
+  #     fonts:
+  #       - asset: fonts/Schyler-Regular.ttf
+  #       - asset: fonts/Schyler-Italic.ttf
+  #         style: italic
+  #   - family: Trajan Pro
+  #     fonts:
+  #       - asset: fonts/TrajanPro.ttf
+  #       - asset: fonts/TrajanPro_Bold.ttf
+  #         weight: 700
+  #
+  # For details regarding fonts from package dependencies,
+  # see https://flutter.dev/to/font-from-package
