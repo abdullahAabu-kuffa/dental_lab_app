@@ -53,4 +53,14 @@ class AppStrings {
       'Easily select and verify every detail of your order for perfect results, every time.';
   static const String getStarted = 'Get Started';
   static const String next = 'Next';
+  static const String welcomeBack = 'Welcome Back';
+  static const String loginToYourAccount = 'Login to your Avanté account.';
+  static const String email = 'Email';
+  static const String password = 'Password';
+  static const String forgotPassword = 'Forgot Password?';
+  static const String login = 'Login';
+  static const String dontHaveAnAccount = 'Don\'t have an account?';
+  static const String signUp = 'Sign Up';
+  static const String enterYourEmail = 'Enter your email';
+  static const String enterYourPassword = 'Enter your password';
 }
