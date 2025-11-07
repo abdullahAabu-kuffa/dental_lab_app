@@ -1,4 +1,6 @@
-import 'package:dental_lab_app/presentation/screens/login/login.dart';
+import 'package:dental_lab_app/core/constants/app_constants.dart';
+import 'package:dental_lab_app/core/routing/app_router.dart';
+import 'package:dental_lab_app/core/theme/app_colors.dart';
 import 'package:dental_lab_app/presentation/screens/onboarding/first_onboarding.dart';
 import 'package:dental_lab_app/presentation/screens/onboarding/second_onboarding.dart';
 import 'package:dental_lab_app/presentation/screens/onboarding/third_onboarding.dart';
@@ -46,16 +48,14 @@ class _OnboardingViewState extends State<OnboardingView> {
                       curve: Curves.easeInOut,
                     );
                   } else {
-                    Navigator.of(
-                      context,
-                    ).push(MaterialPageRoute(builder: (_) => const Login()));
+                    Navigator.pushNamedAndRemoveUntil(context, Routes.loginRoute, (route) => false);
                   }
                 },
                 child: Center(
                   child: Text(
-                    _currentPage < 2 ? 'Next' : 'Get Started',
+                    _currentPage < 2 ? AppStrings.next : AppStrings.getStarted,
                     style: TextStyle(
-                      color: Colors.black,
+                      color: AppColors.blackColor,
                       fontSize: 18,
                       fontWeight: FontWeight.w600,
                     ),
@@ -68,7 +68,7 @@ class _OnboardingViewState extends State<OnboardingView> {
               left: 0,
               right: 0,
               child: Divider(
-                color: Color(0xff54482A),
+                color: AppColors.goldenColor,
                 thickness: 2,
                 indent: 50,
                 endIndent: 50,
@@ -86,13 +86,15 @@ class _OnboardingViewState extends State<OnboardingView> {
                     width: _currentPage == index ? 16 : 8,
                     height: 8,
                     decoration: BoxDecoration(
-                      color: _currentPage == index ? Color(0xffD9AC40) : Colors.grey,
+                      color: _currentPage == index
+                          ? AppColors.yellowColor
+                          : AppColors.whiteColor70,
                       borderRadius: BorderRadius.circular(4),
                     ),
                   );
-                }), 
+                }),
               ),
-            )
+            ),
           ],
         ),
       ),

@@ -1,3 +1,4 @@
+import 'package:dental_lab_app/core/constants/app_constants.dart';
 import 'package:flutter/material.dart';
 
 class CustomQoute extends StatelessWidget {
@@ -9,7 +10,7 @@ class CustomQoute extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         Text(
-          "Egypt's Avante",
+          AppStrings.quote,
           style: TextStyle(
             color: Colors.white,
             fontSize: 16,
@@ -17,7 +18,7 @@ class CustomQoute extends StatelessWidget {
           ),
         ),
         Text(
-          " dental",
+          AppStrings.dental,
           style: TextStyle(
             color: Color(0xffD9AC40),
             fontSize: 16,
@@ -25,7 +26,7 @@ class CustomQoute extends StatelessWidget {
           ),
         ),
         Text(
-          " solution",
+          AppStrings.solution,
           style: TextStyle(
             color: Colors.white,
             fontSize: 16,
