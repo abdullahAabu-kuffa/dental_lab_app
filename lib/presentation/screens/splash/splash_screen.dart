@@ -1,4 +1,6 @@
-import 'package:dental_lab_app/presentation/screens/onboarding/onboarding_view.dart';
+// ignore_for_file: use_build_context_synchronously
+
+import 'package:dental_lab_app/core/routing/app_router.dart';
 import 'package:dental_lab_app/presentation/widgets/custom_qoute.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -23,7 +25,7 @@ class _SplashScreenState extends State<SplashScreen> {
       });
     });
     Future.delayed(const Duration(seconds: 3), () {
-      Navigator.of(context).push(MaterialPageRoute(builder: (_) => const OnboardingView()));
+      Navigator.pushNamed(context, Routes.onBoardingRoute);
     });
   }
 

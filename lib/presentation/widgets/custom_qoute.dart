@@ -9,7 +9,7 @@ class CustomQoute extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         Text(
-          "Egypt's First",
+          "Egypt's Avante",
           style: TextStyle(
             color: Colors.white,
             fontSize: 16,
@@ -17,7 +17,7 @@ class CustomQoute extends StatelessWidget {
           ),
         ),
         Text(
-          " Digital",
+          " dental",
           style: TextStyle(
             color: Color(0xffD9AC40),
             fontSize: 16,
@@ -25,7 +25,7 @@ class CustomQoute extends StatelessWidget {
           ),
         ),
         Text(
-          " Dental Lab",
+          " solution",
           style: TextStyle(
             color: Colors.white,
             fontSize: 16,
