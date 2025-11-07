@@ -9,7 +9,7 @@ class CustomBtn extends StatelessWidget {
     return InkWell(
       onTap: onTap,
       child: Container(
-        width: 329,
+        width: double.infinity,
         height: 50,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(24),
