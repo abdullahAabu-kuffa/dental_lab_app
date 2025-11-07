@@ -1,6 +1,8 @@
 // ignore_for_file: use_build_context_synchronously
 
+import 'package:dental_lab_app/core/constants/app_constants.dart';
 import 'package:dental_lab_app/core/routing/app_router.dart';
+import 'package:dental_lab_app/core/theme/app_colors.dart';
 import 'package:dental_lab_app/presentation/widgets/custom_qoute.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -25,7 +27,7 @@ class _SplashScreenState extends State<SplashScreen> {
       });
     });
     Future.delayed(const Duration(seconds: 3), () {
-      Navigator.pushNamed(context, Routes.onBoardingRoute);
+      Navigator.pushReplacementNamed(context, Routes.onBoardingRoute);
     });
   }
 
@@ -34,7 +36,7 @@ class _SplashScreenState extends State<SplashScreen> {
     return Scaffold(
       body: SizedBox.expand(
         child: Container(
-          color: const Color(0xff2A2A2A),
+          color: AppColors.primBgColor,
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
@@ -42,7 +44,7 @@ class _SplashScreenState extends State<SplashScreen> {
                 offset: _slideIn ? Offset(0, 0) : Offset(0, -10),
                 duration: const Duration(seconds: 2),
                 curve: Curves.fastOutSlowIn,
-                child: SvgPicture.asset("assets/images/logo.svg", height: 120),
+                child: SvgPicture.asset(AppImages.logo, height: 120),
               ),
               const SizedBox(height: 12),
               AnimatedSlide(

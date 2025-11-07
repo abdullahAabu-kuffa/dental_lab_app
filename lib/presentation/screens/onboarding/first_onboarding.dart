@@ -1,4 +1,5 @@
 import 'package:dental_lab_app/core/constants/app_constants.dart';
+import 'package:dental_lab_app/core/theme/app_colors.dart';
 import 'package:dental_lab_app/presentation/widgets/custom_qoute.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -8,9 +9,9 @@ class FirstOnboarding extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Expanded(
+    return SizedBox.expand(
       child: Container(
-        color: Color(0xff2A2A2A),
+        color: AppColors.primBgColor,
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 8.0),
           child: Column(
@@ -18,13 +19,13 @@ class FirstOnboarding extends StatelessWidget {
               const SizedBox(height: 30),
               CustomQoute(),
               const SizedBox(height: 24),
-              SvgPicture.asset('assets/images/logo.svg'),
+              SvgPicture.asset(AppImages.logo),
               const SizedBox(height: 25),
               Container(
                 width: 329,
                 // height: (MediaQuery.of(context).size.height * 0.3),
                 decoration: BoxDecoration(
-                  border: Border.all(color: Color(0xff54482A), width: 2),
+                  border: Border.all(color: AppColors.goldenColor, width: 2),
                   borderRadius: BorderRadius.circular(24),
                 ),
                 child: Padding(
@@ -37,36 +38,36 @@ class FirstOnboarding extends StatelessWidget {
                           Text(
                             AppStrings.materialTypes,
                             style: TextStyle(
-                              color: Colors.white,
+                              color: AppColors.whiteColor,
                               fontSize: 20,
                               fontWeight: FontWeight.w400,
                             ),
                           ),
                           Spacer(),
                           SvgPicture.asset(
-                            'assets/images/checked_onboarding.svg',
+                            AppImages.checkedOnboarding,
                           ),
                         ],
                       ),
-                      const Divider(color: Color(0xff54482A), thickness: 1),
+                      const Divider(color: AppColors.goldenColor, thickness: 1),
                       Row(
                         children: [
                           Text(
-                            'Shade Selection',
+                            AppStrings.shadeSelection,
                             style: TextStyle(
-                              color: Colors.white,
+                              color: AppColors.whiteColor,
                               fontSize: 20,
                               fontWeight: FontWeight.w400,
                             ),
                           ),
                           Spacer(),
                           SvgPicture.asset(
-                            'assets/images/checked_onboarding.svg',
+                            AppImages.checkedOnboarding,
                           ),
                         ],
                       ),
                       const Divider(
-                        color: Color(0xff54482A),
+                        color: AppColors.goldenColor,
                         thickness: 1,
                         height: 10,
                       ),
@@ -74,16 +75,16 @@ class FirstOnboarding extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Text(
-                            'Design Options',
+                            AppStrings.designOptions,
                             style: TextStyle(
-                              color: Colors.white,
+                              color: AppColors.whiteColor,
                               fontSize: 20,
                               fontWeight: FontWeight.w400,
                             ),
                           ),
                           Spacer(),
                           SvgPicture.asset(
-                            'assets/images/checked_onboarding.svg',
+                            AppImages.checkedOnboarding,
                           ),
                         ],
                       ),
@@ -93,10 +94,10 @@ class FirstOnboarding extends StatelessWidget {
               ),
               const SizedBox(height: 20),
               Text(
-                'Choose Your Material & Order Online',
+                AppStrings.chooseYourMaterial,
                 textAlign: TextAlign.center,
                 style: TextStyle(
-                  color: Colors.white,
+                  color: AppColors.whiteColor,
                   fontSize: 24,
                   fontWeight: FontWeight.w600,
                 ),
@@ -105,10 +106,10 @@ class FirstOnboarding extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 24.0),
                 child: Text(
-                  'Easily select and verify every detail of your order for perfect results, every time.',
+                  AppStrings.easilySelectDetails,
                   textAlign: TextAlign.center,
                   style: TextStyle(
-                    color: Colors.white70,
+                    color: AppColors.whiteColor70,
                     fontSize: 16,
                     fontWeight: FontWeight.w400,
                   ),

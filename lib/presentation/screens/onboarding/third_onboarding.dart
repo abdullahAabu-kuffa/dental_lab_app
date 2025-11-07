@@ -1,3 +1,5 @@
+import 'package:dental_lab_app/core/constants/app_constants.dart';
+import 'package:dental_lab_app/core/theme/app_colors.dart';
 import 'package:dental_lab_app/presentation/widgets/custom_qoute.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
@@ -8,7 +10,7 @@ class ThirdOnboarding extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: Color(0xff2A2A2A),
+      color: AppColors.primBgColor,
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 8.0),
         child: Column(
@@ -16,7 +18,7 @@ class ThirdOnboarding extends StatelessWidget {
             const SizedBox(height: 20),
             CustomQoute(),
             const SizedBox(height: 24),
-            SvgPicture.asset('assets/images/logo.svg'),
+            SvgPicture.asset(AppImages.logo),
             const SizedBox(height: 15),
             SizedBox(
               child: Column(
@@ -25,23 +27,23 @@ class ThirdOnboarding extends StatelessWidget {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
-                      SvgPicture.asset('assets/images/recieved.svg'),
+                      SvgPicture.asset(AppImages.recieved),
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Text(
-                            'Received',
+                            AppStrings.received,
                             style: TextStyle(
-                              color: Colors.white,
+                              color: AppColors.whiteColor,
                               fontSize: 20,
                               fontWeight: FontWeight.w400,
                             ),
                           ),
                           Text(
-                            'Case files uploaded successfully.',
+                            AppStrings.caseFilesUploaded,
                             style: TextStyle(
-                              color: Colors.white70,
+                              color: AppColors.whiteColor70,
                               fontSize: 16,
                               fontWeight: FontWeight.w400,
                             ),
@@ -53,23 +55,23 @@ class ThirdOnboarding extends StatelessWidget {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
-                      SvgPicture.asset('assets/images/design.svg'),
+                      SvgPicture.asset(AppImages.design),
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Text(
-                            'Design',
+                            AppStrings.design,
                             style: TextStyle(
-                              color: Colors.white,
+                              color: AppColors.whiteColor,
                               fontSize: 20,
                               fontWeight: FontWeight.w400,
                             ),
                           ),
                           Text(
-                            'Digital modeling in progress.',
+                            AppStrings.digitalModelingInProgress,
                             style: TextStyle(
-                              color: Colors.white70,
+                              color: AppColors.whiteColor70,
                               fontSize: 16,
                               fontWeight: FontWeight.w400,
                             ),
@@ -91,14 +93,14 @@ class ThirdOnboarding extends StatelessWidget {
                               width: 40,
                               decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(12),
-                                color: const Color(0xff3A3A3A),
+                                color: AppColors.primBgColor,
                               ),
                               child: SvgPicture.asset(
-                                'assets/images/manufactoring.svg',
+                                AppImages.manufacturing,
                                 height: 24,
                                 width: 24,
                                 colorFilter: ColorFilter.mode(
-                                  Colors.grey,
+                                  AppColors.greyColor,
                                   BlendMode.srcIn,
                                 ),
                               ),
@@ -108,10 +110,10 @@ class ThirdOnboarding extends StatelessWidget {
                               height: 30,
                               width: 2,
                               decoration: BoxDecoration(
-                                color: Colors.grey,
+                                color: AppColors.greyColor,
                                 borderRadius: BorderRadius.circular(2),
                               ),
-                            )
+                            ),
                           ],
                         ),
                       ),
@@ -120,17 +122,17 @@ class ThirdOnboarding extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Text(
-                            'Manufacturing',
+                            AppStrings.manufacturing,
                             style: TextStyle(
-                              color: Colors.white,
+                              color: AppColors.whiteColor,
                               fontSize: 20,
                               fontWeight: FontWeight.w400,
                             ),
                           ),
                           Text(
-                            'Milling & printing the case.',
+                            AppStrings.millingAndPrintingTheCase,
                             style: TextStyle(
-                              color: Colors.white70,
+                              color: AppColors.whiteColor70,
                               fontSize: 16,
                               fontWeight: FontWeight.w400,
                             ),
@@ -152,14 +154,14 @@ class ThirdOnboarding extends StatelessWidget {
                               width: 40,
                               decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(12),
-                                color: const Color(0xff3A3A3A),
+                                color: AppColors.primBgColor,
                               ),
                               child: SvgPicture.asset(
-                                'assets/images/shipping.svg',
+                                AppImages.shipping,
                                 height: 24,
                                 width: 24,
                                 colorFilter: ColorFilter.mode(
-                                  Colors.grey,
+                                  AppColors.greyColor,
                                   BlendMode.srcIn,
                                 ),
                               ),
@@ -169,7 +171,7 @@ class ThirdOnboarding extends StatelessWidget {
                               height: 35,
                               width: 2,
                               decoration: BoxDecoration(
-                                color: Colors.grey,
+                                color: AppColors.greyColor,
                                 borderRadius: BorderRadius.circular(2),
                               ),
                             ),
@@ -181,17 +183,17 @@ class ThirdOnboarding extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Text(
-                            'Shipping',
+                            AppStrings.shipping,
                             style: TextStyle(
-                              color: Colors.white,
+                              color: AppColors.whiteColor,
                               fontSize: 20,
                               fontWeight: FontWeight.w400,
                             ),
                           ),
                           Text(
-                            'Milling & printing the case.',
+                            AppStrings.shippingInProgress,
                             style: TextStyle(
-                              color: Colors.white70,
+                              color: AppColors.whiteColor70,
                               fontSize: 16,
                               fontWeight: FontWeight.w400,
                             ),
@@ -208,10 +210,10 @@ class ThirdOnboarding extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 24.0),
               child: Text(
-                'Easily select and verify every detail of your order for perfect results, every time.',
+                AppStrings.easlySelect,
                 textAlign: TextAlign.center,
                 style: TextStyle(
-                  color: Colors.white70,
+                  color: AppColors.whiteColor70,
                   fontSize: 16,
                   fontWeight: FontWeight.w400,
                 ),
