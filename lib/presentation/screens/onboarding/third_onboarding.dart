@@ -13,11 +13,11 @@ class ThirdOnboarding extends StatelessWidget {
         padding: const EdgeInsets.symmetric(horizontal: 8.0),
         child: Column(
           children: [
-            const SizedBox(height: 30),
+            const SizedBox(height: 20),
             CustomQoute(),
             const SizedBox(height: 24),
             SvgPicture.asset('assets/images/logo.svg'),
-            const SizedBox(height: 30),
+            const SizedBox(height: 15),
             SizedBox(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -105,7 +105,7 @@ class ThirdOnboarding extends StatelessWidget {
                             ),
                             Container(
                               margin: const EdgeInsets.only(top: 4),
-                              height: 35,
+                              height: 30,
                               width: 2,
                               decoration: BoxDecoration(
                                 color: Colors.grey,
@@ -204,7 +204,7 @@ class ThirdOnboarding extends StatelessWidget {
               ),
             ),
 
-            const SizedBox(height: 19),
+            const SizedBox(height: 15),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 24.0),
               child: Text(
