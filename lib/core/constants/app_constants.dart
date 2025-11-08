@@ -57,10 +57,24 @@ class AppStrings {
   static const String loginToYourAccount = 'Login to your Avanté account.';
   static const String email = 'Email';
   static const String password = 'Password';
+  static const String confirmPassword = 'Confirm Password';
   static const String forgotPassword = 'Forgot Password?';
   static const String login = 'Login';
   static const String dontHaveAnAccount = 'Don\'t have an account?';
+  static const String elreadyHaveAnAccount = 'Already have an account?';
   static const String signUp = 'Sign Up';
   static const String enterYourEmail = 'Enter your email';
   static const String enterYourPassword = 'Enter your password';
+  static const String enterYourConfirmPassword = 'Enter your confirm password';
+  static const String enterYourFullName = 'Enter your full name';
+  static const String enterYourPhoneNumber = 'Enter your phone number';
+  static const String createYourAccount = 'Create Your Account';
+  static const String personalInfo = 'Personal Information';
+  static const String security = 'Security';
+  static const String professionalInformation = "Professional Information";
+  static const String fullName = 'Full Name';
+  static const String phoneNumber = 'Phone Number';
+  static const String specialization = 'Specialization';
+  static const String clinicOrLabName = 'Clinic or Lab Name';
+  static const String enterClinicOrLabName = 'Enter Clinic or Lab Name';
 }

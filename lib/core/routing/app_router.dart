@@ -1,5 +1,6 @@
 //app router
-import 'package:dental_lab_app/presentation/screens/login/login.dart';
+import 'package:dental_lab_app/presentation/screens/auth/login.dart';
+import 'package:dental_lab_app/presentation/screens/auth/register.dart';
 import 'package:dental_lab_app/presentation/screens/onboarding/onboarding_view.dart';
 import 'package:dental_lab_app/presentation/screens/splash/splash_screen.dart';
 import 'package:flutter/material.dart';
@@ -13,7 +14,8 @@ class AppRouter {
         return MaterialPageRoute(builder: (_) => const OnboardingView());
       case Routes.loginRoute:
         return MaterialPageRoute(builder: (_) => const Login());
-      case Routes.homeRoute:
+      case Routes.registerRoute:
+        return MaterialPageRoute(builder: (_) => const Register());
       default:
         return null;
     }
@@ -27,5 +29,6 @@ class Routes {
   static const String initialRoute = '/';
   static const String onBoardingRoute = 'onBoarding';
   static const String loginRoute = 'login';
+  static const String registerRoute = 'register';
   static const String homeRoute = '/home';
 }
