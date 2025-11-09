@@ -2,9 +2,6 @@ part of 'sign_in_cubit.dart';
 
 abstract class SignInState{
   const SignInState();
-
-  @override
-  List<Object?> get props => [];
 }
 
 class SignInInitial extends SignInState {}
@@ -15,16 +12,10 @@ class SignInSuccess extends SignInState {
   final SignInModels signInData;
 
   const SignInSuccess(this.signInData);
-
-  @override
-  List<Object?> get props => [signInData];
 }
 
 class SignInError extends SignInState {
   final String message;
 
   const SignInError(this.message);
-
-  @override
-  List<Object?> get props => [message];
 }

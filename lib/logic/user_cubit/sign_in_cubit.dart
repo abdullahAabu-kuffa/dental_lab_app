@@ -13,6 +13,7 @@ class SignInCubit extends Cubit<SignInState> {
     emit(SignInLoading());
     try {
       final result = await apiServices.signIn(email: email, password: password);
+      // debugPrint('SignIn Result: ${result.message}, Token: ${result.accessToken}');
       emit(SignInSuccess(result));
     } catch (e) {
       emit(SignInError(e.toString()));
