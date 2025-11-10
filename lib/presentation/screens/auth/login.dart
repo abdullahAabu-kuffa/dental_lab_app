@@ -1,8 +1,9 @@
 import 'package:dental_lab_app/core/constants/app_constants.dart';
+import 'package:dental_lab_app/core/errorHandler/error_handler.dart';
 import 'package:dental_lab_app/core/routing/app_router.dart';
 import 'package:dental_lab_app/core/theme/app_colors.dart';
 import 'package:dental_lab_app/data/services/api_services.dart';
-import 'package:dental_lab_app/logic/user_cubit/sign_in_cubit.dart';
+import 'package:dental_lab_app/logic/cubit/sign_in_cubit/sign_in_cubit.dart';
 import 'package:dental_lab_app/presentation/screens/auth/widgets/custom_txt.dart';
 import 'package:dental_lab_app/presentation/widgets/custom_btn.dart';
 import 'package:dental_lab_app/presentation/screens/auth/widgets/custom_text_field.dart';
@@ -34,13 +35,17 @@ class _LoginState extends State<Login> {
             child: BlocListener<SignInCubit, SignInState>(
               listener: (context, state) {
                 if (state is SignInError) {
-                  _showSnack(
+                  ErrorHandler.showSnack(
                     context,
                     'Login failed! Please check your email or password.',
                     Colors.red,
                   );
                 } else if (state is SignInSuccess) {
-                  _showSnack(context, 'Login successful!', Colors.green);
+                  ErrorHandler.showSnack(
+                    context,
+                    'Login successful!',
+                    Colors.green,
+                  );
                   Navigator.pushNamed(context, Routes.registerRoute);
                 }
               },
@@ -181,26 +186,4 @@ class _LoginState extends State<Login> {
       ),
     ],
   );
-
-  void _showSnack(BuildContext context, String message, Color color) {
-    ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(
-        backgroundColor: color,
-        content: Center(
-          child: Text(
-            message,
-            style:  TextStyle(
-              color: AppColors.whiteColor,
-              fontWeight: FontWeight.w600,
-            ),
-          ),
-        ),
-        behavior: SnackBarBehavior.floating,
-        margin: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
-        elevation: 4,
-        duration: const Duration(seconds: 3),
-      ),
-    );
-  }
 }

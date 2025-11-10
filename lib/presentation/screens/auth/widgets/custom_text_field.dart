@@ -46,14 +46,14 @@ class CustomTextField extends StatelessWidget {
         return 'Please enter your password';
       }
       if (value.length < 6) {
-        return 'Password must be at least 6 characters long';
+        return 'Password must contain at least one letter and one number';
       }
     } else if (hint == AppStrings.enterYourConfirmPassword) {
       if (value == null || value.isEmpty) {
         return 'Please enter your confirm password';
       }
       if (value.length < 6) {
-        return 'Confirm password must be at least 6 characters long';
+        return 'Confirm password must contain at least one letter and one number';
       }
     } else if (hint == AppStrings.enterClinicOrLabName) {
       if (value == null || value.isEmpty) {
