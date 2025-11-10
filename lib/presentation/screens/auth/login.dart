@@ -5,7 +5,7 @@ import 'package:dental_lab_app/data/services/api_services.dart';
 import 'package:dental_lab_app/logic/user_cubit/sign_in_cubit.dart';
 import 'package:dental_lab_app/presentation/screens/auth/widgets/custom_txt.dart';
 import 'package:dental_lab_app/presentation/widgets/custom_btn.dart';
-import 'package:dental_lab_app/presentation/widgets/custom_text_field.dart';
+import 'package:dental_lab_app/presentation/screens/auth/widgets/custom_text_field.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';

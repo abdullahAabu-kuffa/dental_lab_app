@@ -77,4 +77,9 @@ class AppStrings {
   static const String specialization = 'Specialization';
   static const String clinicOrLabName = 'Clinic or Lab Name';
   static const String enterClinicOrLabName = 'Enter Clinic or Lab Name';
+  static const String cityLabel = 'City';
+  static const String addressLabel = 'Address';
+  static const String enterYourFullAddress = 'Enter your full address';
+  static const String selectYourSpecialization = 'Select your specialization';
+  static const String selectYourCity= 'Select your city';
 }
