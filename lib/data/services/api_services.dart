@@ -1,5 +1,6 @@
 import 'package:dental_lab_app/data/models/sign_in_models.dart';
 import 'package:dio/dio.dart';
+import 'package:flutter/material.dart';
 
 class ApiServices {
   final Dio _dio = Dio();
@@ -15,6 +16,7 @@ class ApiServices {
       );
 
       if (response.statusCode == 200 && response.data is Map<String, dynamic>) {
+        debugPrint('Response data: ${response.data['accessToken']}');
         return SignInModels.fromJson(response.data);
       } else {
         throw Exception('Failed to sign in: ${response.statusCode}');
