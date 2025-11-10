@@ -1,7 +1,8 @@
+import 'package:dental_lab_app/core/theme/app_colors.dart';
 import 'package:flutter/material.dart';
 
 class CustomBtn extends StatelessWidget {
-  const CustomBtn({super.key,this.onTap,this.child});
+  const CustomBtn({super.key, this.onTap, this.child});
   final void Function()? onTap;
   final Widget? child;
   @override
@@ -12,8 +13,12 @@ class CustomBtn extends StatelessWidget {
         width: double.infinity,
         height: 50,
         decoration: BoxDecoration(
+          gradient: LinearGradient(
+            colors: [AppColors.yellowColor, AppColors.lightYellowColor],
+            begin: Alignment.centerLeft,
+            end: Alignment.centerRight,
+          ),
           borderRadius: BorderRadius.circular(24),
-          color: const Color(0xffD9AC40),
         ),
         child: child,
       ),

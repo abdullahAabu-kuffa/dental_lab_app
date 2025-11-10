@@ -1,5 +1,5 @@
 import 'package:bloc/bloc.dart';
-import 'package:dental_lab_app/data/models/sign_in_models.dart';
+import 'package:dental_lab_app/data/models/auth/sign_in_models.dart';
 import 'package:dental_lab_app/data/services/api_services.dart';
 
 part 'sign_in_state.dart';
