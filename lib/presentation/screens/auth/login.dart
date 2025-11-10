@@ -3,7 +3,7 @@ import 'package:dental_lab_app/core/routing/app_router.dart';
 import 'package:dental_lab_app/core/theme/app_colors.dart';
 import 'package:dental_lab_app/presentation/screens/auth/widgets/custom_txt.dart';
 import 'package:dental_lab_app/presentation/widgets/custom_btn.dart';
-import 'package:dental_lab_app/presentation/widgets/custom_text_field.dart';
+import 'package:dental_lab_app/presentation/screens/auth/widgets/custom_text_field.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
@@ -44,19 +44,10 @@ class _LoginState extends State<Login> {
                     const SizedBox(height: 20),
                     CustomText(
                       txt: AppStrings.loginToYourAccount,
-                      color: AppColors.whiteColor70,
                       fontWeight: FontWeight.w400,
                     ),
                     const SizedBox(height: 20),
-                    Row(
-                      children: [
-                        CustomText(
-                          txt: AppStrings.email,
-                          color: AppColors.whiteColor,
-                          fontWeight: FontWeight.w500,
-                        ),
-                      ],
-                    ),
+                    Row(children: [CustomText(txt: AppStrings.email)]),
                     const SizedBox(height: 16),
                     CustomTextField(
                       controller: emailController,
@@ -64,15 +55,7 @@ class _LoginState extends State<Login> {
                       suffixIcon: Icon(Icons.email, color: AppColors.greyColor),
                     ),
                     const SizedBox(height: 16),
-                    Row(
-                      children: [
-                        CustomText(
-                          txt: AppStrings.password,
-                          color: AppColors.whiteColor,
-                          fontWeight: FontWeight.w500,
-                        ),
-                      ],
-                    ),
+                    Row(children: [CustomText(txt: AppStrings.password)]),
                     const SizedBox(height: 16),
                     CustomTextField(
                       controller: passwordController,
@@ -94,12 +77,12 @@ class _LoginState extends State<Login> {
                     ),
                     const SizedBox(height: 16),
                     Row(
-                      mainAxisAlignment: MainAxisAlignment.end,
+                      mainAxisAlignment: MainAxisAlignment.start,
                       children: [
+                        SizedBox(width: 10),
                         CustomText(
                           txt: AppStrings.forgotPassword,
                           color: AppColors.yellowColor,
-                          fontWeight: FontWeight.w500,
                         ),
                       ],
                     ),
@@ -107,17 +90,14 @@ class _LoginState extends State<Login> {
                     CustomBtn(
                       onTap: () {
                         if (formKey.currentState!.validate()) {
-                          Navigator.pushNamed(
-                            context,
-                            Routes.registerRoute,
-                          );
+                          Navigator.pushNamed(context, Routes.registerRoute);
                         }
                       },
                       child: Center(
                         child: CustomText(
                           txt: AppStrings.login,
                           color: AppColors.blackColor,
-                          fontWeight: FontWeight.w500,
+                          fontWeight: FontWeight.w600,
                         ),
                       ),
                     ),
