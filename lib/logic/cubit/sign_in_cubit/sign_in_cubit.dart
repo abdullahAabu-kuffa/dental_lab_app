@@ -1,6 +1,7 @@
 import 'package:bloc/bloc.dart';
 import 'package:dental_lab_app/data/models/auth/sign_in_models.dart';
 import 'package:dental_lab_app/data/services/api_services.dart';
+import 'package:flutter/rendering.dart';
 
 part 'sign_in_state.dart';
 
@@ -13,7 +14,7 @@ class SignInCubit extends Cubit<SignInState> {
     emit(SignInLoading());
     try {
       final result = await apiServices.signIn(email: email, password: password);
-      // debugPrint('SignIn Result: ${result.message}, Token: ${result.accessToken}');
+      debugPrint('Sign In Result: ${result.status}, Token: ${result.data}');
       emit(SignInSuccess(result));
     } catch (e) {
       emit(SignInError(e.toString()));

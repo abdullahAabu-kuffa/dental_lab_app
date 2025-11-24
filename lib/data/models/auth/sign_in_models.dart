@@ -1,16 +1,16 @@
 class SignInModels {
-  final String message;
-  final String accessToken;
+  final String status;
+  final String data;
 
   SignInModels({
-    required this.message,
-    required this.accessToken,
+    required this.status,
+    required this.data,
   });
 
   factory SignInModels.fromJson(Map<String, dynamic> json) {
     return SignInModels(
-      message: json['message'],
-      accessToken: json['accessToken'],
+      status: json['status'],
+      data: json['data'],
     );
   }
 }

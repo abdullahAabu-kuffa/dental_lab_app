@@ -13,19 +13,30 @@ class ApiServices {
   }) async {
     try {
       final response = await _dio.post(
-        '${ApiConstants.baseUrl}/api/auth/login',
+        '${ApiConstants.baseUrl}/auth/login',
         data: {'email': email, 'password': password},
-        options: Options(headers: {'Content-Type': 'application/json'}),
       );
 
-      if (response.statusCode == 200 && response.data is Map<String, dynamic>) {
-        debugPrint('Response data: ${response.data['accessToken']}');
+      if ((response.statusCode == 200 || response.statusCode == 201) &&
+          response.data is Map<String, dynamic>) {
+        debugPrint('Response data: ${response.data['data']}');
         return SignInModels.fromJson(response.data);
       } else {
         throw Exception('Failed to sign in: ${response.statusCode}');
       }
-    } catch (e) {
-      throw Exception('Error during sign in: $e');
+    } on DioException catch (e) {
+      String errorMessage = 'An error occurred during sign in.';
+      if (e.type == DioExceptionType.connectionTimeout) {
+        errorMessage = 'Connection timed out. Please try again later.';
+      } else if (e.type == DioExceptionType.receiveTimeout) {
+        errorMessage = 'Server response timed out. Please try again later.';
+      } else if (e.type == DioExceptionType.badResponse) {
+        errorMessage =
+            'Server error: ${e.response?.statusCode} - ${e.response?.statusMessage}';
+      } else if (e.type == DioExceptionType.unknown) {
+        errorMessage = 'Network error: ${e.message}';
+      }
+      throw Exception(errorMessage);
     }
   }
 
@@ -51,7 +62,8 @@ class ApiServices {
         options: Options(headers: {'Content-Type': 'application/json'}),
       );
 
-      if (response.statusCode == 200 && response.data is Map<String, dynamic>) {
+      if ((response.statusCode == 200 || response.statusCode == 201) &&
+          response.data is Map<String, dynamic>) {
         return RegisterModel.fromJson(response.data);
       } else {
         throw Exception('Failed to register: ${response.statusCode}');
