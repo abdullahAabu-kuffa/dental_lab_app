@@ -1,4 +1,4 @@
-import 'package:dental_lab_app/core/constants/app_constants.dart';
+import 'package:dental_lab_app/core/constants/app_strings.dart';
 import 'package:dental_lab_app/core/routing/app_router.dart';
 import 'package:dental_lab_app/core/theme/app_theme.dart';
 import 'package:flutter/material.dart';

@@ -1,26 +1,3 @@
-// App Icons Constants
-
-class AppIcons {
-  AppIcons._();
-
-  static const path = 'assets/icons/';
-}
-
-// App Images Constants
-class AppImages {
-  AppImages._();
-
-  static const path = 'assets/images/';
-
-  static const String logo = '${path}logo.svg';
-  static const String upload = '${path}upload.svg';
-  static const String recieved = '${path}recieved.svg';
-  static const String design = '${path}design.svg';
-  static const String manufacturing = '${path}manufactoring.svg';
-  static const String shipping = '${path}shipping.svg';
-  static const String checkedOnboarding = '${path}checked_onboarding.svg';
-}
-
 // App Strings Constants
 class AppStrings {
   AppStrings._();
@@ -81,5 +58,5 @@ class AppStrings {
   static const String addressLabel = 'Address';
   static const String enterYourFullAddress = 'Enter your full address';
   static const String selectYourSpecialization = 'Select your specialization';
-  static const String selectYourCity= 'Select your city';
+  static const String selectYourCity = 'Select your city';
 }

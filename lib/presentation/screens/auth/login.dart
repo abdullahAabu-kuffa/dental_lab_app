@@ -1,4 +1,5 @@
-import 'package:dental_lab_app/core/constants/app_constants.dart';
+import 'package:dental_lab_app/core/constants/app_images.dart';
+import 'package:dental_lab_app/core/constants/app_strings.dart';
 import 'package:dental_lab_app/core/errorHandler/error_handler.dart';
 import 'package:dental_lab_app/core/routing/app_router.dart';
 import 'package:dental_lab_app/core/theme/app_colors.dart';
@@ -28,25 +29,28 @@ class _LoginState extends State<Login> {
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (_) => SignInCubit(ApiServices()),
+      child: Scaffold(
+        body: SafeArea(
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 24),
+            child: BlocListener<SignInCubit, SignInState>(
+              listener: (context, state) {
+                if (state is SignInError) {
+                  ErrorHandler.showSnack(
+                    context,
+                    'Login failed! Please check your email or password.',
+                    Colors.red,
+                  );
+                } else if (state is SignInSuccess) {
+                  ErrorHandler.showSnack(
+                    context,
+                    'Login successful!',
+                    Colors.green,
+                  );
+                  Navigator.pushNamed(context, Routes.homeRoute);
+                }
+              },
 
-      child: BlocListener<SignInCubit, SignInState>(
-        listener: (context, state) {
-          if (state is SignInError) {
-            ErrorHandler.showSnack(
-              context,
-              'Login failed: ${state.message}',
-              Colors.red,
-            );
-          } else if (state is SignInSuccess) {
-            ErrorHandler.showSnack(context, 'Login successful!', Colors.green);
-            Navigator.pushNamed(context, Routes.registerRoute);
-          }
-        },
-
-        child: Scaffold(
-          body: SafeArea(
-            child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 24),
               child: _buildLoginForm(context),
             ),
           ),
