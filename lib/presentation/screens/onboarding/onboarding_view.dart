@@ -1,4 +1,5 @@
 import 'package:dental_lab_app/core/constants/app_strings.dart';
+import 'package:dental_lab_app/core/helpers/cach_helper.dart';
 import 'package:dental_lab_app/core/routing/app_router.dart';
 import 'package:dental_lab_app/core/theme/app_colors.dart';
 import 'package:dental_lab_app/presentation/screens/onboarding/first_onboarding.dart';
@@ -42,6 +43,7 @@ class _OnboardingViewState extends State<OnboardingView> {
               right: 24,
               child: CustomBtn(
                 onTap: () {
+                  CachHelper.setOpened();
                   if (_currentPage < 2) {
                     _pageController.nextPage(
                       duration: Duration(milliseconds: 500),

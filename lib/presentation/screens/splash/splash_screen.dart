@@ -1,6 +1,7 @@
 // ignore_for_file: use_build_context_synchronously
 
 import 'package:dental_lab_app/core/constants/app_images.dart';
+import 'package:dental_lab_app/core/helpers/cach_helper.dart';
 import 'package:dental_lab_app/core/routing/app_router.dart';
 import 'package:dental_lab_app/core/theme/app_colors.dart';
 import 'package:dental_lab_app/presentation/widgets/custom_qoute.dart';
@@ -27,7 +28,14 @@ class _SplashScreenState extends State<SplashScreen> {
       });
     });
     Future.delayed(const Duration(seconds: 3), () {
-      Navigator.pushReplacementNamed(context, Routes.onBoardingRoute);
+      if(CachHelper.getOpened() && CachHelper.getLoggdIn()){
+        Navigator.pushReplacementNamed(context, Routes.homeRoute);
+      }else if(CachHelper.getOpened() && !CachHelper.getLoggdIn()){
+        Navigator.pushReplacementNamed(context, Routes.loginRoute);
+      }
+      else{
+        Navigator.pushReplacementNamed(context, Routes.onBoardingRoute);
+      }
     });
   }
 

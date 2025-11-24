@@ -1,6 +1,7 @@
 import 'package:dental_lab_app/core/constants/app_images.dart';
 import 'package:dental_lab_app/core/constants/app_strings.dart';
 import 'package:dental_lab_app/core/errorHandler/error_handler.dart';
+import 'package:dental_lab_app/core/helpers/cach_helper.dart';
 import 'package:dental_lab_app/core/routing/app_router.dart';
 import 'package:dental_lab_app/core/theme/app_colors.dart';
 import 'package:dental_lab_app/data/services/api_services.dart';
@@ -47,6 +48,7 @@ class _LoginState extends State<Login> {
                     'Login successful!',
                     Colors.green,
                   );
+                  CachHelper.setLoggdIn();
                   Navigator.pushNamed(context, Routes.homeRoute);
                 }
               },

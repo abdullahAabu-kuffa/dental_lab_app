@@ -17,9 +17,9 @@ class _AppHomeScreansState extends State<AppHomeScreans> {
 
   final List<Widget> screens = const [
     HomeScreen(),
-    ProfileScreen(),
     OrdersScreen(),
-    EventsScreen()
+    EventsScreen(),
+    ProfileScreen(),
   ];
 
   void onNavBarTap(int index) {
