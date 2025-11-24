@@ -50,6 +50,7 @@ class _LoginState extends State<Login> {
                   Navigator.pushNamed(context, Routes.homeRoute);
                 }
               },
+
               child: _buildLoginForm(context),
             ),
           ),
@@ -59,61 +60,76 @@ class _LoginState extends State<Login> {
   }
 
   Widget _buildLoginForm(BuildContext context) {
-    return SingleChildScrollView(
-      child: Form(
-        key: formKey,
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            const SizedBox(height: 70),
-            SvgPicture.asset(AppImages.logo),
-            const SizedBox(height: 15),
-            const CustomText(
-              txt: AppStrings.welcomeBack,
-              color: AppColors.whiteColor,
-              fontWeight: FontWeight.w700,
-              fontSize: 28,
-            ),
-            const SizedBox(height: 20),
-            const CustomText(
-              txt: AppStrings.loginToYourAccount,
-              color: AppColors.whiteColor70,
-            ),
-            const SizedBox(height: 30),
-            _buildLabel(AppStrings.email),
-            const SizedBox(height: 12),
-            CustomTextField(
-              controller: emailController,
-              hint: AppStrings.enterYourEmail,
-              suffixIcon: const Icon(Icons.email, color: AppColors.greyColor),
-            ),
-            const SizedBox(height: 20),
-            _buildLabel(AppStrings.password),
-            const SizedBox(height: 12),
-            CustomTextField(
-              controller: passwordController,
-              obscureText: !isPasswordVisible,
-              hint: AppStrings.enterYourPassword,
-              suffixIcon: IconButton(
-                onPressed: () =>
-                    setState(() => isPasswordVisible = !isPasswordVisible),
-                icon: Icon(
-                  isPasswordVisible ? Icons.visibility : Icons.visibility_off,
-                  color: AppColors.greyColor,
+    return BlocBuilder<SignInCubit, SignInState>(
+      builder: (context, state) {
+        final cubit = context.read<SignInCubit>();
+
+        return SingleChildScrollView(
+          child: Form(
+            key: formKey,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                const SizedBox(height: 70),
+                SvgPicture.asset(AppImages.logo),
+                const SizedBox(height: 15),
+
+                const CustomText(
+                  txt: AppStrings.welcomeBack,
+                  color: AppColors.whiteColor,
+                  fontWeight: FontWeight.w700,
+                  fontSize: 28,
                 ),
-              ),
-            ),
-            const SizedBox(height: 16),
-            _buildForgotPassword(),
-            const SizedBox(height: 30),
-            BlocBuilder<SignInCubit, SignInState>(
-              builder: (context, state) {
-                final cubit = context.read<SignInCubit>();
-                return CustomBtn(
+
+                const SizedBox(height: 20),
+
+                const CustomText(
+                  txt: AppStrings.loginToYourAccount,
+                  color: AppColors.whiteColor70,
+                ),
+
+                const SizedBox(height: 30),
+
+                _buildLabel(AppStrings.email),
+                const SizedBox(height: 12),
+
+                CustomTextField(
+                  controller: emailController,
+                  hint: AppStrings.enterYourEmail,
+                  suffixIcon: const Icon(
+                    Icons.email,
+                    color: AppColors.greyColor,
+                  ),
+                ),
+
+                const SizedBox(height: 20),
+
+                _buildLabel(AppStrings.password),
+                const SizedBox(height: 12),
+
+                CustomTextField(
+                  controller: passwordController,
+                  obscureText: !isPasswordVisible,
+                  hint: AppStrings.enterYourPassword,
+                  suffixIcon: IconButton(
+                    onPressed: () =>
+                        setState(() => isPasswordVisible = !isPasswordVisible),
+                    icon: Icon(
+                      isPasswordVisible
+                          ? Icons.visibility
+                          : Icons.visibility_off,
+                      color: AppColors.greyColor,
+                    ),
+                  ),
+                ),
+
+                const SizedBox(height: 16),
+                _buildForgotPassword(),
+                const SizedBox(height: 30),
+                CustomBtn(
                   onTap: () {
                     if (formKey.currentState!.validate()) {
-                      FocusScope.of(context).unfocus(); // close keyboard
+                      FocusScope.of(context).unfocus();
                       cubit.signIn(
                         email: emailController.text.trim(),
                         password: passwordController.text.trim(),
@@ -138,14 +154,15 @@ class _LoginState extends State<Login> {
                             fontWeight: FontWeight.w600,
                           ),
                         ),
-                );
-              },
+                ),
+
+                const SizedBox(height: 16),
+                _buildSignUpPrompt(context),
+              ],
             ),
-            const SizedBox(height: 16),
-            _buildSignUpPrompt(context),
-          ],
-        ),
-      ),
+          ),
+        );
+      },
     );
   }
 
