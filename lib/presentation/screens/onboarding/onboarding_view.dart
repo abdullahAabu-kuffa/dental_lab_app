@@ -1,4 +1,4 @@
-import 'package:dental_lab_app/core/constants/app_constants.dart';
+import 'package:dental_lab_app/core/constants/app_strings.dart';
 import 'package:dental_lab_app/core/routing/app_router.dart';
 import 'package:dental_lab_app/core/theme/app_colors.dart';
 import 'package:dental_lab_app/presentation/screens/onboarding/first_onboarding.dart';

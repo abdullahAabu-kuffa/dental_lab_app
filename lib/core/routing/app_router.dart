@@ -2,6 +2,7 @@
 import 'package:dental_lab_app/logic/cubit/register_cubit/register_cubit.dart';
 import 'package:dental_lab_app/presentation/screens/auth/login.dart';
 import 'package:dental_lab_app/presentation/screens/auth/register.dart';
+import 'package:dental_lab_app/presentation/screens/home/app_home_screans.dart';
 import 'package:dental_lab_app/presentation/screens/onboarding/onboarding_view.dart';
 import 'package:dental_lab_app/presentation/screens/splash/splash_screen.dart';
 import 'package:flutter/material.dart';
@@ -23,6 +24,8 @@ class AppRouter {
             child: const Register(),
           ),
         );
+        case Routes.homeRoute:
+        return MaterialPageRoute(builder: (_) => const AppHomeScreans());
       default:
         return null;
     }

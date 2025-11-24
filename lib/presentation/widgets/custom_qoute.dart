@@ -1,4 +1,4 @@
-import 'package:dental_lab_app/core/constants/app_constants.dart';
+import 'package:dental_lab_app/core/constants/app_strings.dart';
 import 'package:flutter/material.dart';
 
 class CustomQoute extends StatelessWidget {

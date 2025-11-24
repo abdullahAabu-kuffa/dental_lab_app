@@ -1,4 +1,5 @@
-import 'package:dental_lab_app/core/constants/app_constants.dart';
+import 'package:dental_lab_app/core/constants/app_images.dart';
+import 'package:dental_lab_app/core/constants/app_strings.dart';
 import 'package:dental_lab_app/core/errorHandler/error_handler.dart';
 import 'package:dental_lab_app/core/routing/app_router.dart';
 import 'package:dental_lab_app/core/theme/app_colors.dart';
@@ -46,7 +47,7 @@ class _LoginState extends State<Login> {
                     'Login successful!',
                     Colors.green,
                   );
-                  Navigator.pushNamed(context, Routes.registerRoute);
+                  Navigator.pushNamed(context, Routes.homeRoute);
                 }
               },
               child: _buildLoginForm(context),
