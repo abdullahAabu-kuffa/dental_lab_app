@@ -30,7 +30,7 @@ class HomeNavBar extends StatelessWidget {
               borderRadius: BorderRadius.circular(40),
             ),
             child: BottomNavigationBar(
-              backgroundColor: theme.isDark ? Colors.transparent : AppColors.goldenColor, 
+              backgroundColor: Colors.transparent , 
               elevation: 0,
               type: BottomNavigationBarType.fixed,
               currentIndex: currentIndexScreen,
@@ -38,7 +38,7 @@ class HomeNavBar extends StatelessWidget {
               showSelectedLabels: false,
               showUnselectedLabels: false,
               selectedIconTheme:  IconThemeData(
-                color: theme.isDark ? AppColors.goldenColor : AppColors.whiteColor,
+                color: AppColors.whiteColor,
                 size: 30,
               ),
               unselectedIconTheme: const IconThemeData(
