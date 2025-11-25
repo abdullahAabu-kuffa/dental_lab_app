@@ -2,10 +2,12 @@ import 'package:dental_lab_app/core/constants/app_strings.dart';
 import 'package:dental_lab_app/core/helpers/cach_helper.dart';
 import 'package:dental_lab_app/core/routing/app_router.dart';
 import 'package:dental_lab_app/core/theme/app_theme.dart';
+import 'package:dental_lab_app/logic/cubit/theme_cubit/theme_cubit.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-void main()async {
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await CachHelper.init();
   runApp(const AvanteApp());
@@ -21,15 +23,24 @@ class AvanteApp extends StatelessWidget {
       minTextAdapt: true,
       splitScreenMode: true,
 
-      child: MaterialApp(
-        debugShowCheckedModeBanner: false,
-        title: AppStrings.materialTypes,
-        //Avante theme
-        theme: AppTheme.theme,
+      child: BlocProvider(
+        create: (context) => ThemeCubit(),
 
-        //all Avante routes
-        initialRoute: Routes.initialRoute,
-        onGenerateRoute: AppRouter.generateRoute,
+        child: BlocBuilder<ThemeCubit, ThemeData>(
+          builder: (context, themeState) {
+            return MaterialApp(
+              debugShowCheckedModeBanner: false,
+              title: AppStrings.materialTypes,
+
+              // THEME IS NOW CONTROLLED BY THE CUBIT
+              theme: themeState,
+
+              //all Avante routes
+              initialRoute: Routes.initialRoute,
+              onGenerateRoute: AppRouter.generateRoute,
+            );
+          },
+        ),
       ),
     );
   }

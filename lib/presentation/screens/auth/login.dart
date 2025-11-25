@@ -48,7 +48,7 @@ class _LoginState extends State<Login> {
                     'Login successful!',
                     Colors.green,
                   );
-                  CachHelper.setLoggdIn();
+                  CachHelper.setLoggdIn(true);
                   Navigator.pushNamed(context, Routes.homeRoute);
                 }
               },

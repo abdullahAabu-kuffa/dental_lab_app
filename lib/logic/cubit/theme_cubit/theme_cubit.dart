@@ -1,11 +1,13 @@
-import 'package:bloc/bloc.dart';
+import 'package:dental_lab_app/core/theme/app_theme.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class ThemeCubit extends Cubit<ThemeData> {
-  ThemeCubit() : super(ThemeData.dark());
+  ThemeCubit() : super(AppTheme.dark);
 
   bool get isDark => state.brightness == Brightness.dark;
+
   void toggleTheme() {
-    emit(isDark ? ThemeData.light() : ThemeData.dark());
+    emit(isDark ? AppTheme.light : AppTheme.dark);
   }
 }
