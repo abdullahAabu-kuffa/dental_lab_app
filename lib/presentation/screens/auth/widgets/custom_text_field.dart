@@ -63,6 +63,14 @@ class CustomTextField extends StatelessWidget {
       if (value == null || value.isEmpty) {
         return 'Please enter your full address';
       }
+    }else if(hint==AppStrings.addressLabel){
+      if (value == null || value.isEmpty) {
+        return 'Please enter your address';
+      }
+    }else if(hint==AppStrings.clinicOrLabName){
+      if (value == null || value.isEmpty) {
+        return 'Please enter your clinic or lab name';
+      }
     }
     return null;
   }
