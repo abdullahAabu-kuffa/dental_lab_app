@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 
 class AppTheme {
   static ThemeData light = ThemeData.light().copyWith(
-    scaffoldBackgroundColor: AppColors.whiteColor,
+    scaffoldBackgroundColor: AppColors.whiteColor70,
     progressIndicatorTheme: const ProgressIndicatorThemeData(
       color: AppColors.goldenColor,
     ),
