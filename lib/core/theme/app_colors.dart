@@ -15,4 +15,5 @@ class AppColors {
   static const Color greyColor = Color(0xFF808080);
   static const Color txtFieldFillColor = Color(0xff27241C);
   static const Color hintTextColor = Color(0xffB9B19D);
+  static const Color logOutColor = Color(0xffFF0000);
 }

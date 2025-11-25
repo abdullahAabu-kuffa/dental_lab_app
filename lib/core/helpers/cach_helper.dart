@@ -16,8 +16,8 @@ class CachHelper {
     return prefs.getBool('isOpened') ?? false;
   }
 
-  static Future<bool> setLoggdIn() async {
-    return await prefs.setBool('loggedIn', true);
+  static Future<bool> setLoggdIn(value) async {
+    return await prefs.setBool('loggedIn', value);
   }
 
   static getLoggdIn() {
