@@ -31,7 +31,6 @@ class _ProfileScreenState extends State<ProfileScreen> {
     return SingleChildScrollView(
       child: SizedBox(
         width: double.infinity,
-
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 12.0),
           child: Column(

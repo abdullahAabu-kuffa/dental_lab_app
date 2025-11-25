@@ -30,7 +30,7 @@ class HomeNavBar extends StatelessWidget {
               borderRadius: BorderRadius.circular(40),
             ),
             child: BottomNavigationBar(
-              backgroundColor: Colors.transparent , 
+              backgroundColor: theme.isDark ? AppColors.goldenColor : AppColors.yellowColor, 
               elevation: 0,
               type: BottomNavigationBarType.fixed,
               currentIndex: currentIndexScreen,
@@ -38,7 +38,7 @@ class HomeNavBar extends StatelessWidget {
               showSelectedLabels: false,
               showUnselectedLabels: false,
               selectedIconTheme:  IconThemeData(
-                color: AppColors.whiteColor,
+                color: theme.isDark ? AppColors.yellowColor : AppColors.whiteColor,
                 size: 30,
               ),
               unselectedIconTheme: const IconThemeData(
@@ -47,9 +47,9 @@ class HomeNavBar extends StatelessWidget {
               ),
               items: [
                 BottomNavigationBarItem(icon: AppIcons.homeIcon, label: ""),
-                BottomNavigationBarItem(icon: AppIcons.videoIcon, label: ""),
+                BottomNavigationBarItem(icon: AppIcons.ordersIcon, label: ""),
                 BottomNavigationBarItem(
-                  icon: AppIcons.favoriteIcon,
+                  icon: AppIcons.eventsIcon,
                   label: "",
                 ),
                 BottomNavigationBarItem(icon: AppIcons.personIcon, label: ""),
