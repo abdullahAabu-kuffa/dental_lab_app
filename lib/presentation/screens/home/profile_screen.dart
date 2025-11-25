@@ -1,8 +1,11 @@
+import 'package:dental_lab_app/core/constants/app_strings.dart';
 import 'package:dental_lab_app/core/helpers/cach_helper.dart';
 import 'package:dental_lab_app/core/routing/app_router.dart';
 import 'package:dental_lab_app/core/theme/app_colors.dart';
 import 'package:dental_lab_app/logic/cubit/theme_cubit/theme_cubit.dart';
+import 'package:dental_lab_app/presentation/screens/auth/widgets/custom_text_field.dart';
 import 'package:dental_lab_app/presentation/screens/auth/widgets/custom_txt.dart';
+import 'package:dental_lab_app/presentation/widgets/custom_btn.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -14,9 +17,13 @@ class ProfileScreen extends StatefulWidget {
 }
 
 class _ProfileScreenState extends State<ProfileScreen> {
-  // bool isdark = false;
   bool isSwitched = false;
   bool isEnglish = true;
+  final fullNameController = TextEditingController(text: 'Ahmed Mohamed');
+  final phoneNumberController = TextEditingController(text: '01123456789');
+  final clinickNameController = TextEditingController(text: 'Dental Lab');
+  final clinicAddressController = TextEditingController(text: 'Cairo, Egypt');
+  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
@@ -32,7 +39,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
               const SizedBox(height: 25),
               CustomText(
                 txt: 'Profile',
-                color:themeState.isDark ? AppColors.whiteColor : AppColors.primBgColor,
+                color: themeState.isDark
+                    ? AppColors.whiteColor
+                    : AppColors.primBgColor,
                 fontSize: 20,
                 fontWeight: FontWeight.bold,
               ),
@@ -69,9 +78,89 @@ class _ProfileScreenState extends State<ProfileScreen> {
               Container(
                 width: double.infinity,
                 height: size.height * 0.3,
-
                 decoration: BoxDecoration(
-                  color:themeState.isDark ? AppColors.darkGreyColor : AppColors.goldenColor,
+                  color: themeState.isDark
+                      ? AppColors.darkGreyColor
+                      : AppColors.goldenColor,
+                  borderRadius: BorderRadius.circular(15),
+                ),
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 18.0,
+                    vertical: 15,
+                  ),
+                  child: SingleChildScrollView(
+                    child: Form(
+                      key: _formKey,
+                      child: Column(
+                        children: [
+                          const SizedBox(height: 20),
+                          Row(
+                            children: [
+                              CustomText(
+                                txt: 'Edit Profile',
+                                color: AppColors.greyColor,
+                              ),
+                            ],
+                          ),
+                          const SizedBox(height: 10),
+                          CustomTextField(
+                            controller: fullNameController,
+                            hint: AppStrings.enterYourFullName,
+                          ),
+                          const SizedBox(height: 10),
+                          CustomTextField(
+                            controller: phoneNumberController,
+                            hint: AppStrings.enterYourPhoneNumber,
+                          ),
+                          const SizedBox(height: 10),
+                          CustomTextField(
+                            controller: clinickNameController,
+                            hint: AppStrings.clinicOrLabName,
+                          ),
+                          const SizedBox(height: 10),
+                          CustomTextField(
+                            controller: clinicAddressController,
+                            hint: AppStrings.addressLabel,
+                          ),
+                          const SizedBox(height: 10),
+                          CustomBtn(
+                            onTap: () {
+                              if (_formKey.currentState!.validate()) {
+                                debugPrint(
+                                  'fullName: ${fullNameController.text}\n'
+                                  'phoneNumber: ${phoneNumberController.text}\n'
+                                  'clinicName: ${clinickNameController.text}\n'
+                                  'address: ${clinicAddressController.text}',
+                                );
+                              }
+                            },
+                            child: Center(
+                              child: const Text(
+                                'Save',
+                                style: TextStyle(
+                                  color: AppColors.blackColor,
+                                  fontWeight: FontWeight.w600,
+                                  fontSize: 16,
+                                ),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+              const SizedBox(height: 20),
+              Container(
+                width: double.infinity,
+                height: size.height * 0.3,
+                margin: EdgeInsets.only(bottom: size.height * 0.05),
+                decoration: BoxDecoration(
+                  color: themeState.isDark
+                      ? AppColors.darkGreyColor
+                      : AppColors.goldenColor,
                   borderRadius: BorderRadius.circular(15),
                 ),
                 child: Padding(
@@ -85,7 +174,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       Row(
                         children: [
                           CustomText(
-                            txt: 'SETTINGS',
+                            txt: 'Settings',
                             color: AppColors.greyColor,
                           ),
                         ],
@@ -133,7 +222,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
                           ),
                           const SizedBox(width: 10),
                           CustomText(
-                            txt: !themeState.isDark ? 'Light Mode' : 'Dark Mode',
+                            txt: !themeState.isDark
+                                ? 'Light Mode'
+                                : 'Dark Mode',
                             color: AppColors.whiteColor70,
                           ),
                           const Spacer(),
