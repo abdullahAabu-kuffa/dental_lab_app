@@ -14,15 +14,104 @@ class OrdersScreen extends StatefulWidget {
 }
 
 class _OrdersScreenState extends State<OrdersScreen> {
-  final List orders = [
-    {'id': '001', 'patient': 'John Doe', 'status': 'In Progress'},
-    {'id': '002', 'patient': 'Jane Smith', 'status': 'Completed'},
-    {'id': '003', 'patient': 'Alice Johnson', 'status': 'Pending'},
-    {'id': '004', 'patient': 'Bob Brown', 'status': 'In Progress'},
-    {'id': '005', 'patient': 'Charlie Davis', 'status': 'Completed'},
-    {'id': '006', 'patient': 'Diana Evans', 'status': 'Pending'},
-    {'id': '007', 'patient': 'Frank Green', 'status': 'In Progress'},
-  ];
+  static const orders = {
+    "orders": [
+      {
+        "id": 1,
+        "userId": 10,
+        "options": [
+          {"shade": "A2", "finish": "glazed"},
+        ],
+        "totalPrice": 250.0,
+        "status": "PENDING",
+        "invoiceId": 12001,
+        "createdAt": "2025-11-20T10:00:00.000Z",
+        "updatedAt": "2025-11-20T10:00:00.000Z",
+      },
+      {
+        "id": 2,
+        "userId": 11,
+        "options": [
+          {"shade": "B1"},
+        ],
+        "totalPrice": 480.5,
+        "status": "PROCESSING",
+        "invoiceId": 12002,
+        "createdAt": "2025-11-22T08:15:00.000Z",
+        "updatedAt": "2025-11-23T14:30:00.000Z",
+      },
+      {
+        "id": 3,
+        "userId": 12,
+        "options": [],
+        "totalPrice": 150.0,
+        "status": "COMPLETED",
+        "invoiceId": 12003,
+        "createdAt": "2025-11-18T11:45:00.000Z",
+        "updatedAt": "2025-11-24T09:05:00.000Z",
+      },
+      {
+        "id": 4,
+        "userId": 13,
+        "options": [
+          {"priority": "express", "notes": "check occlusion"},
+        ],
+        "totalPrice": 320.75,
+        "status": "PROCESSING",
+        "invoiceId": 12004,
+        "createdAt": "2025-11-24T09:20:00.000Z",
+        "updatedAt": "2025-11-24T12:00:00.000Z",
+      },
+      {
+        "id": 5,
+        "userId": 14,
+        "options": [
+          {"shade": "C2", "material": "zirconia"},
+        ],
+        "totalPrice": 275.0,
+        "status": "CANCELLED",
+        "invoiceId": 12005,
+        "createdAt": "2025-11-15T07:30:00.000Z",
+        "updatedAt": "2025-11-16T08:00:00.000Z",
+      },
+      {
+        "id": 6,
+        "userId": 15,
+        "options": [
+          {"shipping": "courier", "expected": "2025-11-28T12:00:00.000Z"},
+        ],
+        "totalPrice": 600.0,
+        "status": "PENDING",
+        "invoiceId": 12006,
+        "createdAt": "2025-11-25T13:10:00.000Z",
+        "updatedAt": "2025-11-25T13:10:00.000Z",
+      },
+      {
+        "id": 7,
+        "userId": 16,
+        "options": [
+          {"units": 2, "component": "abutment"},
+        ],
+        "totalPrice": 150.0,
+        "status": "COMPLETED",
+        "invoiceId": 12007,
+        "createdAt": "2025-11-10T09:00:00.000Z",
+        "updatedAt": "2025-11-12T10:30:00.000Z",
+      },
+      {
+        "id": 8,
+        "userId": 17,
+        "options": [
+          {"shade": "A1", "finish": "matte"},
+        ],
+        "totalPrice": 420.25,
+        "status": "PROCESSING",
+        "invoiceId": 12008,
+        "createdAt": "2025-11-26T07:45:58.836Z",
+        "updatedAt": "2025-11-26T17:45:58.836Z",
+      },
+    ],
+  };
   @override
   Widget build(BuildContext context) {
     final themeState = context.watch<ThemeCubit>();
@@ -31,7 +120,10 @@ class _OrdersScreenState extends State<OrdersScreen> {
         child: SizedBox.expand(
           child: SingleChildScrollView(
             child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 24.0, vertical: 20.0),
+              padding: const EdgeInsets.symmetric(
+                horizontal: 24.0,
+                vertical: 20.0,
+              ),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -99,14 +191,7 @@ class _OrdersScreenState extends State<OrdersScreen> {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       mainAxisSize: MainAxisSize.min,
-                      children: [
-                        ...orders.map((order) {
-                          return BuildOrderItem(
-                            order: order,
-                            themeState: themeState,
-                          );
-                        }),
-                      ],
+                      children: [],
                     ),
                   ),
                   ordersTitleSection('Previous Orders', themeState),
@@ -125,14 +210,7 @@ class _OrdersScreenState extends State<OrdersScreen> {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       mainAxisSize: MainAxisSize.min,
-                      children: [
-                        ...orders.map((order) {
-                          return BuildOrderItem(
-                            order: order,
-                            themeState: themeState,
-                          );
-                        }),
-                      ],
+                      children: [],
                     ),
                   ),
                 ],

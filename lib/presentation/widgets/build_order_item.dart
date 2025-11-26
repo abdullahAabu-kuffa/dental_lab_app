@@ -1,4 +1,5 @@
 import 'package:dental_lab_app/core/theme/app_colors.dart';
+import 'package:dental_lab_app/data/models/home/orders.dart';
 import 'package:dental_lab_app/logic/cubit/theme_cubit/theme_cubit.dart';
 import 'package:flutter/material.dart';
 
@@ -8,7 +9,7 @@ class BuildOrderItem extends StatelessWidget {
     required this.order,
     required this.themeState,
   });
-  final Map order;
+  final Order order;
   final ThemeCubit themeState;
   @override
   Widget build(BuildContext context) {
@@ -19,8 +20,8 @@ class BuildOrderItem extends StatelessWidget {
       onHover: (isHovering) {
        isHovering
             ? (themeState.isDark
-                ? AppColors.darkGreyColor.withOpacity(0.7)
-                : AppColors.whiteColor70.withOpacity(0.7))
+                ? AppColors.darkGreyColor
+                : AppColors.whiteColor70)
             : Colors.transparent;
       },
       child: Padding(
@@ -44,7 +45,7 @@ class BuildOrderItem extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(
-                  'Order #${order['id']} - ${order['patient']}',
+                  'Order #${order.id} - ${order.userId}',
                   style: TextStyle(
                     color: themeState.isDark
                         ? AppColors.whiteColor70
@@ -53,11 +54,11 @@ class BuildOrderItem extends StatelessWidget {
                   ),
                 ),
                 Text(
-                  order['status']!,
+                  order.status,
                   style: TextStyle(
-                    color: order['status'] == 'Completed'
+                    color: order.status == 'Completed'
                         ? Colors.green
-                        : order['status'] == 'In Progress'
+                        : order.status == 'In Progress'
                         ? Colors.orange
                         : Colors.red,
                     fontSize: 16.0,
