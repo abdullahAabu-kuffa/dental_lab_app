@@ -1,3 +1,6 @@
+import 'dart:convert';
+
+import 'package:dental_lab_app/data/models/profile_info/get_profile_info.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class CachHelper {
@@ -22,5 +25,66 @@ class CachHelper {
 
   static getLoggdIn() {
     return prefs.getBool('loggedIn') ?? false;
+  }
+
+  static setLoggedInUserId(value) async {
+    return await prefs.setString('loggedInUser', value);
+  }
+
+  static getLoggedInUserId() {
+    return prefs.getString('loggedInUser');
+  }
+
+  static setUser(Map<String, dynamic> user) async {
+    return await prefs.setString('user', jsonEncode(user));
+  }
+
+  static Map<String, dynamic>? getUser() {
+    final userString = prefs.getString('user');
+    if (userString == null) return null;
+
+    final decoded = jsonDecode(userString);
+
+    if (decoded is Map<String, dynamic>) {
+      return decoded;
+    } else {
+      return null;
+    }
+  }
+
+  static saveAccessToken(accessToken) async {
+    return await prefs.setString('accessToken', accessToken);
+  }
+
+  static getAccessToken() {
+    return prefs.getString('accessToken');
+  }
+
+  static saveRefreshToken(refreshToken) async {
+    return await prefs.setString('refreshToken', refreshToken);
+  }
+
+  static getRefreshToken() {
+    return prefs.getString('refreshToken');
+  }
+
+  static const String _profileDataKey = 'profile_data';
+
+  static Future<bool> setProfileData(UserResponse profile) async {
+    final String jsonString = jsonEncode(profile.toJson());
+    return await prefs.setString(_profileDataKey, jsonString);
+  }
+
+  static UserResponse? getProfileData() {
+    final String? jsonString = prefs.getString(_profileDataKey);
+    if (jsonString != null) {
+      final Map<String, dynamic> jsonMap = jsonDecode(jsonString);
+      return UserResponse.fromJson(jsonMap);
+    }
+    return null;
+  }
+
+  static clearProfileData() async {
+    return await prefs.remove(_profileDataKey);
   }
 }
