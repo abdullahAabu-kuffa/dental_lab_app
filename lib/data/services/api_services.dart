@@ -1,12 +1,14 @@
+import 'package:dental_lab_app/core/helpers/cach_helper.dart';
 import 'package:dental_lab_app/core/networking/api_constants.dart';
 import 'package:dental_lab_app/data/models/auth/register_models.dart';
 import 'package:dental_lab_app/data/models/auth/sign_in_models.dart';
+import 'package:dental_lab_app/data/models/profile_info/edit_profile_info.dart';
+import 'package:dental_lab_app/data/models/profile_info/get_profile_info.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 
 class ApiServices {
   final Dio _dio = Dio();
-
   Future<SignInModels> signIn({
     required String email,
     required String password,
@@ -14,12 +16,11 @@ class ApiServices {
     try {
       final response = await _dio.post(
         '${ApiConstants.baseUrl}/auth/login',
-        data: {'email': email, 'password': password},
+        data: {'email': email, 'password': password, 'clientType': 'mobile'},
       );
 
-      if ((response.statusCode == 200 || response.statusCode == 201) &&
-          response.data is Map<String, dynamic>) {
-        debugPrint('Response data: ${response.data['data']}');
+      if (response.statusCode == 201) {
+        // debugPrint('Response data: ${response.data['user']}');
         return SignInModels.fromJson(response.data);
       } else {
         throw Exception('Failed to sign in: ${response.statusCode}');
@@ -36,6 +37,7 @@ class ApiServices {
       } else if (e.type == DioExceptionType.unknown) {
         errorMessage = 'Network error: ${e.message}';
       }
+      debugPrint(errorMessage);
       throw Exception(errorMessage);
     }
   }
@@ -86,4 +88,92 @@ class ApiServices {
       throw Exception('Unexpected error during registration: $e');
     }
   }
+
+  //
+  //fetch the profile info
+  Future<UserResponse> getProfileInfo() async {
+    try {
+      final response = await _dio.get(
+        '${ApiConstants.baseUrl}/users/me',
+        options: Options(
+          headers: {'Authorization': 'Bearer ${CachHelper.getAccessToken()}'},
+        ),
+      );
+      if (response.statusCode == 200 || response.statusCode == 201) {
+        debugPrint('Response data: ${response.data}');
+        return UserResponse.fromJson(response.data);
+      } else {
+        throw Exception('Failed to fetch profile info: ${response.statusCode}');
+      }
+    } on DioException catch (e) {
+      String errorMessage = 'An error occurred during fetching profile info.';
+      if (e.type == DioExceptionType.connectionTimeout) {
+        errorMessage = 'Connection timed out. Please try again later.';
+      } else if (e.type == DioExceptionType.receiveTimeout) {
+        errorMessage = 'Server response timed out. Please try again later.';
+      } else if (e.type == DioExceptionType.badResponse) {
+        errorMessage =
+            'Server error: ${e.response?.statusCode} - ${e.response?.statusMessage}';
+      } else if (e.type == DioExceptionType.unknown) {
+        errorMessage = 'Network error: ${e.message}';
+      }
+      throw Exception(errorMessage);
+    }
+  }
+
+  //edit profile data
+  Future<EditProfileInfo> editProfileInfo({
+    fullName,
+    phoneNumber,
+    clinickName,
+    clinickAdress,
+  }) async {
+    try {
+      final id = CachHelper.getLoggedInUserId();
+      debugPrint('ID: $id');
+      final response = await _dio.patch(
+        '${ApiConstants.baseUrl}/users/$id',
+        data: {
+          'fullName': fullName,
+          'phoneNumber': phoneNumber,
+          'clinicName': clinickName,
+          'clinicAddress': clinickAdress,
+        },
+        options: Options(
+          headers: {'Authorization': 'Bearer ${CachHelper.getAccessToken()}'},
+        ),
+      );
+      if (response.statusCode == 200 || response.statusCode == 201) {
+        debugPrint('Response data: ${response.data}');
+        return EditProfileInfo.fromJson(response.data);
+      } else {
+        throw Exception('Failed to fetch profile info: ${response.statusCode}');
+      }
+    } on DioException catch (e) {
+      String errorMessage = 'An error occurred during fetching profile info.';
+      if (e.type == DioExceptionType.connectionTimeout) {
+        errorMessage = 'Connection timed out. Please try again later.';
+      } else if (e.type == DioExceptionType.receiveTimeout) {
+        errorMessage = 'Server response timed out. Please try again later.';
+      } else if (e.type == DioExceptionType.badResponse) {
+        errorMessage =
+            'Server error: ${e.response?.statusCode} - ${e.response?.statusMessage}';
+      } else if (e.type == DioExceptionType.unknown) {
+        errorMessage = 'Network error: ${e.message}';
+      }
+      throw Exception(errorMessage);
+    }
+  }
+
+  // log interceptor
+  static final dio = Dio()
+    ..interceptors.add(
+      LogInterceptor(
+        request: true,
+        requestBody: true,
+        responseBody: true,
+        responseHeader: true,
+        error: true,
+      ),
+    );
 }
