@@ -1,6 +1,9 @@
 import 'package:dental_lab_app/core/constants/app_strings.dart';
 import 'package:dental_lab_app/core/helpers/cach_helper.dart';
 import 'package:dental_lab_app/core/routing/app_router.dart';
+import 'package:dental_lab_app/data/services/api_services.dart';
+import 'package:dental_lab_app/logic/cubit/edit_profile/edit_profile_cubit.dart';
+import 'package:dental_lab_app/logic/cubit/profile_info_cubit/profile_info_cubit.dart';
 import 'package:dental_lab_app/logic/cubit/theme_cubit/theme_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -22,8 +25,12 @@ class AvanteApp extends StatelessWidget {
       minTextAdapt: true,
       splitScreenMode: true,
 
-      child: BlocProvider(
-        create: (context) => ThemeCubit(),
+      child: MultiBlocProvider(
+        providers: [
+          BlocProvider(create: (context) => ThemeCubit()),
+          BlocProvider(create: (context) => ProfileCubit(ApiServices())),
+          BlocProvider(create: (context)=>EditProfileCubit(ApiServices())),
+        ],
 
         child: BlocBuilder<ThemeCubit, ThemeData>(
           builder: (context, themeState) {

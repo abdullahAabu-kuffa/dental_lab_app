@@ -38,7 +38,7 @@ class CustomTextField extends StatelessWidget {
       if (value == null || value.isEmpty) {
         return 'Please enter your phone number';
       }
-      if (value.length != 11) {
+      if (!RegExp(r'^\+201[0-2|5]\d{8}$').hasMatch(value)) {
         return 'Phone number must be 11 digits long';
       }
     } else if (hint == AppStrings.enterYourPassword) {
