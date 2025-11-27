@@ -23,7 +23,6 @@ class SignInCubit extends Cubit<SignInState> {
       CachHelper.saveAccessToken(result.data.accessToken);
       CachHelper.saveRefreshToken(result.data.refreshToken);
       CachHelper.setLoggedInUserId(result.data.user.id.toString());
-
       emit(SignInSuccess(result));
     } catch (e) {
       debugPrint('Sign In Error: $e');

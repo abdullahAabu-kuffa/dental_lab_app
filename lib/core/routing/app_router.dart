@@ -1,4 +1,5 @@
 //app router
+import 'package:dental_lab_app/data/models/home/orders.dart';
 import 'package:dental_lab_app/logic/cubit/register_cubit/register_cubit.dart';
 import 'package:dental_lab_app/presentation/screens/auth/login.dart';
 import 'package:dental_lab_app/presentation/screens/auth/register.dart';
@@ -25,10 +26,13 @@ class AppRouter {
             child: const Register(),
           ),
         );
-        case Routes.homeRoute:
+      case Routes.homeRoute:
         return MaterialPageRoute(builder: (_) => const AppHomeScreans());
       case Routes.orderDetailsRoute:
-        return MaterialPageRoute(builder: (_) => const OrderDetails());
+        final order = settings.arguments as Order;
+        return MaterialPageRoute(
+          builder: (_) => OrderDetailsScreen(order: order),
+        );
       default:
         return null;
     }
