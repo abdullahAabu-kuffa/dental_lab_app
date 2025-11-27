@@ -1,6 +1,7 @@
 import 'package:dental_lab_app/data/models/home/orders.dart';
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart'; 
+import 'package:intl/intl.dart';
+
 class OrderDetailsScreen extends StatelessWidget {
   final Order order;
   const OrderDetailsScreen({super.key, required this.order});
@@ -8,37 +9,84 @@ class OrderDetailsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final df = DateFormat.yMMMd().add_jm();
+    final theme = Theme.of(context);
+
     return Scaffold(
-      appBar: AppBar(title: Text('Order #${order.id}')),
-      body: Padding(
-        padding: EdgeInsets.all(12),
+      appBar: AppBar(
+        title: Text('Order #${order.id}'),
+        centerTitle: true,
+        elevation: 2,
+      ),
+      body: SingleChildScrollView(
+        padding: const EdgeInsets.all(16),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            _row('Status', order.status),
-            SizedBox(height: 8),
-            _row('Total Price', '\$${order.totalPrice.toStringAsFixed(2)}'),
-            SizedBox(height: 8),
-            _row('Invoice Id', order.invoiceId.toString()),
-            SizedBox(height: 8),
-            _row('Created', df.format(order.createdAt)),
-            SizedBox(height: 8),
-            _row('Updated', df.format(order.updatedAt)),
-            SizedBox(height: 12),
-            Text('Options', style: TextStyle(fontWeight: FontWeight.bold)),
-            SizedBox(height: 6),
-            Expanded(
-              child: ListView.builder(
-                itemCount: order.options.length,
-                itemBuilder: (_, i) {
-                  final opt = order.options[i];
-                  return ListTile(
-                    leading: Icon(Icons.settings),
-                    title: Text(opt.keys.join(', ') == '' ? 'Option ${i+1}' : opt.keys.join(', ')),
-                    subtitle: Text(opt.values.join(', ')),
-                  );
-},
+            _infoCard(context, [
+              _row(
+                Icons.info,
+                'Status',
+                Chip(
+                  label: Text(order.status),
+                  backgroundColor: Colors.black12,
+                ),
               ),
+              _row(
+                Icons.attach_money,
+                'Total Price',
+                Text(
+                  '\$${order.totalPrice.toStringAsFixed(2)}',
+                  style: theme.textTheme.titleMedium!.copyWith(
+                    color: Colors.green.shade700,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ),
+              _row(
+                Icons.receipt_long,
+                'Invoice Id',
+                Text(order.invoiceId.toString()),
+              ),
+              _row(
+                Icons.calendar_today,
+                'Created',
+                Text(df.format(order.createdAt)),
+              ),
+              _row(Icons.update, 'Updated', Text(df.format(order.updatedAt))),
+            ]),
+            const SizedBox(height: 20),
+            Text(
+              'Options',
+              style: theme.textTheme.titleLarge!.copyWith(
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            const SizedBox(height: 8),
+            ListView.separated(
+              shrinkWrap: true,
+              physics: const NeverScrollableScrollPhysics(),
+              itemCount: order.options.length,
+              separatorBuilder: (_, __) => const Divider(),
+              itemBuilder: (_, i) {
+                final opt = order.options[i];
+                return ExpansionTile(
+                  leading: const Icon(Icons.settings),
+                  title: Text(
+                    opt.keys.join(', ').isEmpty
+                        ? 'Option ${i + 1}'
+                        : opt.keys.join(', '),
+                  ),
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: 16,
+                        vertical: 8,
+                      ),
+                      child: Text(opt.values.join(', ')),
+                    ),
+                  ],
+                );
+              },
             ),
           ],
         ),
@@ -46,11 +94,37 @@ class OrderDetailsScreen extends StatelessWidget {
     );
   }
 
-  Widget _row(String label, String value) => Row(
+  Widget _infoCard(BuildContext context, List<Widget> children) {
+    return Card(
+      elevation: 3,
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+      child: Padding(
+        padding: const EdgeInsets.all(12),
+        child: Column(
+          children: children
+              .map(
+                (child) => Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 6),
+                  child: child,
+                ),
+              )
+              .toList(),
+        ),
+      ),
+    );
+  }
+
+  Widget _row(IconData icon, String label, Widget value) => Row(
     mainAxisAlignment: MainAxisAlignment.spaceBetween,
     children: [
-      Text(label, style: TextStyle(fontWeight: FontWeight.w600)),
-      Text(value),
+      Row(
+        children: [
+          Icon(icon, size: 20, color: Colors.grey.shade700),
+          const SizedBox(width: 8),
+          Text(label, style: const TextStyle(fontWeight: FontWeight.w600)),
+        ],
+      ),
+      value,
     ],
   );
 }
