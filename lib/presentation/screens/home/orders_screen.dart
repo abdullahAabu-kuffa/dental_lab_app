@@ -128,7 +128,7 @@ class _OrdersScreenState extends State<OrdersScreen> {
   Widget build(BuildContext context) {
     final themeState = context.watch<ThemeCubit>();
     const List<Map<String, dynamic>> ordersData = [
-       {
+      {
         "id": 1,
         "userId": 10,
         "options": [
@@ -139,6 +139,16 @@ class _OrdersScreenState extends State<OrdersScreen> {
         "invoiceId": 12001,
         "createdAt": "2025-11-20T10:00:00.000Z",
         "updatedAt": "2025-11-20T10:00:00.000Z",
+      },
+      {
+        "id": 3,
+        "userId": 12,
+        "options": [],
+        "totalPrice": 150.0,
+        "status": "Completed",
+        "invoiceId": 12003,
+        "createdAt": "2025-11-18T11:45:00.000Z",
+        "updatedAt": "2025-11-24T09:05:00.000Z",
       },
       {
         "id": 2,
@@ -162,12 +172,24 @@ class _OrdersScreenState extends State<OrdersScreen> {
         "createdAt": "2025-11-18T11:45:00.000Z",
         "updatedAt": "2025-11-24T09:05:00.000Z",
       },
+      {
+        "id": 7,
+        "userId": 16,
+        "options": [
+          {"units": 2, "component": "abutment"},
+        ],
+        "totalPrice": 150.0,
+        "status": "Completed",
+        "invoiceId": 12007,
+        "createdAt": "2025-11-10T09:00:00.000Z",
+        "updatedAt": "2025-11-12T10:30:00.000Z",
+      },
     ];
 
     final List<Order> orders = ordersData
         .map((json) => Order.fromJson(json))
         .toList();
- 
+
     return BlocBuilder<ProfileCubit, ProfileState>(
       builder: (context, state) {
         if (state is ProfileLoading) {
@@ -179,7 +201,11 @@ class _OrdersScreenState extends State<OrdersScreen> {
           ).showSnackBar(SnackBar(content: Text("Error: ${state.message}")));
         }
         if (state is ProfileSuccess) {
-          //final orders = state.profile.data.user.orders;
+          // final ordersData = state.profile.data.user.orders;
+          // final List<Order> orders = ordersData
+          //     .map((json) => Order.fromJson(json))
+          //     .toList();
+          print("orders: $orders");
           return Scaffold(
             body: SafeArea(
               child: SizedBox.expand(
@@ -258,11 +284,15 @@ class _OrdersScreenState extends State<OrdersScreen> {
                             mainAxisSize: MainAxisSize.min,
                             children: [
                               ...orders.map(
-                                          (order) => BuildOrderItem(
-                                            order: order,
-                                            themeState: themeState,
-                                          ),
-                                        )
+                                (order) =>
+                                    order.status == 'Pending' ||
+                                        order.status == 'In Progress'
+                                    ? BuildOrderItem(
+                                        order: order,
+                                        themeState: themeState,
+                                      )
+                                    : const SizedBox.shrink(),
+                              ),
                             ],
                           ),
                         ),
@@ -283,21 +313,17 @@ class _OrdersScreenState extends State<OrdersScreen> {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             mainAxisSize: MainAxisSize.min,
                             children: [
-                              Padding(
-                                      padding: const EdgeInsets.all(16.0),
-                                      child: Center(
-                                        child: Text(
-                                          'No previous orders available.',
-                                          style: TextStyle(
-                                            color: themeState.isDark
-                                                ? AppColors.whiteColor70
-                                                : AppColors.primBgColor,
-                                            fontSize: 16.0,
-                                          ),
-                                        ),
-                                      ),
-                                    )
-                                  
+                              //
+                              ...orders.map(
+                                (order) =>
+                                    order.status == 'Completed' ||
+                                        order.status == 'Cancelled'
+                                    ? BuildOrderItem(
+                                        order: order,
+                                        themeState: themeState,
+                                      )
+                                    : const SizedBox.shrink(),
+                              ),
                             ],
                           ),
                         ),
