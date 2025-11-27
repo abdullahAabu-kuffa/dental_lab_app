@@ -195,7 +195,7 @@ class _LoginState extends State<Login> {
       ),
       const SizedBox(width: 5),
       GestureDetector(
-        onTap: () => Navigator.pushNamed(context, Routes.homeRoute),
+        onTap: () => Navigator.pushNamed(context, Routes.registerRoute),
         child: Text(
           AppStrings.signUp,
           style: const TextStyle(

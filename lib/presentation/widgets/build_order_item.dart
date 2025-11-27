@@ -1,3 +1,4 @@
+import 'package:dental_lab_app/core/routing/app_router.dart';
 import 'package:dental_lab_app/core/theme/app_colors.dart';
 import 'package:dental_lab_app/data/models/home/orders.dart';
 import 'package:dental_lab_app/logic/cubit/theme_cubit/theme_cubit.dart';
@@ -15,7 +16,8 @@ class BuildOrderItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
-        Navigator.pushNamed(context, '/orderDetails');
+        Navigator.pushNamed(context, Routes.orderDetailsRoute,
+            arguments: order);
       },
       onHover: (isHovering) {
        isHovering

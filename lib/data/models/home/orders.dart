@@ -18,4 +18,17 @@ class Order {
     required this.createdAt,
     required this.updatedAt,
   });
+
+  factory Order.fromJson(Map<String, dynamic> json) {
+    return Order(
+      id: json['id'],
+      userId: json['userId'],
+      options: List<Map<String, dynamic>>.from(json['options']),
+      totalPrice: (json['totalPrice'] as num).toDouble(),
+      status: json['status'],
+      invoiceId: json['invoiceId'],
+      createdAt: DateTime.parse(json['createdAt']),
+      updatedAt: DateTime.parse(json['updatedAt']),
+    );
+  }
 }

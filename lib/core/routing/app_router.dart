@@ -26,14 +26,13 @@ class AppRouter {
             child: const Register(),
           ),
         );
-        case Routes.homeRoute:
+      case Routes.homeRoute:
         return MaterialPageRoute(builder: (_) => const AppHomeScreans());
       case Routes.orderDetailsRoute:
         final order = settings.arguments as Order;
         return MaterialPageRoute(
-            builder: (_) => OrderDetailsScreen(
-                  order: order,
-                ));
+          builder: (_) => OrderDetailsScreen(order: order),
+        );
       default:
         return null;
     }
