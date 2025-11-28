@@ -4,6 +4,7 @@ import 'package:dental_lab_app/core/routing/app_router.dart';
 import 'package:dental_lab_app/data/services/api_services.dart';
 import 'package:dental_lab_app/logic/cubit/edit_profile/edit_profile_cubit.dart';
 import 'package:dental_lab_app/logic/cubit/profile_info_cubit/profile_info_cubit.dart';
+import 'package:dental_lab_app/logic/cubit/rag/rag_cubit.dart';
 import 'package:dental_lab_app/logic/cubit/theme_cubit/theme_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -25,11 +26,12 @@ class AvanteApp extends StatelessWidget {
       minTextAdapt: true,
       splitScreenMode: true,
 
-      child: MultiBlocProvider(
+      builder: (BuildContext context, Widget? child) => MultiBlocProvider(
         providers: [
           BlocProvider(create: (context) => ThemeCubit()),
           BlocProvider(create: (context) => ProfileCubit(ApiServices())),
-          BlocProvider(create: (context)=>EditProfileCubit(ApiServices())),
+          BlocProvider(create: (context) => EditProfileCubit(ApiServices())),
+          BlocProvider(create: (context) => RagCubit(ApiServices())),
         ],
 
         child: BlocBuilder<ThemeCubit, ThemeData>(
@@ -37,11 +39,7 @@ class AvanteApp extends StatelessWidget {
             return MaterialApp(
               debugShowCheckedModeBanner: false,
               title: AppStrings.materialTypes,
-
-              // THEME IS NOW CONTROLLED BY THE CUBIT
               theme: themeState,
-
-              //all Avante routes
               initialRoute: Routes.initialRoute,
               onGenerateRoute: AppRouter.generateRoute,
             );
