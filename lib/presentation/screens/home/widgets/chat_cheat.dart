@@ -1,3 +1,4 @@
+import 'package:dental_lab_app/generated/l10n.dart';
 import 'package:dental_lab_app/logic/cubit/rag/rag_cubit.dart';
 import 'package:dental_lab_app/logic/cubit/rag/rag_state.dart';
 import 'package:flutter/material.dart';
@@ -156,7 +157,7 @@ class _ChatSheetState extends State<ChatSheet> {
                       Expanded(
                         child: CustomTextField(
                           controller: controller,
-                          hint: 'Ask about your order',
+                          hint: S.of(context).ask_about_your_order,
                         ),
                       ),
                       const SizedBox(width: 8),
