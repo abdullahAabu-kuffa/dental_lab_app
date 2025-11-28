@@ -68,6 +68,22 @@ class CachHelper {
     return prefs.getString('refreshToken');
   }
 
+  static setLang(value) async{
+    return await prefs.setString('lang', value);
+  }
+
+  static getLang() {
+    return prefs.getString('lang');
+  }
+
+  static setTheme(value) async{
+    return await prefs.setBool('theme', value);
+  }
+
+  static getTheme() {
+    return prefs.getBool('theme');
+  }
+
   static const String _profileDataKey = 'profile_data';
 
   static Future<bool> setProfileData(UserResponse profile) async {

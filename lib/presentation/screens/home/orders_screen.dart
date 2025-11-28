@@ -4,6 +4,7 @@ import 'package:dental_lab_app/core/constants/app_icons.dart';
 import 'package:dental_lab_app/core/constants/app_strings.dart';
 import 'package:dental_lab_app/core/theme/app_colors.dart';
 import 'package:dental_lab_app/data/models/home/orders.dart';
+import 'package:dental_lab_app/generated/l10n.dart';
 import 'package:dental_lab_app/logic/cubit/profile_info_cubit/profile_info_cubit.dart';
 import 'package:dental_lab_app/logic/cubit/profile_info_cubit/profile_info_state.dart';
 import 'package:dental_lab_app/logic/cubit/theme_cubit/theme_cubit.dart';
@@ -222,7 +223,7 @@ class _OrdersScreenState extends State<OrdersScreen> {
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             Text(
-                              AppStrings.quote,
+                              S.of(context).quote,
                               style: TextStyle(
                                 color: AppColors.yellowColor,
                                 fontSize: 24.0,
@@ -245,7 +246,7 @@ class _OrdersScreenState extends State<OrdersScreen> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(
-                              'Welcome ${state.profile.data.user.fullName} ',
+                              '${S.of(context).welcomeBack} ${state.profile.data.user.fullName} ',
                               style: TextStyle(
                                 color: themeState.isDark
                                     ? AppColors.whiteColor70
@@ -256,7 +257,7 @@ class _OrdersScreenState extends State<OrdersScreen> {
                             ),
                             const SizedBox(height: 8.0),
                             Text(
-                              'Egypt\'s first fully digital dental labioratory.',
+                              S.of(context).egyptavante,
                               style: TextStyle(
                                 color: themeState.isDark
                                     ? AppColors.whiteColor70
@@ -266,7 +267,7 @@ class _OrdersScreenState extends State<OrdersScreen> {
                             ),
                           ],
                         ),
-                        ordersTitleSection('Current Orders', themeState),
+                        ordersTitleSection(S.of(context).Current, themeState),
                         Container(
                           decoration: BoxDecoration(
                             border: Border.all(
@@ -296,7 +297,7 @@ class _OrdersScreenState extends State<OrdersScreen> {
                             ],
                           ),
                         ),
-                        ordersTitleSection('Previous Orders', themeState),
+                        ordersTitleSection(S.of(context).Previous, themeState),
                         Container(
                           decoration: BoxDecoration(
                             border: Border.all(

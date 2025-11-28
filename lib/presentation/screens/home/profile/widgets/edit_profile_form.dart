@@ -1,6 +1,8 @@
 import 'package:dental_lab_app/core/constants/app_strings.dart';
 import 'package:dental_lab_app/core/theme/app_colors.dart';
+import 'package:dental_lab_app/generated/l10n.dart';
 import 'package:dental_lab_app/logic/cubit/edit_profile/edit_profile_cubit.dart';
+import 'package:dental_lab_app/logic/cubit/localization/local_cubit.dart';
 import 'package:dental_lab_app/presentation/screens/auth/widgets/custom_text_field.dart';
 import 'package:dental_lab_app/presentation/widgets/custom_btn.dart';
 import 'package:flutter/material.dart';
@@ -22,6 +24,9 @@ class EditProfileForm extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final localeCubit = context.watch<LocalizationCubit>();
+
+    final isEnglish = localeCubit.state.languageCode == 'en';
     return Container(
       decoration: BoxDecoration(
         color: AppColors.goldenColor,
@@ -30,10 +35,12 @@ class EditProfileForm extends StatelessWidget {
       padding: const EdgeInsets.all(18),
       child: Column(
         children: [
-          const Align(
-            alignment: Alignment.centerLeft,
+          Align(
+            alignment: isEnglish
+                ? Alignment.centerLeft
+                : Alignment.centerRight,
             child: Text(
-              "Edit Profile",
+              S.of(context).editProfile,
               style: TextStyle(color: AppColors.greyColor, fontSize: 15),
             ),
           ),
@@ -65,8 +72,8 @@ class EditProfileForm extends StatelessWidget {
 
           CustomBtn(
             child: Center(
-              child: const Text(
-                "Save",
+              child: Text(
+                S.of(context).Save,
                 style: TextStyle(color: AppColors.blackColor, fontSize: 20),
               ),
             ),

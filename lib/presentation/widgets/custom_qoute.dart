@@ -1,4 +1,5 @@
 import 'package:dental_lab_app/core/constants/app_strings.dart';
+import 'package:dental_lab_app/generated/l10n.dart';
 import 'package:flutter/material.dart';
 
 class CustomQoute extends StatelessWidget {
@@ -6,11 +7,11 @@ class CustomQoute extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Row(
+    return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         Text(
-          AppStrings.quote,
+          S.of(context).quote,
           style: TextStyle(
             color: Colors.white,
             fontSize: 16,
@@ -18,7 +19,7 @@ class CustomQoute extends StatelessWidget {
           ),
         ),
         Text(
-          AppStrings.dental,
+          S.of(context).dental,
           style: TextStyle(
             color: Color(0xffD9AC40),
             fontSize: 16,
@@ -26,7 +27,7 @@ class CustomQoute extends StatelessWidget {
           ),
         ),
         Text(
-          AppStrings.solution,
+          S.of(context).solution,
           style: TextStyle(
             color: Colors.white,
             fontSize: 16,
