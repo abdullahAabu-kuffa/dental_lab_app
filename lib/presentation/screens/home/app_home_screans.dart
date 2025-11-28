@@ -1,3 +1,4 @@
+import 'package:dental_lab_app/presentation/screens/home/widgets/chat_bubble.dart';
 import 'package:flutter/material.dart';
 import 'package:dental_lab_app/presentation/screens/home/events_screen.dart';
 import 'package:dental_lab_app/presentation/screens/home/home_nav_bar.dart';
@@ -32,6 +33,7 @@ class _AppHomeScreansState extends State<AppHomeScreans> {
   Widget build(BuildContext context) {
     return Scaffold(
       resizeToAvoidBottomInset: true,
+      floatingActionButton: ChatBubble(),
       bottomNavigationBar: HomeNavBar(
         currentIndexScreen: currentIndex,
         onTap: onNavBarTap,
