@@ -98,7 +98,7 @@ class _SettingsCardState extends State<SettingsCard> {
               Switch(
                 value: !isDark,
                 onChanged: (_) => context.read<ThemeCubit>().toggleTheme(),
-                activeColor: AppColors.yellowColor,
+                activeThumbColor: AppColors.yellowColor,
               ),
             ],
           ),

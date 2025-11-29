@@ -132,7 +132,7 @@ class ServiceCard extends StatefulWidget {
 }
 
 class _ServiceCardState extends State<ServiceCard> {
-  bool _hovering = false;
+  final bool _hovering = false;
 
   @override
   Widget build(BuildContext context) {
