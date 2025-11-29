@@ -5,7 +5,7 @@ import 'package:dental_lab_app/generated/l10n.dart';
 import 'package:dental_lab_app/logic/cubit/localization/local_cubit.dart';
 import 'package:dental_lab_app/logic/cubit/theme_cubit/theme_cubit.dart';
 import 'package:dental_lab_app/presentation/screens/auth/widgets/custom_txt.dart';
-import 'package:dental_lab_app/presentation/screens/home/widgets/confirmModel.dart';
+import 'package:dental_lab_app/presentation/screens/home/widgets/confirm_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
