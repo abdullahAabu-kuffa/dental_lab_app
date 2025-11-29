@@ -1,9 +1,9 @@
 import 'package:dental_lab_app/presentation/screens/home/widgets/chat_bubble.dart';
 import 'package:flutter/material.dart';
-import 'package:dental_lab_app/presentation/screens/home/events_screen.dart';
-import 'package:dental_lab_app/presentation/screens/home/home_nav_bar.dart';
+import 'package:dental_lab_app/presentation/screens/home/events/events_screen.dart';
+import 'package:dental_lab_app/presentation/screens/home/widgets/home_nav_bar.dart';
 import 'package:dental_lab_app/presentation/screens/home/home_screen.dart';
-import 'package:dental_lab_app/presentation/screens/home/orders_screen.dart';
+import 'package:dental_lab_app/presentation/screens/home/orders/orders_screen.dart';
 import 'package:dental_lab_app/presentation/screens/home/profile/profile_screen.dart';
 
 class AppHomeScreans extends StatefulWidget {

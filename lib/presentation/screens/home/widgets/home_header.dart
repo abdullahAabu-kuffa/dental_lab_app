@@ -19,6 +19,7 @@ class _HomeState extends State<HomeHeader> {
   @override
   void initState() {
     super.initState();
+    // ignore: use_build_context_synchronously
     Future.microtask(() => context.read<ProfileCubit>().fetchProfile());
   }
 

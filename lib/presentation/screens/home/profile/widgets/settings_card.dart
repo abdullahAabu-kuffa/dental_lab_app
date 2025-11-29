@@ -18,6 +18,7 @@ class SettingsCard extends StatefulWidget {
 
 class _SettingsCardState extends State<SettingsCard> {
   bool isEnglish = true;
+  
   void logout() {
     CachHelper.setLoggdIn(false);
     CachHelper.clearProfileData();
@@ -100,7 +101,7 @@ class _SettingsCardState extends State<SettingsCard> {
               Switch(
                 value: !isDark,
                 onChanged: (_) => context.read<ThemeCubit>().toggleTheme(),
-                activeColor: AppColors.yellowColor,
+                activeThumbColor: AppColors.yellowColor,
               ),
             ],
           ),

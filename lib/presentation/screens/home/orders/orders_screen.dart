@@ -1,8 +1,5 @@
-// ignore_for_file: unused_field
-
 import 'package:dental_lab_app/core/errorHandler/error_handler.dart';
 import 'package:dental_lab_app/core/theme/app_colors.dart';
-import 'package:dental_lab_app/logic/cubit/profile_info_cubit/profile_info_cubit.dart';
 import 'package:dental_lab_app/logic/cubit/theme_cubit/theme_cubit.dart';
 import 'package:dental_lab_app/logic/cubit/user_orders_cubit/user_orders_cubit.dart';
 import 'package:dental_lab_app/presentation/screens/home/widgets/home_header.dart';
@@ -21,7 +18,6 @@ class _OrdersScreenState extends State<OrdersScreen> {
   @override
   void initState() {
     super.initState();
-    Future.microtask(() => context.read<ProfileCubit>().fetchProfile());
     context.read<UserOrdersCubit>().fetchUserOrders();
   }
 
