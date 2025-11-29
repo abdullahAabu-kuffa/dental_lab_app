@@ -1,4 +1,5 @@
 import 'package:dental_lab_app/core/constants/app_icons.dart';
+import 'package:dental_lab_app/core/constants/app_images.dart';
 import 'package:dental_lab_app/core/errorHandler/error_handler.dart';
 import 'package:dental_lab_app/core/theme/app_colors.dart';
 import 'package:dental_lab_app/generated/l10n.dart';
@@ -7,6 +8,7 @@ import 'package:dental_lab_app/logic/cubit/profile_info_cubit/profile_info_state
 import 'package:dental_lab_app/logic/cubit/theme_cubit/theme_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_svg/svg.dart';
 
 class HomeHeader extends StatefulWidget {
   const HomeHeader({super.key});
@@ -32,14 +34,15 @@ class _HomeState extends State<HomeHeader> {
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Text(
-              S.of(context).quote,
-              style: TextStyle(
-                color: AppColors.yellowColor,
-                fontSize: 24.0,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
+            // Text(
+            //   S.of(context).quote,
+            //   style: TextStyle(
+            //     color: AppColors.yellowColor,
+            //     fontSize: 24.0,
+            //     fontWeight: FontWeight.bold,
+            //   ),
+            // ),
+            SvgPicture.asset(AppImages.logo, height: 35),
             CircleAvatar(
               backgroundColor: AppColors.yellowColor,
               child: Icon(
