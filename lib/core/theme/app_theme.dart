@@ -12,7 +12,7 @@ class AppTheme {
   static ThemeData dark = ThemeData.dark().copyWith(
     scaffoldBackgroundColor: AppColors.primBgColor,
     progressIndicatorTheme: const ProgressIndicatorThemeData(
-      color: AppColors.whiteColor,
+      color: AppColors.whiteColor70,
     ),
   );
 }

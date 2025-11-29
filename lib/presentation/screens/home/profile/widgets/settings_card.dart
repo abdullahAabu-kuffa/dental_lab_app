@@ -3,6 +3,7 @@ import 'package:dental_lab_app/core/routing/app_router.dart';
 import 'package:dental_lab_app/core/theme/app_colors.dart';
 import 'package:dental_lab_app/logic/cubit/theme_cubit/theme_cubit.dart';
 import 'package:dental_lab_app/presentation/screens/auth/widgets/custom_txt.dart';
+import 'package:dental_lab_app/presentation/screens/home/widgets/confirmModel.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -15,6 +16,11 @@ class SettingsCard extends StatefulWidget {
 
 class _SettingsCardState extends State<SettingsCard> {
   bool isEnglish = true;
+  void logout() {
+    CachHelper.setLoggdIn(false);
+    CachHelper.clearProfileData();
+    Navigator.pushNamedAndRemoveUntil(context, Routes.loginRoute, (_) => false);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -84,12 +90,18 @@ class _SettingsCardState extends State<SettingsCard> {
           // Logout
           InkWell(
             onTap: () {
-              CachHelper.setLoggdIn(false);
-              CachHelper.clearProfileData();
-              Navigator.pushNamedAndRemoveUntil(
-                context,
-                Routes.loginRoute,
-                (_) => false,
+              showDialog(
+                context: context,
+                builder: (context) => ConfirmModel(
+                  title: "Logout",
+                  message: "Are you sure you want to logout?",
+                  confirmText: "Logout",
+                  cancelText: "Cancel",
+                  onConfirm: () {
+                    logout();
+                  },
+                  
+                ),
               );
             },
             child: const Row(
