@@ -69,5 +69,17 @@
   "Completed": "مكتملة",
   "Canceled": "ملغية",
   "In_progress": "قيد التنفيذ",
-  "ask_about_your_order": "اسأل عن طلبك"
+  "ask_about_your_order": "اسأل عن طلبك",
+  "AreYouSure": "هل انت متاكد تريد تسجيل الخروج؟",
+  "Confirm": "تأكيد",
+  "Cancel": "الغاء",
+  "somethingWentWrong": "فشل تسجيل الدخول! يرجى التحقق من البريد الالكتروني أو كلمة المرور.",
+  "loginSuccessfully": "تم تسجيل الدخول بنجاح!",
+  "registerSuccessfully": "تم التسجيل بنجاح!",
+  "crownAndBridges": "القوامات والمجالس المقابلة الدقة العالية المصنعة بالتقنية الرقمية",
+  "ourServices": "خدماتنا",
+  "ourSpecialization": "تخصصنا",
+  "aboutUs": "من نحن",
+  "contactUs": "اتصل بنا",
+  "ourTeam": "القوامات والمجالس المقابلة الدقة العالية المصنعة بالتقنية الرقمية"
 }

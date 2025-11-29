@@ -1,10 +1,11 @@
 import 'package:dental_lab_app/core/constants/app_images.dart';
-import 'package:dental_lab_app/core/constants/app_strings.dart';
 import 'package:dental_lab_app/core/errorHandler/error_handler.dart';
 import 'package:dental_lab_app/core/helpers/cach_helper.dart';
 import 'package:dental_lab_app/core/routing/app_router.dart';
 import 'package:dental_lab_app/core/theme/app_colors.dart';
 import 'package:dental_lab_app/data/services/api_services.dart';
+import 'package:dental_lab_app/generated/l10n.dart';
+import 'package:dental_lab_app/logic/cubit/localization/local_cubit.dart';
 import 'package:dental_lab_app/logic/cubit/sign_in_cubit/sign_in_cubit.dart';
 import 'package:dental_lab_app/presentation/screens/auth/widgets/custom_txt.dart';
 import 'package:dental_lab_app/presentation/widgets/custom_btn.dart';
@@ -25,7 +26,6 @@ class _LoginState extends State<Login> {
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
   bool isPasswordVisible = false;
-
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
@@ -39,13 +39,13 @@ class _LoginState extends State<Login> {
                 if (state is SignInError) {
                   ErrorHandler.showSnack(
                     context,
-                    'Login failed! Please check your email or password.',
+                    S.of(context).somethingWentWrong,
                     Colors.red,
                   );
                 } else if (state is SignInSuccess) {
                   ErrorHandler.showSnack(
                     context,
-                    'Login successful!',
+                    S.of(context).loginSuccessfully,
                     Colors.green,
                   );
                   CachHelper.setLoggdIn(true);
@@ -62,6 +62,9 @@ class _LoginState extends State<Login> {
   }
 
   Widget _buildLoginForm(BuildContext context) {
+    final localeCubit = context.watch<LocalizationCubit>();
+
+    final isEnglish = localeCubit.state.languageCode == 'ar';
     return BlocBuilder<SignInCubit, SignInState>(
       builder: (context, state) {
         final cubit = context.read<SignInCubit>();
@@ -76,8 +79,8 @@ class _LoginState extends State<Login> {
                 SvgPicture.asset(AppImages.logo),
                 const SizedBox(height: 15),
 
-                const CustomText(
-                  txt: AppStrings.welcomeBack,
+                CustomText(
+                  txt: S.of(context).welcomeBack,
                   color: AppColors.whiteColor,
                   fontWeight: FontWeight.w700,
                   fontSize: 28,
@@ -85,19 +88,19 @@ class _LoginState extends State<Login> {
 
                 const SizedBox(height: 20),
 
-                const CustomText(
-                  txt: AppStrings.loginToYourAccount,
+                CustomText(
+                  txt: S.of(context).loginToYourAccount,
                   color: AppColors.whiteColor70,
                 ),
 
                 const SizedBox(height: 30),
 
-                _buildLabel(AppStrings.email),
+                _buildLabel(S.of(context).email, isEnglish),
                 const SizedBox(height: 12),
 
                 CustomTextField(
                   controller: emailController,
-                  hint: AppStrings.enterYourEmail,
+                  hint: S.of(context).enterYourEmail,
                   suffixIcon: const Icon(
                     Icons.email,
                     color: AppColors.greyColor,
@@ -106,13 +109,13 @@ class _LoginState extends State<Login> {
 
                 const SizedBox(height: 20),
 
-                _buildLabel(AppStrings.password),
+                _buildLabel(S.of(context).password, isEnglish),
                 const SizedBox(height: 12),
 
                 CustomTextField(
                   controller: passwordController,
                   obscureText: !isPasswordVisible,
-                  hint: AppStrings.enterYourPassword,
+                  hint: S.of(context).enterYourPassword,
                   suffixIcon: IconButton(
                     onPressed: () =>
                         setState(() => isPasswordVisible = !isPasswordVisible),
@@ -126,7 +129,7 @@ class _LoginState extends State<Login> {
                 ),
 
                 const SizedBox(height: 16),
-                _buildForgotPassword(),
+                _buildForgotPassword(isEnglish),
                 const SizedBox(height: 30),
                 CustomBtn(
                   onTap: () {
@@ -149,9 +152,9 @@ class _LoginState extends State<Login> {
                             ),
                           ),
                         )
-                      : const Center(
+                      : Center(
                           child: CustomText(
-                            txt: AppStrings.login,
+                            txt: S.of(context).login,
                             color: AppColors.blackColor,
                             fontWeight: FontWeight.w600,
                           ),
@@ -168,8 +171,8 @@ class _LoginState extends State<Login> {
     );
   }
 
-  Widget _buildLabel(String text) => Align(
-    alignment: Alignment.centerLeft,
+  Widget _buildLabel(String text, bool isEnglish) => Align(
+    alignment: isEnglish ? Alignment.centerRight : Alignment.centerLeft,
     child: CustomText(
       txt: text,
       color: AppColors.whiteColor,
@@ -177,10 +180,10 @@ class _LoginState extends State<Login> {
     ),
   );
 
-  Widget _buildForgotPassword() => Align(
-    alignment: Alignment.centerRight,
+  Widget _buildForgotPassword(bool isEnglish) => Align(
+    alignment: isEnglish ? Alignment.centerLeft : Alignment.centerRight,
     child: CustomText(
-      txt: AppStrings.forgotPassword,
+      txt: S.of(context).forgotPassword,
       color: AppColors.yellowColor,
       fontWeight: FontWeight.w500,
     ),
@@ -190,14 +193,14 @@ class _LoginState extends State<Login> {
     mainAxisAlignment: MainAxisAlignment.center,
     children: [
       Text(
-        AppStrings.dontHaveAnAccount,
+        S.of(context).dontHaveAnAccount,
         style: TextStyle(color: AppColors.greyColor),
       ),
       const SizedBox(width: 5),
       GestureDetector(
         onTap: () => Navigator.pushNamed(context, Routes.registerRoute),
         child: Text(
-          AppStrings.signUp,
+          S.of(context).signUp,
           style: const TextStyle(
             color: AppColors.yellowColor,
             fontWeight: FontWeight.w500,

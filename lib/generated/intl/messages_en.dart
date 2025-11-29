@@ -23,8 +23,13 @@ class MessageLookup extends MessageLookupByLibrary {
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
     "Arabic": MessageLookupByLibrary.simpleMessage("Arabic"),
+    "AreYouSure": MessageLookupByLibrary.simpleMessage(
+      "Are you sure you want to logout?",
+    ),
+    "Cancel": MessageLookupByLibrary.simpleMessage("Cancel"),
     "Canceled": MessageLookupByLibrary.simpleMessage("Canceled"),
     "Completed": MessageLookupByLibrary.simpleMessage("Completed"),
+    "Confirm": MessageLookupByLibrary.simpleMessage("Confirm"),
     "Current": MessageLookupByLibrary.simpleMessage("Current Orders"),
     "English": MessageLookupByLibrary.simpleMessage("English"),
     "In_progress": MessageLookupByLibrary.simpleMessage("In Progress"),
@@ -36,6 +41,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "Profile": MessageLookupByLibrary.simpleMessage("Profile"),
     "Save": MessageLookupByLibrary.simpleMessage("Save"),
     "Settings": MessageLookupByLibrary.simpleMessage("Settings"),
+    "aboutUs": MessageLookupByLibrary.simpleMessage("About Us"),
     "addressLabel": MessageLookupByLibrary.simpleMessage("Address"),
     "ask_about_your_order": MessageLookupByLibrary.simpleMessage(
       "Ask about your order",
@@ -51,8 +57,12 @@ class MessageLookup extends MessageLookupByLibrary {
       "Clinic or Lab Name",
     ),
     "confirmPassword": MessageLookupByLibrary.simpleMessage("Confirm Password"),
+    "contactUs": MessageLookupByLibrary.simpleMessage("Contact Us"),
     "createYourAccount": MessageLookupByLibrary.simpleMessage(
       "Create Your Account",
+    ),
+    "crownAndBridges": MessageLookupByLibrary.simpleMessage(
+      "High precision crowns and bridges crafted digitally.",
     ),
     "dark_mode": MessageLookupByLibrary.simpleMessage("Dark Mode"),
     "dental": MessageLookupByLibrary.simpleMessage(" dental"),
@@ -105,6 +115,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "getStarted": MessageLookupByLibrary.simpleMessage("Get Started"),
     "light_mode": MessageLookupByLibrary.simpleMessage("Light Mode"),
     "login": MessageLookupByLibrary.simpleMessage("Login"),
+    "loginSuccessfully": MessageLookupByLibrary.simpleMessage(
+      "Login successful!",
+    ),
     "loginToYourAccount": MessageLookupByLibrary.simpleMessage(
       "Login to your Avanté account.",
     ),
@@ -114,6 +127,12 @@ class MessageLookup extends MessageLookupByLibrary {
       "Milling & printing the case.",
     ),
     "next": MessageLookupByLibrary.simpleMessage("Next"),
+    "ourClients": MessageLookupByLibrary.simpleMessage("Our Clients"),
+    "ourPartners": MessageLookupByLibrary.simpleMessage("Our Partners"),
+    "ourServices": MessageLookupByLibrary.simpleMessage("Our Services"),
+    "ourTeam": MessageLookupByLibrary.simpleMessage(
+      "Premium dental restorations crafted with precision and care",
+    ),
     "password": MessageLookupByLibrary.simpleMessage("Password"),
     "personalInfo": MessageLookupByLibrary.simpleMessage(
       "Personal Information",
@@ -124,6 +143,9 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "quote": MessageLookupByLibrary.simpleMessage("Egypt\'s Avante"),
     "received": MessageLookupByLibrary.simpleMessage("Received"),
+    "registerSuccessfully": MessageLookupByLibrary.simpleMessage(
+      "Registration successful!",
+    ),
     "security": MessageLookupByLibrary.simpleMessage("Security"),
     "selectYourCity": MessageLookupByLibrary.simpleMessage("Select your city"),
     "selectYourSpecialization": MessageLookupByLibrary.simpleMessage(
@@ -136,6 +158,9 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "signUp": MessageLookupByLibrary.simpleMessage("Sign Up"),
     "solution": MessageLookupByLibrary.simpleMessage(" solution"),
+    "somethingWentWrong": MessageLookupByLibrary.simpleMessage(
+      "Login failed! Please check your email or password",
+    ),
     "specialization": MessageLookupByLibrary.simpleMessage("Specialization"),
     "title": MessageLookupByLibrary.simpleMessage("Avante dental solution"),
     "uploadInstructions": MessageLookupByLibrary.simpleMessage(

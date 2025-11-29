@@ -23,8 +23,13 @@ class MessageLookup extends MessageLookupByLibrary {
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
     "Arabic": MessageLookupByLibrary.simpleMessage("العربية"),
+    "AreYouSure": MessageLookupByLibrary.simpleMessage(
+      "هل انت متاكد تريد تسجيل الخروج؟",
+    ),
+    "Cancel": MessageLookupByLibrary.simpleMessage("الغاء"),
     "Canceled": MessageLookupByLibrary.simpleMessage("ملغية"),
     "Completed": MessageLookupByLibrary.simpleMessage("مكتملة"),
+    "Confirm": MessageLookupByLibrary.simpleMessage("تأكيد"),
     "Current": MessageLookupByLibrary.simpleMessage("الطلبات الحالية"),
     "English": MessageLookupByLibrary.simpleMessage("الانجليزية"),
     "In_progress": MessageLookupByLibrary.simpleMessage("قيد التنفيذ"),
@@ -36,6 +41,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "Profile": MessageLookupByLibrary.simpleMessage("الملف الشخصي"),
     "Save": MessageLookupByLibrary.simpleMessage("حفظ"),
     "Settings": MessageLookupByLibrary.simpleMessage("الاعدادات"),
+    "aboutUs": MessageLookupByLibrary.simpleMessage("من نحن"),
     "addressLabel": MessageLookupByLibrary.simpleMessage("العنوان"),
     "ask_about_your_order": MessageLookupByLibrary.simpleMessage(
       "اسأل عن طلبك",
@@ -53,7 +59,11 @@ class MessageLookup extends MessageLookupByLibrary {
     "confirmPassword": MessageLookupByLibrary.simpleMessage(
       "تأكيد كلمة المرور",
     ),
+    "contactUs": MessageLookupByLibrary.simpleMessage("اتصل بنا"),
     "createYourAccount": MessageLookupByLibrary.simpleMessage("أنشئ حسابك"),
+    "crownAndBridges": MessageLookupByLibrary.simpleMessage(
+      "القوامات والمجالس المقابلة الدقة العالية المصنعة بالتقنية الرقمية",
+    ),
     "dark_mode": MessageLookupByLibrary.simpleMessage("الوضع المظلم"),
     "dental": MessageLookupByLibrary.simpleMessage(" أسنان"),
     "design": MessageLookupByLibrary.simpleMessage("التصميم"),
@@ -107,6 +117,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "getStarted": MessageLookupByLibrary.simpleMessage("ابدأ الآن"),
     "light_mode": MessageLookupByLibrary.simpleMessage("الوضع الفاتح"),
     "login": MessageLookupByLibrary.simpleMessage("تسجيل الدخول"),
+    "loginSuccessfully": MessageLookupByLibrary.simpleMessage(
+      "تم تسجيل الدخول بنجاح!",
+    ),
     "loginToYourAccount": MessageLookupByLibrary.simpleMessage(
       "سجّل الدخول إلى حساب أفانتي الخاص بك.",
     ),
@@ -116,6 +129,10 @@ class MessageLookup extends MessageLookupByLibrary {
       "جاري تفريز وطباعة الحالة.",
     ),
     "next": MessageLookupByLibrary.simpleMessage("التالي"),
+    "ourServices": MessageLookupByLibrary.simpleMessage("خدماتنا"),
+    "ourTeam": MessageLookupByLibrary.simpleMessage(
+      "القوامات والمجالس المقابلة الدقة العالية المصنعة بالتقنية الرقمية",
+    ),
     "password": MessageLookupByLibrary.simpleMessage("كلمة المرور"),
     "personalInfo": MessageLookupByLibrary.simpleMessage("المعلومات الشخصية"),
     "phoneNumber": MessageLookupByLibrary.simpleMessage("رقم الهاتف"),
@@ -124,6 +141,9 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "quote": MessageLookupByLibrary.simpleMessage("أفانتي مصر"),
     "received": MessageLookupByLibrary.simpleMessage("تم الاستلام"),
+    "registerSuccessfully": MessageLookupByLibrary.simpleMessage(
+      "تم التسجيل بنجاح!",
+    ),
     "security": MessageLookupByLibrary.simpleMessage("الأمان"),
     "selectYourCity": MessageLookupByLibrary.simpleMessage("اختر مدينتك"),
     "selectYourSpecialization": MessageLookupByLibrary.simpleMessage(
@@ -136,6 +156,9 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "signUp": MessageLookupByLibrary.simpleMessage("إنشاء حساب"),
     "solution": MessageLookupByLibrary.simpleMessage(" حل"),
+    "somethingWentWrong": MessageLookupByLibrary.simpleMessage(
+      "فشل تسجيل الدخول! يرجى التحقق من البريد الالكتروني أو كلمة المرور.",
+    ),
     "specialization": MessageLookupByLibrary.simpleMessage("التخصص"),
     "title": MessageLookupByLibrary.simpleMessage("حل أفانتي لطب الأسنان"),
     "uploadInstructions": MessageLookupByLibrary.simpleMessage(

@@ -5,6 +5,7 @@ import 'package:dental_lab_app/generated/l10n.dart';
 import 'package:dental_lab_app/logic/cubit/localization/local_cubit.dart';
 import 'package:dental_lab_app/logic/cubit/theme_cubit/theme_cubit.dart';
 import 'package:dental_lab_app/presentation/screens/auth/widgets/custom_txt.dart';
+import 'package:dental_lab_app/presentation/screens/home/widgets/confirmModel.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -44,7 +45,7 @@ class _SettingsCardState extends State<SettingsCard> {
       child: Column(
         children: [
           Align(
-            alignment:isEnglish ? Alignment.centerRight : Alignment.centerLeft,
+            alignment: isEnglish ? Alignment.centerRight : Alignment.centerLeft,
             child: CustomText(
               txt: S.of(context).Settings,
               color: AppColors.greyColor,
@@ -88,7 +89,9 @@ class _SettingsCardState extends State<SettingsCard> {
               const SizedBox(width: 10),
 
               CustomText(
-                txt: isDark ? S.of(context).dark_mode : S.of(context).light_mode, 
+                txt: isDark
+                    ? S.of(context).dark_mode
+                    : S.of(context).light_mode,
                 color: AppColors.whiteColor70,
               ),
 
@@ -102,23 +105,34 @@ class _SettingsCardState extends State<SettingsCard> {
             ],
           ),
 
-      
           InkWell(
             onTap: () {
-              CachHelper.setLoggdIn(false);
-              CachHelper.clearProfileData();
+              showDialog(
+                context: context,
+                builder: (context) => ConfirmModel(
+                  title: S.of(context).Logout,
+                  message: S.of(context).AreYouSure,
+                  onConfirm: () {
+                    CachHelper.setLoggdIn(false);
+                    CachHelper.clearProfileData();
 
-              Navigator.pushNamedAndRemoveUntil(
-                context,
-                Routes.loginRoute,
-                (_) => false,
+                    Navigator.pushNamedAndRemoveUntil(
+                      context,
+                      Routes.loginRoute,
+                      (_) => false,
+                    );
+                  },
+                ),
               );
             },
-            child:  Row(
+            child: Row(
               children: [
                 Icon(Icons.logout_outlined, color: AppColors.logOutColor),
                 SizedBox(width: 10),
-                CustomText(txt: S.of(context).Logout, color: AppColors.logOutColor),
+                CustomText(
+                  txt: S.of(context).Logout,
+                  color: AppColors.logOutColor,
+                ),
               ],
             ),
           ),

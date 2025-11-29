@@ -1,3 +1,4 @@
+import 'package:dental_lab_app/generated/l10n.dart';
 import 'package:flutter/material.dart';
 
 class Service {
@@ -54,11 +55,11 @@ class Services extends StatelessWidget {
         children: [
           /// Section Header
           Column(
-            children: const [
-              GradientHeading(text: "Our Services"),
+            children:  [
+              GradientHeading(text: S.of(context).ourServices),
               SizedBox(height: 8),
               Text(
-                "Premium dental restorations crafted with precision and care",
+                S.of(context).ourTeam,
                 textAlign: TextAlign.center,
                 style: TextStyle(fontSize: 18, color: Colors.black87),
               ),
@@ -132,7 +133,7 @@ class ServiceCard extends StatefulWidget {
 }
 
 class _ServiceCardState extends State<ServiceCard> {
-  bool _hovering = false;
+  final bool _hovering = false;
 
   @override
   Widget build(BuildContext context) {

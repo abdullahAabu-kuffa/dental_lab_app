@@ -601,6 +601,111 @@ class S {
       args: [],
     );
   }
+
+  /// `Are you sure you want to logout?`
+  String get AreYouSure {
+    return Intl.message(
+      'Are you sure you want to logout?',
+      name: 'AreYouSure',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Confirm`
+  String get Confirm {
+    return Intl.message('Confirm', name: 'Confirm', desc: '', args: []);
+  }
+
+  /// `Cancel`
+  String get Cancel {
+    return Intl.message('Cancel', name: 'Cancel', desc: '', args: []);
+  }
+
+  /// `Login failed! Please check your email or password`
+  String get somethingWentWrong {
+    return Intl.message(
+      'Login failed! Please check your email or password',
+      name: 'somethingWentWrong',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Login successful!`
+  String get loginSuccessfully {
+    return Intl.message(
+      'Login successful!',
+      name: 'loginSuccessfully',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Registration successful!`
+  String get registerSuccessfully {
+    return Intl.message(
+      'Registration successful!',
+      name: 'registerSuccessfully',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `High precision crowns and bridges crafted digitally.`
+  String get crownAndBridges {
+    return Intl.message(
+      'High precision crowns and bridges crafted digitally.',
+      name: 'crownAndBridges',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Our Services`
+  String get ourServices {
+    return Intl.message(
+      'Our Services',
+      name: 'ourServices',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `About Us`
+  String get aboutUs {
+    return Intl.message('About Us', name: 'aboutUs', desc: '', args: []);
+  }
+
+  /// `Contact Us`
+  String get contactUs {
+    return Intl.message('Contact Us', name: 'contactUs', desc: '', args: []);
+  }
+
+  /// `Our Clients`
+  String get ourClients {
+    return Intl.message('Our Clients', name: 'ourClients', desc: '', args: []);
+  }
+
+  /// `Our Partners`
+  String get ourPartners {
+    return Intl.message(
+      'Our Partners',
+      name: 'ourPartners',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Premium dental restorations crafted with precision and care`
+  String get ourTeam {
+    return Intl.message(
+      'Premium dental restorations crafted with precision and care',
+      name: 'ourTeam',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

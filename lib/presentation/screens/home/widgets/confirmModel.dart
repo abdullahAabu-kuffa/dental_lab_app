@@ -1,3 +1,4 @@
+import 'package:dental_lab_app/generated/l10n.dart';
 import 'package:dental_lab_app/logic/cubit/theme_cubit/theme_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -63,7 +64,7 @@ class ConfirmModel extends StatelessWidget {
                     if (onCancel != null) onCancel!();
                   },
                   child: Text(
-                    cancelText,
+                    S.of(context).Cancel,
                     style: TextStyle(color: theme.isDark ? Colors.white70 : Colors.black87),
                   ),
                 ),
@@ -82,7 +83,7 @@ class ConfirmModel extends StatelessWidget {
                       borderRadius: BorderRadius.circular(10),
                     ),
                   ),
-                  child: Text(confirmText, style: const TextStyle(color: Colors.white)),
+                  child: Text(S.of(context).Confirm, style: const TextStyle(color: Colors.white)),
                 ),
               ],
             ),
