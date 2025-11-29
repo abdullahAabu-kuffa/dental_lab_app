@@ -1,7 +1,7 @@
 import 'package:dental_lab_app/core/routing/app_router.dart';
 import 'package:dental_lab_app/core/theme/app_colors.dart';
-import 'package:dental_lab_app/data/models/home/orders.dart';
 import 'package:dental_lab_app/generated/l10n.dart';
+import 'package:dental_lab_app/data/models/home/order.dart';
 import 'package:dental_lab_app/logic/cubit/theme_cubit/theme_cubit.dart';
 import 'package:flutter/material.dart';
 
@@ -44,8 +44,8 @@ class BuildOrderItem extends StatelessWidget {
           ),
           child: Padding(
             padding: const EdgeInsets.all(8.0),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
                   '${S.of(context).Order} #${order.id} - ${order.userId}',

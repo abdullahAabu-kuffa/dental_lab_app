@@ -34,6 +34,7 @@ class _RegisterState extends State<Register> {
   String get fullName => fullNameController.value.text;
   String get email => emailController.value.text;
   String get password => passwordController.value.text;
+  String get confirmPassword => confirmPasswordController.value.text;
   String get phoneNumber => phoneNumberController.value.text;
   String get clinicName => clinicNameController.value.text;
   String get clinicAddress => addressController.value.text;
@@ -56,7 +57,7 @@ class _RegisterState extends State<Register> {
         child: SizedBox.expand(
           child: SingleChildScrollView(
             child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 24.0),
+              padding: const EdgeInsets.all(24.0),
               child: Form(
                 key: formKey,
                 child: BlocConsumer<RegisterCubit, RegisterState>(
@@ -69,7 +70,6 @@ class _RegisterState extends State<Register> {
                               const Center(child: CircularProgressIndicator()),
                         ),
                       },
-
                     if (state is RegisterSuccess)
                       {
                         Navigator.pop(context),
@@ -80,7 +80,6 @@ class _RegisterState extends State<Register> {
                         ),
                         Navigator.pushNamed(context, Routes.loginRoute),
                       },
-
                     if (state is RegisterError)
                       {
                         Navigator.pop(context), // Close the loading dialog
@@ -94,7 +93,6 @@ class _RegisterState extends State<Register> {
                   builder: (context, state) {
                     return Column(
                       children: [
-                        const SizedBox(height: 50),
                         SvgPicture.asset(AppImages.logo),
                         const SizedBox(height: 15),
                         CustomText(
@@ -202,6 +200,8 @@ class _RegisterState extends State<Register> {
                               color: AppColors.greyColor,
                             ),
                           ),
+                          password:
+                              password,
                         ),
                         const SizedBox(height: 20),
                         Align(

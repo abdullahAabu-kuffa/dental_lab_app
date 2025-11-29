@@ -60,7 +60,7 @@ dev_dependencies:
 flutter_launcher_icons:
   android: true
   ios: true
-  image_path: "assets/images/"
+  image_path: "assets/images/avante-logo-black.png" 
 
 flutter:
 

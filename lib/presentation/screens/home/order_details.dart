@@ -1,4 +1,4 @@
-import 'package:dental_lab_app/data/models/home/orders.dart';
+import 'package:dental_lab_app/data/models/home/order.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 

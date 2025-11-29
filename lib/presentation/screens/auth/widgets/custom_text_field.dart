@@ -10,12 +10,14 @@ class CustomTextField extends StatelessWidget {
     this.suffixIcon,
     this.onChanged,
     this.controller,
+    this.password,
   });
   final String? hint;
   final bool obscureText;
   final Widget? suffixIcon;
   final void Function(String)? onChanged;
   final TextEditingController? controller;
+  final String? password;
 
   String? validateTextFields(value) {
     if (hint == AppStrings.enterYourFullName) {
@@ -38,22 +40,28 @@ class CustomTextField extends StatelessWidget {
       if (value == null || value.isEmpty) {
         return 'Please enter your phone number';
       }
-      if (!RegExp(r'^\+201[0-2|5]\d{8}$').hasMatch(value)) {
-        return 'Phone number must be 11 digits long';
+      if (!RegExp(r'^\+201').hasMatch(value)) {
+        return 'Phone number must be start with +201';
+      }
+      if (!RegExp(r'^\+201[0125][0-9]{8}$').hasMatch(value)) {
+        return 'Phone number must be 11 digits long after +2';
       }
     } else if (hint == AppStrings.enterYourPassword) {
       if (value == null || value.isEmpty) {
         return 'Please enter your password';
       }
-      if (value.length < 6) {
+      if (!RegExp(r'^(?=.*[a-zA-z])(?=.*\d)').hasMatch(value)) {
         return 'Password must contain at least one letter and one number';
+      }
+      if (value.length < 6) {
+        return 'Password must contain at least 6 characters';
       }
     } else if (hint == AppStrings.enterYourConfirmPassword) {
       if (value == null || value.isEmpty) {
         return 'Please enter your confirm password';
       }
-      if (value.length < 6) {
-        return 'Confirm password must contain at least one letter and one number';
+      if (value != password) {
+        return 'Confirm password must equal password';
       }
     } else if (hint == AppStrings.enterClinicOrLabName) {
       if (value == null || value.isEmpty) {
@@ -63,11 +71,11 @@ class CustomTextField extends StatelessWidget {
       if (value == null || value.isEmpty) {
         return 'Please enter your full address';
       }
-    }else if(hint==AppStrings.addressLabel){
+    } else if (hint == AppStrings.addressLabel) {
       if (value == null || value.isEmpty) {
         return 'Please enter your address';
       }
-    }else if(hint==AppStrings.clinicOrLabName){
+    } else if (hint == AppStrings.clinicOrLabName) {
       if (value == null || value.isEmpty) {
         return 'Please enter your clinic or lab name';
       }

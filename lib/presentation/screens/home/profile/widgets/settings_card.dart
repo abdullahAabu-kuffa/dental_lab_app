@@ -8,8 +8,20 @@ import 'package:dental_lab_app/presentation/screens/auth/widgets/custom_txt.dart
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class SettingsCard extends StatelessWidget {
+class SettingsCard extends StatefulWidget {
   const SettingsCard({super.key});
+
+  @override
+  State<SettingsCard> createState() => _SettingsCardState();
+}
+
+class _SettingsCardState extends State<SettingsCard> {
+  bool isEnglish = true;
+  void logout() {
+    CachHelper.setLoggdIn(false);
+    CachHelper.clearProfileData();
+    Navigator.pushNamedAndRemoveUntil(context, Routes.loginRoute, (_) => false);
+  }
 
   @override
   Widget build(BuildContext context) {

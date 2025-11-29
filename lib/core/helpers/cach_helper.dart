@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:dental_lab_app/data/models/home/orders_response.dart';
 import 'package:dental_lab_app/data/models/profile_info/get_profile_info.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -85,6 +86,7 @@ class CachHelper {
   }
 
   static const String _profileDataKey = 'profile_data';
+  static const String _userOrdersKey = 'userOrdersKey';
 
   static Future<bool> setProfileData(UserResponse profile) async {
     final String jsonString = jsonEncode(profile.toJson());
@@ -102,5 +104,19 @@ class CachHelper {
 
   static clearProfileData() async {
     return await prefs.remove(_profileDataKey);
+  }
+
+  static Future<bool> setUserOrdersData(OrdersResponse usreOrders) async {
+    final String jsonString = jsonEncode(usreOrders.toJson());
+    return await prefs.setString(_userOrdersKey, jsonString);
+  }
+
+  static OrdersResponse? getUserOrders() {
+    final String? jsonString = prefs.getString(_userOrdersKey);
+    if (jsonString != null) {
+      final Map<String, dynamic> jsonMap = jsonDecode(jsonString);
+      return OrdersResponse.fromJson(jsonMap);
+    }
+    return null;
   }
 }

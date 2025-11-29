@@ -31,4 +31,17 @@ class Order {
       updatedAt: DateTime.parse(json['updatedAt']),
     );
   }
+
+  Map<String, dynamic> toJson() {
+    return {
+      'id': id,
+      'userId': userId,
+      'options': options,
+      'totalPrice': totalPrice,
+      'status': status,
+      'invoiceId': invoiceId,
+      'createdAt': createdAt.toIso8601String(),
+      'updatedAt': updatedAt.toIso8601String(),
+    };
+  }
 }

@@ -3,6 +3,7 @@ import 'package:dental_lab_app/core/networking/api_constants.dart';
 import 'package:dental_lab_app/data/models/Rag/rag_response.dart';
 import 'package:dental_lab_app/data/models/auth/register_models.dart';
 import 'package:dental_lab_app/data/models/auth/sign_in_models.dart';
+import 'package:dental_lab_app/data/models/home/orders_response.dart';
 import 'package:dental_lab_app/data/models/profile_info/edit_profile_info.dart';
 import 'package:dental_lab_app/data/models/profile_info/get_profile_info.dart';
 import 'package:dio/dio.dart';
@@ -10,6 +11,7 @@ import 'package:flutter/material.dart';
 
 class ApiServices {
   final Dio _dio = Dio();
+
   Future<SignInModels> signIn({
     required String email,
     required String password,
@@ -204,4 +206,36 @@ class ApiServices {
         error: true,
       ),
     );
+
+  // fetec user orders
+  Future<OrdersResponse> fetchUserOrders() async {
+    try {
+      debugPrint('token: ${CachHelper.getAccessToken()}');
+      final response = await _dio.get(
+        '${ApiConstants.baseUrl}/orders',
+        options: Options(
+          headers: {'Authorization': 'Bearer ${CachHelper.getAccessToken()}'},
+        ),
+      );
+      if (response.statusCode == 200 || response.statusCode == 201) {
+        debugPrint('Response orders data: ${response.data}');
+        return OrdersResponse.fromJson(response.data);
+      } else {
+        throw Exception('Failed to fetch user orders: ${response.statusCode}');
+      }
+    } on DioException catch (e) {
+      String errorMessage = 'An error occurred during fetching user orders.';
+      if (e.type == DioExceptionType.connectionTimeout) {
+        errorMessage = 'Connection timed out. Please try again later.';
+      } else if (e.type == DioExceptionType.receiveTimeout) {
+        errorMessage = 'Server response timed out. Please try again later.';
+      } else if (e.type == DioExceptionType.badResponse) {
+        errorMessage =
+            'Server error: ${e.response?.statusCode} - ${e.response?.statusMessage}';
+      } else if (e.type == DioExceptionType.unknown) {
+        errorMessage = 'Network error: ${e.message}';
+      }
+      throw Exception(errorMessage);
+    }
+  }
 }
