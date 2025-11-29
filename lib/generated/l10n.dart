@@ -672,11 +672,6 @@ class S {
     );
   }
 
-  /// `About Us`
-  String get aboutUs {
-    return Intl.message('About Us', name: 'aboutUs', desc: '', args: []);
-  }
-
   /// `Contact Us`
   String get contactUs {
     return Intl.message('Contact Us', name: 'contactUs', desc: '', args: []);
@@ -702,6 +697,186 @@ class S {
     return Intl.message(
       'Premium dental restorations crafted with precision and care',
       name: 'ourTeam',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `About`
+  String get About {
+    return Intl.message('About', name: 'About', desc: '', args: []);
+  }
+
+  /// `Us`
+  String get Us {
+    return Intl.message('Us', name: 'Us', desc: '', args: []);
+  }
+
+  /// `Egypt's first fully digital dental laboratory, revolutionizing dental restorations with advanced ExoCAD integration, real-time tracking, and seamless online services.`
+  String get aboutUs {
+    return Intl.message(
+      'Egypt\'s first fully digital dental laboratory, revolutionizing dental restorations with advanced ExoCAD integration, real-time tracking, and seamless online services.',
+      name: 'aboutUs',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Who We Are`
+  String get whoweare {
+    return Intl.message('Who We Are', name: 'whoweare', desc: '', args: []);
+  }
+
+  /// `We are Egypt's first fully digital dental laboratory, combining expert craftsmanship with cutting-edge digital technologies...`
+  String get weare {
+    return Intl.message(
+      'We are Egypt\'s first fully digital dental laboratory, combining expert craftsmanship with cutting-edge digital technologies...',
+      name: 'weare',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `What Makes Us Unique`
+  String get uniqe {
+    return Intl.message(
+      'What Makes Us Unique',
+      name: 'uniqe',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Our digital workflow allows you to easily choose services and materials and track every stage of your case online...`
+  String get uniqeness {
+    return Intl.message(
+      'Our digital workflow allows you to easily choose services and materials and track every stage of your case online...',
+      name: 'uniqeness',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Educational Resources`
+  String get educational {
+    return Intl.message(
+      'Educational Resources',
+      name: 'educational',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `We provide comprehensive guides, workshops, and tutorials on ExoCAD best practices...`
+  String get educationaltext {
+    return Intl.message(
+      'We provide comprehensive guides, workshops, and tutorials on ExoCAD best practices...',
+      name: 'educationaltext',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Join Our Community`
+  String get community {
+    return Intl.message(
+      'Join Our Community',
+      name: 'community',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Partner with us and experience seamless digital dentistry — where technology, craftsmanship, and professional support come together.`
+  String get communitytext {
+    return Intl.message(
+      'Partner with us and experience seamless digital dentistry — where technology, craftsmanship, and professional support come together.',
+      name: 'communitytext',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Crown & Bridge`
+  String get crowbnridge {
+    return Intl.message(
+      'Crown & Bridge',
+      name: 'crowbnridge',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `High precision crowns and bridges crafted digitally.`
+  String get highprecision {
+    return Intl.message(
+      'High precision crowns and bridges crafted digitally.',
+      name: 'highprecision',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Implants`
+  String get implants {
+    return Intl.message('Implants', name: 'implants', desc: '', args: []);
+  }
+
+  /// `Digital implant planning with ExoCAD integration.`
+  String get digitalimplants {
+    return Intl.message(
+      'Digital implant planning with ExoCAD integration.',
+      name: 'digitalimplants',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Veneers`
+  String get veneers {
+    return Intl.message('Veneers', name: 'veneers', desc: '', args: []);
+  }
+
+  /// `Premium dental veneers crafted with precision and.`
+  String get premiumveneers {
+    return Intl.message(
+      'Premium dental veneers crafted with precision and.',
+      name: 'premiumveneers',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Orthodontics`
+  String get orthodontics {
+    return Intl.message(
+      'Orthodontics',
+      name: 'orthodontics',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Clear aligners and advanced orthodontic solutions.`
+  String get clearaligners {
+    return Intl.message(
+      'Clear aligners and advanced orthodontic solutions.',
+      name: 'clearaligners',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `All Orders`
+  String get allorders {
+    return Intl.message('All Orders', name: 'allorders', desc: '', args: []);
+  }
+
+  /// `No Orders Found.`
+  String get noOrders {
+    return Intl.message(
+      'No Orders Found.',
+      name: 'noOrders',
       desc: '',
       args: [],
     );

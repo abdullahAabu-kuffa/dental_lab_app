@@ -1,5 +1,8 @@
+import 'package:dental_lab_app/core/theme/app_colors.dart';
 import 'package:dental_lab_app/generated/l10n.dart';
+import 'package:dental_lab_app/logic/cubit/theme_cubit/theme_cubit.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class Service {
   final int id;
@@ -16,40 +19,42 @@ class Service {
 }
 
 /// Example data (replace with your actual SERVICES data)
-final List<Service> services = [
-  Service(
-    id: 1,
-    title: "Crown & Bridge",
-    description: "High precision crowns and bridges crafted digitally.",
-    icon: Icons.account_balance,
-  ),
-  Service(
-    id: 2,
-    title: "Implants",
-    description: "Digital implant planning with ExoCAD integration.",
-    icon: Icons.medical_services,
-  ),
-  Service(
-    id: 3,
-    title: "Veneers",
-    description: "Premium veneers with natural aesthetics.",
-    icon: Icons.masks,
-  ),
-  Service(
-    id: 4,
-    title: "Orthodontics",
-    description: "Clear aligners and orthodontic solutions.",
-    icon: Icons.align_vertical_center,
-  ),
-];
+
 
 class Services extends StatelessWidget {
   const Services({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final List<Service> services = [
+      Service(
+        id: 1,
+        title: S.of(context).crowbnridge,
+        description: S.of(context).highprecision,
+        icon: Icons.account_balance,
+      ),
+      Service(
+        id: 2,
+        title: S.of(context).implants,
+        description: S.of(context).digitalimplants,
+        icon: Icons.medical_services,
+      ),
+      Service(
+        id: 3,
+        title: S.of(context).veneers,
+        description: S.of(context).premiumveneers,
+        icon: Icons.masks,
+      ),
+      Service(
+        id: 4,
+        title: S.of(context).orthodontics,
+        description: S.of(context).clearaligners,
+        icon: Icons.align_vertical_center,
+      ),
+    ];
+    final themeState=context.watch<ThemeCubit>().isDark;
     return Container(
-      color: const Color(0xFFF5F5F5),
+      color:themeState? AppColors.primBgColor : AppColors.whiteColor,
       padding: const EdgeInsets.symmetric(vertical: 48, horizontal: 24),
       child: Column(
         children: [
@@ -61,7 +66,7 @@ class Services extends StatelessWidget {
               Text(
                 S.of(context).ourTeam,
                 textAlign: TextAlign.center,
-                style: TextStyle(fontSize: 18, color: Colors.black87),
+                style: TextStyle(fontSize: 18, color: themeState? AppColors.whiteColor : AppColors.blackColor),
               ),
             ],
           ),
@@ -137,10 +142,11 @@ class _ServiceCardState extends State<ServiceCard> {
 
   @override
   Widget build(BuildContext context) {
+    final themeState=context.watch<ThemeCubit>().isDark;
     return Container(
       padding: const EdgeInsets.all(12),
       decoration: BoxDecoration(
-        color: const Color(0xFFE8E8E8),
+        color: themeState? AppColors.goldenColor : AppColors.whiteColor,
         borderRadius: BorderRadius.circular(12),
         border: Border.all(color: const Color(0xFFD4AF37), width: 2),
         boxShadow: _hovering
@@ -161,17 +167,17 @@ class _ServiceCardState extends State<ServiceCard> {
           Text(
             widget.service.title,
             textAlign: TextAlign.center,
-            style: const TextStyle(
+            style:  TextStyle(
               fontSize: 24,
               fontWeight: FontWeight.bold,
-              color: Colors.black,
+              color:themeState? AppColors.whiteColor : AppColors.goldenColor,
             ),
           ),
           const SizedBox(height: 4),
           Text(
             widget.service.description,
             textAlign: TextAlign.center,
-            style: const TextStyle(fontSize: 20, color: Color(0xFF4A4A4A)),
+            style:  TextStyle(fontSize: 20, color:themeState? AppColors.whiteColor70 : Color(0xFF4A4A4A)),
           ),
         ],
       ),
