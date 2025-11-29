@@ -1,3 +1,4 @@
+import 'package:dental_lab_app/core/errorHandler/error_handler.dart';
 import 'package:dental_lab_app/core/helpers/cach_helper.dart';
 import 'package:dental_lab_app/core/routing/app_router.dart';
 import 'package:dental_lab_app/logic/cubit/edit_profile/edit_profile_cubit.dart';
@@ -15,32 +16,28 @@ List<BlocListener> profileListeners(
   TextEditingController address,
 ) {
   return [
-    // EDIT PROFILE LISTENER
     BlocListener<EditProfileCubit, EditProfileState>(
       listener: (context, state) {
         if (state is EditProfileLoading) {
           CachHelper.clearProfileData();
-          ScaffoldMessenger.of(
-            context,
-          ).showSnackBar(const SnackBar(content: Text("Saving profile...")));
+          ErrorHandler.showSnack(context, "Updating profile", Colors.green);
         }
 
         if (state is EditProfileSuccess) {
-          ScaffoldMessenger.of(context).showSnackBar(
-            const SnackBar(content: Text("Profile updated successfully")),
+          ErrorHandler.showSnack(
+            context,
+            "Profile updated successfully",
+            Colors.green,
           );
           context.read<ProfileCubit>().fetchProfile();
         }
 
         if (state is EditProfileFailure) {
-          ScaffoldMessenger.of(
-            context,
-          ).showSnackBar(SnackBar(content: Text("Error: ${state.message}")));
+          ErrorHandler.showSnack(context, state.message, Colors.red);
         }
       },
     ),
 
-    // PROFILE FETCH LISTENER
     BlocListener<ProfileCubit, ProfileState>(
       listener: (context, state) {
         if (state is ProfileSuccess) {

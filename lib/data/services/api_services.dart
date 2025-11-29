@@ -1,5 +1,6 @@
 import 'package:dental_lab_app/core/helpers/cach_helper.dart';
 import 'package:dental_lab_app/core/networking/api_constants.dart';
+import 'package:dental_lab_app/data/models/Rag/rag_response.dart';
 import 'package:dental_lab_app/data/models/auth/register_models.dart';
 import 'package:dental_lab_app/data/models/auth/sign_in_models.dart';
 import 'package:dental_lab_app/data/models/home/orders_response.dart';
@@ -148,6 +149,33 @@ class ApiServices {
       if (response.statusCode == 200 || response.statusCode == 201) {
         debugPrint('Response data: ${response.data}');
         return EditProfileInfo.fromJson(response.data);
+      } else {
+        throw Exception('Failed to fetch profile info: ${response.statusCode}');
+      }
+    } on DioException catch (e) {
+      String errorMessage = 'An error occurred during fetching profile info.';
+      if (e.type == DioExceptionType.connectionTimeout) {
+        errorMessage = 'Connection timed out. Please try again later.';
+      } else if (e.type == DioExceptionType.receiveTimeout) {
+        errorMessage = 'Server response timed out. Please try again later.';
+      } else if (e.type == DioExceptionType.badResponse) {
+        errorMessage =
+            'Server error: ${e.response?.statusCode} - ${e.response?.statusMessage}';
+      } else if (e.type == DioExceptionType.unknown) {
+        errorMessage = 'Network error: ${e.message}';
+      }
+      throw Exception(errorMessage);
+    }
+  }
+  // calling the rag api
+  Future<RagResponse> ragApi({required String question}) async {
+    try {
+      final response = await _dio.post('${ApiConstants.baseUrl}/rag/query', data: {
+        'question': question,
+      });
+      if (response.statusCode == 200 || response.statusCode == 201) {
+        debugPrint('Response data: ${response.data['answer']}');
+        return RagResponse.fromJson(response.data);
       } else {
         throw Exception('Failed to fetch profile info: ${response.statusCode}');
       }

@@ -1,0 +1,146 @@
+// DO NOT EDIT. This is code generated via package:intl/generate_localized.dart
+// This is a library that provides messages for a ar locale. All the
+// messages from the main program should be duplicated here with the same
+// function name.
+
+// Ignore issues from commonly used lints in this file.
+// ignore_for_file:unnecessary_brace_in_string_interps, unnecessary_new
+// ignore_for_file:prefer_single_quotes,comment_references, directives_ordering
+// ignore_for_file:annotate_overrides,prefer_generic_function_type_aliases
+// ignore_for_file:unused_import, file_names, avoid_escaping_inner_quotes
+// ignore_for_file:unnecessary_string_interpolations, unnecessary_string_escapes
+
+import 'package:intl/intl.dart';
+import 'package:intl/message_lookup_by_library.dart';
+
+final messages = new MessageLookup();
+
+typedef String MessageIfAbsent(String messageStr, List<dynamic> args);
+
+class MessageLookup extends MessageLookupByLibrary {
+  String get localeName => 'ar';
+
+  final messages = _notInlinedMessages(_notInlinedMessages);
+  static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+    "Arabic": MessageLookupByLibrary.simpleMessage("العربية"),
+    "Canceled": MessageLookupByLibrary.simpleMessage("ملغية"),
+    "Completed": MessageLookupByLibrary.simpleMessage("مكتملة"),
+    "Current": MessageLookupByLibrary.simpleMessage("الطلبات الحالية"),
+    "English": MessageLookupByLibrary.simpleMessage("الانجليزية"),
+    "In_progress": MessageLookupByLibrary.simpleMessage("قيد التنفيذ"),
+    "Logout": MessageLookupByLibrary.simpleMessage("تسجيل خروج"),
+    "Order": MessageLookupByLibrary.simpleMessage("الطلب"),
+    "Orders": MessageLookupByLibrary.simpleMessage("الطلبات"),
+    "Pending": MessageLookupByLibrary.simpleMessage("قيد الانتظار"),
+    "Previous": MessageLookupByLibrary.simpleMessage("الطلبات السابقة"),
+    "Profile": MessageLookupByLibrary.simpleMessage("الملف الشخصي"),
+    "Save": MessageLookupByLibrary.simpleMessage("حفظ"),
+    "Settings": MessageLookupByLibrary.simpleMessage("الاعدادات"),
+    "addressLabel": MessageLookupByLibrary.simpleMessage("العنوان"),
+    "ask_about_your_order": MessageLookupByLibrary.simpleMessage(
+      "اسأل عن طلبك",
+    ),
+    "caseFilesUploaded": MessageLookupByLibrary.simpleMessage(
+      "تم رفع ملفات الحالة بنجاح.",
+    ),
+    "chooseYourMaterial": MessageLookupByLibrary.simpleMessage(
+      "اختر مادّتك واطلب عبر الإنترنت",
+    ),
+    "cityLabel": MessageLookupByLibrary.simpleMessage("المدينة"),
+    "clinicOrLabName": MessageLookupByLibrary.simpleMessage(
+      "اسم العيادة أو المختبر",
+    ),
+    "confirmPassword": MessageLookupByLibrary.simpleMessage(
+      "تأكيد كلمة المرور",
+    ),
+    "createYourAccount": MessageLookupByLibrary.simpleMessage("أنشئ حسابك"),
+    "dark_mode": MessageLookupByLibrary.simpleMessage("الوضع المظلم"),
+    "dental": MessageLookupByLibrary.simpleMessage(" أسنان"),
+    "design": MessageLookupByLibrary.simpleMessage("التصميم"),
+    "designOptions": MessageLookupByLibrary.simpleMessage("خيارات التصميم"),
+    "digitalCaseSubmission": MessageLookupByLibrary.simpleMessage(
+      "إرسال الحالة رقميًا بنسبة 100%",
+    ),
+    "digitalModelingInProgress": MessageLookupByLibrary.simpleMessage(
+      "النمذجة الرقمية قيد التنفيذ.",
+    ),
+    "dontHaveAnAccount": MessageLookupByLibrary.simpleMessage("ليس لديك حساب؟"),
+    "easilySelectDetails": MessageLookupByLibrary.simpleMessage(
+      "اختر وتحقق بسهولة من جميع تفاصيل طلبك للحصول على نتائج مثالية في كل مرة.",
+    ),
+    "easlySelect": MessageLookupByLibrary.simpleMessage(
+      "اختر وتحقق بسهولة من جميع تفاصيل طلبك للحصول على نتائج مثالية في كل مرة.",
+    ),
+    "editProfile": MessageLookupByLibrary.simpleMessage("تعديل الملف الشخصي"),
+    "egyptavante": MessageLookupByLibrary.simpleMessage(
+      "العيادة الطبية الأولى في مصر بالتقنية الرقمية.",
+    ),
+    "elreadyHaveAnAccount": MessageLookupByLibrary.simpleMessage(
+      "هل لديك حساب بالفعل؟",
+    ),
+    "email": MessageLookupByLibrary.simpleMessage("البريد الإلكتروني"),
+    "enterClinicOrLabName": MessageLookupByLibrary.simpleMessage(
+      "أدخل اسم العيادة أو المختبر",
+    ),
+    "enterYourConfirmPassword": MessageLookupByLibrary.simpleMessage(
+      "أدخل تأكيد كلمة المرور",
+    ),
+    "enterYourEmail": MessageLookupByLibrary.simpleMessage(
+      "أدخل بريدك الإلكتروني",
+    ),
+    "enterYourFullAddress": MessageLookupByLibrary.simpleMessage(
+      "أدخل عنوانك الكامل",
+    ),
+    "enterYourFullName": MessageLookupByLibrary.simpleMessage(
+      "أدخل اسمك الكامل",
+    ),
+    "enterYourPassword": MessageLookupByLibrary.simpleMessage(
+      "أدخل كلمة المرور",
+    ),
+    "enterYourPhoneNumber": MessageLookupByLibrary.simpleMessage(
+      "أدخل رقم هاتفك",
+    ),
+    "forgotPassword": MessageLookupByLibrary.simpleMessage(
+      "هل نسيت كلمة المرور؟",
+    ),
+    "fullName": MessageLookupByLibrary.simpleMessage("الاسم الكامل"),
+    "getStarted": MessageLookupByLibrary.simpleMessage("ابدأ الآن"),
+    "light_mode": MessageLookupByLibrary.simpleMessage("الوضع الفاتح"),
+    "login": MessageLookupByLibrary.simpleMessage("تسجيل الدخول"),
+    "loginToYourAccount": MessageLookupByLibrary.simpleMessage(
+      "سجّل الدخول إلى حساب أفانتي الخاص بك.",
+    ),
+    "manufacturing": MessageLookupByLibrary.simpleMessage("التصنيع"),
+    "materialTypes": MessageLookupByLibrary.simpleMessage("أنواع المواد"),
+    "millingAndPrintingTheCase": MessageLookupByLibrary.simpleMessage(
+      "جاري تفريز وطباعة الحالة.",
+    ),
+    "next": MessageLookupByLibrary.simpleMessage("التالي"),
+    "password": MessageLookupByLibrary.simpleMessage("كلمة المرور"),
+    "personalInfo": MessageLookupByLibrary.simpleMessage("المعلومات الشخصية"),
+    "phoneNumber": MessageLookupByLibrary.simpleMessage("رقم الهاتف"),
+    "professionalInformation": MessageLookupByLibrary.simpleMessage(
+      "المعلومات المهنية",
+    ),
+    "quote": MessageLookupByLibrary.simpleMessage("أفانتي مصر"),
+    "received": MessageLookupByLibrary.simpleMessage("تم الاستلام"),
+    "security": MessageLookupByLibrary.simpleMessage("الأمان"),
+    "selectYourCity": MessageLookupByLibrary.simpleMessage("اختر مدينتك"),
+    "selectYourSpecialization": MessageLookupByLibrary.simpleMessage(
+      "اختر تخصصك",
+    ),
+    "shadeSelection": MessageLookupByLibrary.simpleMessage("اختيار الدرجات"),
+    "shipping": MessageLookupByLibrary.simpleMessage("الشحن"),
+    "shippingInProgress": MessageLookupByLibrary.simpleMessage(
+      "طلبك في الطريق.",
+    ),
+    "signUp": MessageLookupByLibrary.simpleMessage("إنشاء حساب"),
+    "solution": MessageLookupByLibrary.simpleMessage(" حل"),
+    "specialization": MessageLookupByLibrary.simpleMessage("التخصص"),
+    "title": MessageLookupByLibrary.simpleMessage("حل أفانتي لطب الأسنان"),
+    "uploadInstructions": MessageLookupByLibrary.simpleMessage(
+      "قم برفع ملفات ExoCAD أو المسح الضوئي داخل الفم مباشرة إلى منصتنا السحابية.",
+    ),
+    "welcomeBack": MessageLookupByLibrary.simpleMessage("مرحبًا بعودتك"),
+  };
+}
