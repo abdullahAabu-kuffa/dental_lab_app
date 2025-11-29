@@ -1,5 +1,6 @@
 import 'package:dental_lab_app/core/errorHandler/error_handler.dart';
 import 'package:dental_lab_app/core/theme/app_colors.dart';
+import 'package:dental_lab_app/generated/l10n.dart';
 import 'package:dental_lab_app/logic/cubit/theme_cubit/theme_cubit.dart';
 import 'package:dental_lab_app/logic/cubit/user_orders_cubit/user_orders_cubit.dart';
 import 'package:dental_lab_app/presentation/screens/home/widgets/home_header.dart';
@@ -100,7 +101,7 @@ class _OrdersScreenState extends State<OrdersScreen> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   HomeHeader(),
-                  ordersTitleSection('All Orders', themeState),
+                  ordersTitleSection(S.of(context).allorders, themeState),
                   BlocListener<UserOrdersCubit, UserOrdersState>(
                     listener: (context, state) {
                       if (state is UserOrdersFailure) {
@@ -126,7 +127,7 @@ class _OrdersScreenState extends State<OrdersScreen> {
                           if (orders.isEmpty) {
                             return Center(
                               child: Text(
-                                'No orders found.',
+                                S.of(context).noOrders,
                                 style: TextStyle(
                                   color: themeState.isDark
                                       ? AppColors.whiteColor70

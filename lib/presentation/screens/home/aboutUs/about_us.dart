@@ -1,4 +1,8 @@
+import 'package:dental_lab_app/core/theme/app_colors.dart';
+import 'package:dental_lab_app/generated/l10n.dart';
+import 'package:dental_lab_app/logic/cubit/theme_cubit/theme_cubit.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class AboutUs extends StatelessWidget {
   const AboutUs({super.key});
@@ -6,7 +10,7 @@ class AboutUs extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final isWide = MediaQuery.of(context).size.width > 800;
-
+    final themeState=context.watch<ThemeCubit>().isDark;
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
@@ -41,11 +45,11 @@ class AboutUs extends StatelessWidget {
                     padding: const EdgeInsets.symmetric(horizontal: 24),
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
-                      children: const [
-                        _GradientHeading(primary: "About", gradient: " Us"),
+                      children:  [
+                        _GradientHeading(primary: S.of(context).About, gradient: " ${S.of(context).Us}"),
                         SizedBox(height: 12),
                         Text(
-                          "Egypt's first fully digital dental laboratory, revolutionizing dental restorations with advanced ExoCAD integration, real-time tracking, and seamless online services.",
+                          S.of(context).aboutUs,
                           textAlign: TextAlign.center,
                           style: TextStyle(
                             fontSize: 20,
@@ -70,7 +74,7 @@ class AboutUs extends StatelessWidget {
 
         // Main content
         Container(
-          color: const Color(0xFFF5F5F5),
+          color: themeState? AppColors.primBgColor : AppColors.whiteColor,
           padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 32),
           child: Row(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -79,22 +83,22 @@ class AboutUs extends StatelessWidget {
                 flex: 2,
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
-                  children: const [
-                    SectionHeading("Who We Are"),
+                  children:  [
+                    SectionHeading(S.of(context).whoweare),
                     SectionText(
-                      "We are Egypt's first fully digital dental laboratory, combining expert craftsmanship with cutting-edge digital technologies...",
+                      S.of(context).weare,
                     ),
-                    SectionHeading("What Makes Us Unique"),
+                    SectionHeading(S.of(context).uniqe),
                     SectionText(
-                      "Our digital workflow allows you to easily choose services and materials and track every stage of your case online...",
+                      S.of(context).uniqeness,
                     ),
-                    SectionHeading("Educational Resources"),
+                    SectionHeading(S.of(context).educational),
                     SectionText(
-                      "We provide comprehensive guides, workshops, and tutorials on ExoCAD best practices...",
+                      S.of(context).educationaltext,
                     ),
-                    _StickyImage(child: SectionHeading("Join Our Community")),
+                    _StickyImage(child: SectionHeading(S.of(context).community)),
                      SectionText(
-                      "Partner with us and experience seamless digital dentistry — where technology, craftsmanship, and professional support come together.",
+                      S.of(context).communitytext,
                     ),
                   ],
                 ),
@@ -142,8 +146,8 @@ class _GradientHeading extends StatelessWidget {
     return Text.rich(
       TextSpan(
         children: [
-          const TextSpan(
-            text: "About",
+           TextSpan(
+            text: primary,
             style: TextStyle(
               fontSize: 48,
               fontWeight: FontWeight.bold,
@@ -158,7 +162,7 @@ class _GradientHeading extends StatelessWidget {
             ),
           ),
           TextSpan(
-            text: " Us",
+            text: gradient,
             style: TextStyle(
               fontSize: 48,
               fontWeight: FontWeight.bold,
@@ -178,14 +182,15 @@ class SectionHeading extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final themeState=context.watch<ThemeCubit>().isDark;
     return Padding(
       padding: const EdgeInsets.only(bottom: 12, top: 24),
       child: Text(
         text,
-        style: const TextStyle(
+        style:  TextStyle(
           fontSize: 32,
           fontWeight: FontWeight.bold,
-          color: Colors.black,
+          color: themeState? AppColors.whiteColor : AppColors.goldenColor,
         ),
       ),
     );
@@ -198,14 +203,15 @@ class SectionText extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final themeState=context.watch<ThemeCubit>().isDark;
     return Padding(
       padding: const EdgeInsets.only(bottom: 16),
       child: Text(
         text,
-        style: const TextStyle(
+        style:  TextStyle(
           fontSize: 18,
           height: 1.4,
-          color: Color(0xFF4A4A4A),
+          color:themeState? AppColors.whiteColor : Color(0xFF4A4A4A),
         ),
       ),
     );
