@@ -1,7 +1,7 @@
 import 'package:dental_lab_app/core/constants/app_icons.dart';
-import 'package:dental_lab_app/core/constants/app_strings.dart';
 import 'package:dental_lab_app/core/errorHandler/error_handler.dart';
 import 'package:dental_lab_app/core/theme/app_colors.dart';
+import 'package:dental_lab_app/generated/l10n.dart';
 import 'package:dental_lab_app/logic/cubit/profile_info_cubit/profile_info_cubit.dart';
 import 'package:dental_lab_app/logic/cubit/profile_info_cubit/profile_info_state.dart';
 import 'package:dental_lab_app/logic/cubit/theme_cubit/theme_cubit.dart';
@@ -33,7 +33,7 @@ class _HomeState extends State<HomeHeader> {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Text(
-              AppStrings.quote,
+              S.of(context).quote,
               style: TextStyle(
                 color: AppColors.yellowColor,
                 fontSize: 24.0,
@@ -58,11 +58,7 @@ class _HomeState extends State<HomeHeader> {
         BlocBuilder<ProfileCubit, ProfileState>(
           builder: (context, state) {
             if (state is ProfileLoading) {
-              showDialog(
-                context: context,
-                builder: (context) =>
-                    const Center(child: CircularProgressIndicator()),
-              );
+              const Center(child: CircularProgressIndicator());
             }
             if (state is ProfileFailure) {
               ErrorHandler.showSnack(context, state.message, Colors.red);
@@ -72,7 +68,7 @@ class _HomeState extends State<HomeHeader> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    'Welcome Dr/ ${state.profile.data.user.fullName}',
+                    '${S.of(context).welcomeBack} Dr/ ${state.profile.data.user.fullName}',
                     style: TextStyle(
                       color: themeState.isDark
                           ? AppColors.whiteColor70
@@ -84,7 +80,7 @@ class _HomeState extends State<HomeHeader> {
                   ),
                   const SizedBox(height: 8.0),
                   Text(
-                    'Egypt\'s first fully digital dental labioratory.',
+                    S.of(context).egyptavante,
                     style: TextStyle(
                       color: themeState.isDark
                           ? AppColors.whiteColor70

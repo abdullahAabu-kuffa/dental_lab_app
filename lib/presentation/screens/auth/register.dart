@@ -1,8 +1,9 @@
 import 'package:dental_lab_app/core/constants/app_images.dart';
-import 'package:dental_lab_app/core/constants/app_strings.dart';
 import 'package:dental_lab_app/core/errorHandler/error_handler.dart';
 import 'package:dental_lab_app/core/routing/app_router.dart';
 import 'package:dental_lab_app/core/theme/app_colors.dart';
+import 'package:dental_lab_app/generated/l10n.dart';
+import 'package:dental_lab_app/logic/cubit/localization/local_cubit.dart';
 import 'package:dental_lab_app/logic/cubit/register_cubit/register_cubit.dart';
 import 'package:dental_lab_app/presentation/screens/auth/widgets/custom_txt.dart';
 import 'package:dental_lab_app/presentation/widgets/custom_btn.dart';
@@ -38,7 +39,7 @@ class _RegisterState extends State<Register> {
   String get phoneNumber => phoneNumberController.value.text;
   String get clinicName => clinicNameController.value.text;
   String get clinicAddress => addressController.value.text;
-
+   
   void submitForm() {
     context.read<RegisterCubit>().register(
       fullName: fullName,
@@ -52,6 +53,9 @@ class _RegisterState extends State<Register> {
 
   @override
   Widget build(BuildContext context) {
+    final localeCubit = context.watch<LocalizationCubit>();
+
+    final isEnglish = localeCubit.state.languageCode == 'ar';
     return Scaffold(
       body: SafeArea(
         child: SizedBox.expand(
@@ -75,14 +79,14 @@ class _RegisterState extends State<Register> {
                         Navigator.pop(context),
                         ErrorHandler.showSnack(
                           context,
-                          'Register Successfully',
+                          S.of(context).registerSuccessfully,
                           Colors.green,
                         ),
                         Navigator.pushNamed(context, Routes.loginRoute),
                       },
                     if (state is RegisterError)
                       {
-                        Navigator.pop(context), // Close the loading dialog
+                        Navigator.pop(context), 
                         ErrorHandler.showSnack(
                           context,
                           state.message,
@@ -96,25 +100,25 @@ class _RegisterState extends State<Register> {
                         SvgPicture.asset(AppImages.logo),
                         const SizedBox(height: 15),
                         CustomText(
-                          txt: AppStrings.createYourAccount,
+                          txt:S.of(context).createYourAccount,
                           color: AppColors.whiteColor,
                           fontSize: 28,
                           fontWeight: FontWeight.w700,
                         ),
                         const SizedBox(height: 20),
                         Align(
-                          alignment: Alignment.centerLeft,
+                          alignment: isEnglish ? Alignment.centerRight : Alignment.centerLeft,
                           child: CustomText(
-                            txt: AppStrings.personalInfo,
+                            txt: S.of(context).personalInfo,
                             color: AppColors.yellowColor,
                             fontWeight: FontWeight.w500,
                           ),
                         ),
                         const SizedBox(height: 10),
-                        Row(children: [CustomText(txt: AppStrings.fullName)]),
+                        Row(children: [CustomText(txt: S.of(context).fullName)]),
                         const SizedBox(height: 5),
                         CustomTextField(
-                          hint: AppStrings.enterYourFullName,
+                          hint:S.of(context).enterYourFullName,
                           controller: fullNameController,
                           suffixIcon: Icon(
                             Icons.abc,
@@ -122,10 +126,10 @@ class _RegisterState extends State<Register> {
                           ),
                         ),
                         const SizedBox(height: 10),
-                        Row(children: [CustomText(txt: AppStrings.email)]),
+                        Row(children: [CustomText(txt: S.of(context).email)]),
                         const SizedBox(height: 5),
                         CustomTextField(
-                          hint: AppStrings.enterYourEmail,
+                          hint: S.of(context).enterYourEmail,
                           controller: emailController,
                           suffixIcon: Icon(
                             Icons.email,
@@ -134,11 +138,11 @@ class _RegisterState extends State<Register> {
                         ),
                         const SizedBox(height: 10),
                         Row(
-                          children: [CustomText(txt: AppStrings.phoneNumber)],
+                          children: [CustomText(txt: S.of(context).phoneNumber)],
                         ),
                         const SizedBox(height: 5),
                         CustomTextField(
-                          hint: AppStrings.enterYourPhoneNumber,
+                          hint: S.of(context).enterYourPhoneNumber,
                           controller: phoneNumberController,
                           suffixIcon: Icon(
                             Icons.phone_android_outlined,
@@ -147,18 +151,18 @@ class _RegisterState extends State<Register> {
                         ),
                         const SizedBox(height: 20),
                         Align(
-                          alignment: Alignment.centerLeft,
+                          alignment:isEnglish? Alignment.centerRight : Alignment.centerLeft,
                           child: CustomText(
-                            txt: AppStrings.security,
+                            txt: S.of(context).security,
                             color: AppColors.yellowColor,
                             fontWeight: FontWeight.w500,
                           ),
                         ),
                         const SizedBox(height: 10),
-                        Row(children: [CustomText(txt: AppStrings.password)]),
+                        Row(children: [CustomText(txt: S.of(context).password)]),
                         const SizedBox(height: 5),
                         CustomTextField(
-                          hint: AppStrings.enterYourPassword,
+                          hint: S.of(context).enterYourPassword,
                           obscureText: !isPasswordVisible,
                           controller: passwordController,
                           suffixIcon: IconButton(
@@ -178,12 +182,12 @@ class _RegisterState extends State<Register> {
                         const SizedBox(height: 10),
                         Row(
                           children: [
-                            CustomText(txt: AppStrings.confirmPassword),
+                            CustomText(txt: S.of(context).confirmPassword),
                           ],
                         ),
                         const SizedBox(height: 5),
                         CustomTextField(
-                          hint: AppStrings.enterYourConfirmPassword,
+                          hint: S.of(context).enterYourConfirmPassword,
                           controller: confirmPasswordController,
                           obscureText: !isConfirmPasswordVisible,
                           suffixIcon: IconButton(
@@ -205,9 +209,9 @@ class _RegisterState extends State<Register> {
                         ),
                         const SizedBox(height: 20),
                         Align(
-                          alignment: Alignment.centerLeft,
+                          alignment:isEnglish? Alignment.centerRight : Alignment.centerLeft,
                           child: CustomText(
-                            txt: AppStrings.professionalInformation,
+                            txt: S.of(context).personalInfo,
                             color: AppColors.yellowColor,
                             fontWeight: FontWeight.w500,
                           ),
@@ -215,12 +219,12 @@ class _RegisterState extends State<Register> {
                         const SizedBox(height: 10),
                         Row(
                           children: [
-                            CustomText(txt: AppStrings.clinicOrLabName),
+                            CustomText(txt: S.of(context).clinicOrLabName),
                           ],
                         ),
                         const SizedBox(height: 5),
                         CustomTextField(
-                          hint: AppStrings.enterClinicOrLabName,
+                          hint: S.of(context).enterClinicOrLabName,
                           controller: clinicNameController,
                           suffixIcon: IconButton(
                             onPressed: () {},
@@ -229,11 +233,11 @@ class _RegisterState extends State<Register> {
                         ),
                         const SizedBox(height: 10),
                         Row(
-                          children: [CustomText(txt: AppStrings.addressLabel)],
+                          children: [CustomText(txt: S.of(context).addressLabel)],
                         ),
                         const SizedBox(height: 5),
                         CustomTextField(
-                          hint: AppStrings.enterYourFullAddress,
+                          hint: S.of(context).enterYourFullAddress,
                           controller: addressController,
                           suffixIcon: IconButton(
                             onPressed: () {},
@@ -249,7 +253,7 @@ class _RegisterState extends State<Register> {
                           },
                           child: Center(
                             child: CustomText(
-                              txt: AppStrings.signUp,
+                              txt: S.of(context).signUp,
                               color: AppColors.blackColor,
                               fontSize: 18,
                               fontWeight: FontWeight.w600,
@@ -261,13 +265,13 @@ class _RegisterState extends State<Register> {
                           children: [
                             SizedBox(width: 10),
                             Text(
-                              AppStrings.elreadyHaveAnAccount,
+                              S.of(context).elreadyHaveAnAccount,
                               style: TextStyle(color: AppColors.greyColor),
                             ),
                             SizedBox(width: 5),
                             GestureDetector(
                               child: Text(
-                                AppStrings.login,
+                                S.of(context).login,
                                 style: TextStyle(color: AppColors.yellowColor),
                               ),
                               onTap: () => Navigator.pushNamed(

@@ -69,5 +69,18 @@
   "Completed": "Completed",
   "Canceled": "Canceled",
   "In_progress": "In Progress",
-  "ask_about_your_order": "Ask about your order"
+  "ask_about_your_order": "Ask about your order",
+  "AreYouSure": "Are you sure you want to logout?",
+  "Confirm": "Confirm",
+  "Cancel": "Cancel",
+  "somethingWentWrong": "Login failed! Please check your email or password",
+  "loginSuccessfully": "Login successful!",
+  "registerSuccessfully": "Registration successful!",
+  "crownAndBridges": "High precision crowns and bridges crafted digitally.",
+  "ourServices": "Our Services",
+  "aboutUs": "About Us",
+  "contactUs": "Contact Us",
+  "ourClients": "Our Clients",
+  "ourPartners": "Our Partners",
+  "ourTeam":"Premium dental restorations crafted with precision and care"
 }

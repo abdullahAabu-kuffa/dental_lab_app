@@ -1,4 +1,3 @@
-import 'package:dental_lab_app/core/constants/app_strings.dart';
 import 'package:dental_lab_app/core/theme/app_colors.dart';
 import 'package:dental_lab_app/generated/l10n.dart';
 import 'package:dental_lab_app/logic/cubit/edit_profile/edit_profile_cubit.dart';
@@ -48,25 +47,25 @@ class EditProfileForm extends StatelessWidget {
 
           CustomTextField(
             controller: nameCtrl,
-            hint: AppStrings.enterYourFullName,
+            hint: S.of(context).enterYourFullName,
           ),
           const SizedBox(height: 10),
 
           CustomTextField(
             controller: phoneCtrl,
-            hint: AppStrings.enterYourPhoneNumber,
+            hint: S.of(context).enterYourPhoneNumber,
           ),
           const SizedBox(height: 10),
 
           CustomTextField(
             controller: clinicNameCtrl,
-            hint: AppStrings.clinicOrLabName,
+            hint: S.of(context).clinicOrLabName,
           ),
           const SizedBox(height: 10),
 
           CustomTextField(
             controller: clinicAddressCtrl,
-            hint: AppStrings.addressLabel,
+            hint: S.of(context).addressLabel,
           ),
           const SizedBox(height: 20),
 
