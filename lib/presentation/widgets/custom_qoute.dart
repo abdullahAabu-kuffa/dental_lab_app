@@ -1,4 +1,3 @@
-import 'package:dental_lab_app/core/constants/app_strings.dart';
 import 'package:dental_lab_app/generated/l10n.dart';
 import 'package:flutter/material.dart';
 
