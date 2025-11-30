@@ -44,12 +44,12 @@ class _HomeState extends State<HomeHeader> {
             // ),
             SvgPicture.asset(AppImages.logo, height: 35),
             CircleAvatar(
+              radius: 22,
               backgroundColor: AppColors.yellowColor,
               child: Icon(
                 AppIcons.notificationIcon.icon,
-                color: themeState.isDark
-                    ? AppColors.primBgColor
-                    : AppColors.whiteColor70,
+                size: 22,
+                color: themeState.isDark ? Colors.black : Colors.white,
               ),
             ),
           ],
@@ -73,12 +73,11 @@ class _HomeState extends State<HomeHeader> {
                   Text(
                     '${S.of(context).welcomeBack} Dr/ ${state.profile.data.user.fullName}',
                     style: TextStyle(
+                      fontSize: 22,
+                      fontWeight: FontWeight.bold,
                       color: themeState.isDark
-                          ? AppColors.whiteColor70
-                          : AppColors.primBgColor,
-                      fontSize: 20.0,
-                      fontWeight: FontWeight.w800,
-                      overflow: TextOverflow.ellipsis,
+                          ? Colors.white
+                          : Color(0xff4B3F24),
                     ),
                   ),
                   const SizedBox(height: 8.0),

@@ -138,48 +138,88 @@ class ServiceCard extends StatefulWidget {
 }
 
 class _ServiceCardState extends State<ServiceCard> {
-  final bool _hovering = false;
+  bool _hovering = false;
 
   @override
   Widget build(BuildContext context) {
-    final themeState=context.watch<ThemeCubit>().isDark;
-    return Container(
-      padding: const EdgeInsets.all(12),
-      decoration: BoxDecoration(
-        color: themeState? AppColors.goldenColor : AppColors.whiteColor,
-        borderRadius: BorderRadius.circular(12),
-        border: Border.all(color: const Color(0xFFD4AF37), width: 2),
-        boxShadow: _hovering
-            ? [
-                const BoxShadow(
-                  color: Colors.black26,
-                  blurRadius: 12,
-                  offset: Offset(0, 6),
+    final themeState = context.watch<ThemeCubit>().isDark;
+
+    return MouseRegion(
+      onEnter: (_) => setState(() => _hovering = true),
+      onExit: (_) => setState(() => _hovering = false),
+      child: AnimatedContainer(
+        duration: const Duration(milliseconds: 250),
+        transform: Matrix4.identity()..scale(_hovering ? 1.04 : 1.0),
+        padding: const EdgeInsets.all(20),
+        decoration: BoxDecoration(
+          gradient: themeState
+              ? LinearGradient(colors: [AppColors.darkGreyColor, AppColors.primBgColor],
+                  begin: Alignment.topLeft, end: Alignment.bottomRight)
+              : LinearGradient(colors: [Colors.white, Color(0xffF7F3E9)]),
+          borderRadius: BorderRadius.circular(18),
+          boxShadow: _hovering
+              ? [
+                  BoxShadow(
+                    color: Colors.black.withOpacity(0.25),
+                    blurRadius: 20,
+                    spreadRadius: 1,
+                    offset: Offset(0, 10),
+                  ),
+                ]
+              : [],
+          border: Border.all(color: Color(0xffD4AF37), width: 1.8),
+        ),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            // Icon inside golden circle
+            Container(
+              padding: const EdgeInsets.all(16),
+              decoration: BoxDecoration(
+                shape: BoxShape.circle,
+                gradient: LinearGradient(
+                  colors: [Color(0xffE6C770), Color(0xffD4AF37)],
                 ),
-              ]
-            : [],
-      ),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Icon(widget.service.icon, size: 48, color: const Color(0xFFD4AF37)),
-          const SizedBox(height: 8),
-          Text(
-            widget.service.title,
-            textAlign: TextAlign.center,
-            style:  TextStyle(
-              fontSize: 24,
-              fontWeight: FontWeight.bold,
-              color:themeState? AppColors.whiteColor : AppColors.goldenColor,
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.black.withOpacity(0.2),
+                    blurRadius: 10,
+                    offset: Offset(0, 5),
+                  ),
+                ],
+              ),
+              child: Icon(
+                widget.service.icon,
+                size: 36,
+                color: themeState ? Colors.black : Colors.white,
+              ),
             ),
-          ),
-          const SizedBox(height: 4),
-          Text(
-            widget.service.description,
-            textAlign: TextAlign.center,
-            style:  TextStyle(fontSize: 20, color:themeState? AppColors.whiteColor70 : Color(0xFF4A4A4A)),
-          ),
-        ],
+
+            SizedBox(height: 18),
+
+            Text(
+              widget.service.title,
+              style: TextStyle(
+                fontSize: 22,
+                fontWeight: FontWeight.w700,
+                color: themeState ? Colors.white : Color(0xff4B3F24),
+              ),
+              textAlign: TextAlign.center,
+            ),
+
+            SizedBox(height: 6),
+
+            Text(
+              widget.service.description,
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                fontSize: 16,
+                height: 1.4,
+                color: themeState ? Colors.white70 : Color(0xff4A4A4A),
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }

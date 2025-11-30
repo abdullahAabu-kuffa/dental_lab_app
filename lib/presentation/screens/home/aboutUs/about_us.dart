@@ -10,7 +10,7 @@ class AboutUs extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final isWide = MediaQuery.of(context).size.width > 800;
-    final themeState=context.watch<ThemeCubit>().isDark;
+    final themeState = context.watch<ThemeCubit>().isDark;
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
@@ -45,8 +45,11 @@ class AboutUs extends StatelessWidget {
                     padding: const EdgeInsets.symmetric(horizontal: 24),
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
-                      children:  [
-                        _GradientHeading(primary: S.of(context).About, gradient: " ${S.of(context).Us}"),
+                      children: [
+                        _GradientHeading(
+                          primary: S.of(context).About,
+                          gradient: " ${S.of(context).Us}",
+                        ),
                         SizedBox(height: 12),
                         Text(
                           S.of(context).aboutUs,
@@ -74,52 +77,47 @@ class AboutUs extends StatelessWidget {
 
         // Main content
         Container(
-          color: themeState? AppColors.primBgColor : AppColors.whiteColor,
+          color: themeState ? AppColors.primBgColor : AppColors.whiteColor,
           padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 32),
-          child: Row(
+          child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Flexible(
-                flex: 2,
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children:  [
-                    SectionHeading(S.of(context).whoweare),
-                    SectionText(
-                      S.of(context).weare,
-                    ),
-                    SectionHeading(S.of(context).uniqe),
-                    SectionText(
-                      S.of(context).uniqeness,
-                    ),
-                    SectionHeading(S.of(context).educational),
-                    SectionText(
-                      S.of(context).educationaltext,
-                    ),
-                    _StickyImage(child: SectionHeading(S.of(context).community)),
-                     SectionText(
-                      S.of(context).communitytext,
-                    ),
-                  ],
+              SectionCard(
+                title: S.of(context).whoweare,
+                text: S.of(context).weare,
+                image: Image.asset(
+                  'assets/images/hero.png',
+                  fit: BoxFit.cover,
+                  width: double.infinity,
+                  height: 240,
                 ),
               ),
 
-              SizedBox(width: isWide ? 24 : 0),
-
-              Flexible(
-                flex: 1,
-                child: Padding(
-                  padding: EdgeInsets.only(top: isWide ? 0 : 24),
-                  child: ClipRRect(
-                    borderRadius: BorderRadius.circular(16),
-                    child: Image.asset(
-                      'assets/images/aboutUspic.jpg',
-                      fit: BoxFit.cover,
-                      width: isWide ? 500 : double.infinity,
-                      height: isWide ? 400 : 240,
-                    ),
-                  ),
+              SectionCard(
+                title: S.of(context).uniqe,
+                text: S.of(context).uniqeness,
+                image: Image.asset(
+                  'assets/images/c1.jpg',
+                  fit: BoxFit.cover,
+                  width: double.infinity,
+                  height: 240,
                 ),
+              ),
+
+              SectionCard(
+                title: S.of(context).educational,
+                text: S.of(context).educationaltext,
+                image: Image.asset(
+                  'assets/images/c3.jpg',
+                  fit: BoxFit.cover,
+                  width: double.infinity,
+                  height: 240,
+                ),
+              ),
+
+              SectionCard(
+                title: S.of(context).community,
+                text: S.of(context).communitytext,
               ),
             ],
           ),
@@ -146,7 +144,7 @@ class _GradientHeading extends StatelessWidget {
     return Text.rich(
       TextSpan(
         children: [
-           TextSpan(
+          TextSpan(
             text: primary,
             style: TextStyle(
               fontSize: 48,
@@ -182,15 +180,15 @@ class SectionHeading extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final themeState=context.watch<ThemeCubit>().isDark;
+    final themeState = context.watch<ThemeCubit>().isDark;
     return Padding(
       padding: const EdgeInsets.only(bottom: 12, top: 24),
       child: Text(
         text,
-        style:  TextStyle(
+        style: TextStyle(
           fontSize: 32,
           fontWeight: FontWeight.bold,
-          color: themeState? AppColors.whiteColor : AppColors.goldenColor,
+          color: themeState ? AppColors.whiteColor : AppColors.goldenColor,
         ),
       ),
     );
@@ -203,15 +201,15 @@ class SectionText extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final themeState=context.watch<ThemeCubit>().isDark;
+    final themeState = context.watch<ThemeCubit>().isDark;
     return Padding(
       padding: const EdgeInsets.only(bottom: 16),
       child: Text(
         text,
-        style:  TextStyle(
+        style: TextStyle(
           fontSize: 18,
           height: 1.4,
-          color:themeState? AppColors.whiteColor : Color(0xFF4A4A4A),
+          color: themeState ? AppColors.whiteColor : Color(0xFF4A4A4A),
         ),
       ),
     );
@@ -228,5 +226,43 @@ class _StickyImage extends StatelessWidget {
   Widget build(BuildContext context) {
     // Wrap in Align to avoid expanding vertically
     return Align(alignment: Alignment.topCenter, child: child);
+  }
+}
+
+class SectionCard extends StatelessWidget {
+  final String title;
+  final String text;
+  final Widget? image;
+
+  const SectionCard({
+    super.key,
+    required this.title,
+    required this.text,
+    this.image,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Card(
+      elevation: 4,
+      shadowColor: Colors.black26,
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+      margin: const EdgeInsets.only(bottom: 24),
+      child: Padding(
+        padding: const EdgeInsets.all(24.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            SectionHeading(title),
+            const SizedBox(height: 12),
+            SectionText(text),
+            if (image != null) ...[
+              const SizedBox(height: 16),
+              ClipRRect(borderRadius: BorderRadius.circular(12), child: image!),
+            ],
+          ],
+        ),
+      ),
+    );
   }
 }
