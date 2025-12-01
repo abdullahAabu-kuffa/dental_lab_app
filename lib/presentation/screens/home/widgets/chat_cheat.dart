@@ -1,6 +1,7 @@
 import 'package:dental_lab_app/generated/l10n.dart';
 import 'package:dental_lab_app/logic/cubit/rag/rag_cubit.dart';
 import 'package:dental_lab_app/logic/cubit/rag/rag_state.dart';
+import 'package:dental_lab_app/logic/cubit/theme_cubit/theme_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:dental_lab_app/core/theme/app_colors.dart';
@@ -46,6 +47,7 @@ class _ChatSheetState extends State<ChatSheet> {
 
   @override
   Widget build(BuildContext context) {
+    final themeState = context.watch<ThemeCubit>().isDark;
     return BlocListener<RagCubit, RagState>(
       listener: (context, state) {
         if (state is RagLoading) {
@@ -90,7 +92,7 @@ class _ChatSheetState extends State<ChatSheet> {
           child: Container(
             height: MediaQuery.of(context).size.height * 0.85,
             decoration: BoxDecoration(
-              color: AppColors.primBgColor,
+              color:themeState ? AppColors.darkGreyColor : AppColors.whiteColor,
               borderRadius: const BorderRadius.only(
                 topLeft: Radius.circular(20),
                 topRight: Radius.circular(20),

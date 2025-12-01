@@ -1,5 +1,6 @@
 import 'package:dental_lab_app/core/errorHandler/error_handler.dart';
 import 'package:dental_lab_app/core/theme/app_colors.dart';
+import 'package:dental_lab_app/data/models/home/order.dart';
 import 'package:dental_lab_app/generated/l10n.dart';
 import 'package:dental_lab_app/logic/cubit/theme_cubit/theme_cubit.dart';
 import 'package:dental_lab_app/logic/cubit/user_orders_cubit/user_orders_cubit.dart';
@@ -25,68 +26,68 @@ class _OrdersScreenState extends State<OrdersScreen> {
   @override
   Widget build(BuildContext context) {
     final themeState = context.watch<ThemeCubit>();
-    // const List<Map<String, dynamic>> ordersData = [
-    //   {
-    //     "id": 1,
-    //     "userId": 10,
-    //     "options": [
-    //       {"shade": "A2", "finish": "glazed"},
-    //     ],
-    //     "totalPrice": 250.0,
-    //     "status": "Pending",
-    //     "invoiceId": 12001,
-    //     "createdAt": "2025-11-20T10:00:00.000Z",
-    //     "updatedAt": "2025-11-20T10:00:00.000Z",
-    //   },
-    //   {
-    //     "id": 3,
-    //     "userId": 12,
-    //     "options": [],
-    //     "totalPrice": 150.0,
-    //     "status": "Completed",
-    //     "invoiceId": 12003,
-    //     "createdAt": "2025-11-18T11:45:00.000Z",
-    //     "updatedAt": "2025-11-24T09:05:00.000Z",
-    //   },
-    //   {
-    //     "id": 2,
-    //     "userId": 11,
-    //     "options": [
-    //       {"shade": "B1"},
-    //     ],
-    //     "totalPrice": 480.5,
-    //     "status": "Pending",
-    //     "invoiceId": 12002,
-    //     "createdAt": "2025-11-22T08:15:00.000Z",
-    //     "updatedAt": "2025-11-23T14:30:00.000Z",
-    //   },
-    //   {
-    //     "id": 3,
-    //     "userId": 12,
-    //     "options": [],
-    //     "totalPrice": 150.0,
-    //     "status": "In Progress",
-    //     "invoiceId": 12003,
-    //     "createdAt": "2025-11-18T11:45:00.000Z",
-    //     "updatedAt": "2025-11-24T09:05:00.000Z",
-    //   },
-    //   {
-    //     "id": 7,
-    //     "userId": 16,
-    //     "options": [
-    //       {"units": 2, "component": "abutment"},
-    //     ],
-    //     "totalPrice": 150.0,
-    //     "status": "Completed",
-    //     "invoiceId": 12007,
-    //     "createdAt": "2025-11-10T09:00:00.000Z",
-    //     "updatedAt": "2025-11-12T10:30:00.000Z",
-    //   },
-    // ];
+    const List<Map<String, dynamic>> ordersData = [
+      {
+        "id": 1,
+        "userId": 10,
+        "options": [
+          {"shade": "A2", "finish": "glazed"},
+        ],
+        "totalPrice": 250.0,
+        "status": "Pending",
+        "invoiceId": 12001,
+        "createdAt": "2025-11-20T10:00:00.000Z",
+        "updatedAt": "2025-11-20T10:00:00.000Z",
+      },
+      {
+        "id": 3,
+        "userId": 12,
+        "options": [],
+        "totalPrice": 150.0,
+        "status": "Completed",
+        "invoiceId": 12003,
+        "createdAt": "2025-11-18T11:45:00.000Z",
+        "updatedAt": "2025-11-24T09:05:00.000Z",
+      },
+      {
+        "id": 2,
+        "userId": 11,
+        "options": [
+          {"shade": "B1"},
+        ],
+        "totalPrice": 480.5,
+        "status": "Pending",
+        "invoiceId": 12002,
+        "createdAt": "2025-11-22T08:15:00.000Z",
+        "updatedAt": "2025-11-23T14:30:00.000Z",
+      },
+      {
+        "id": 3,
+        "userId": 12,
+        "options": [],
+        "totalPrice": 150.0,
+        "status": "In Progress",
+        "invoiceId": 12003,
+        "createdAt": "2025-11-18T11:45:00.000Z",
+        "updatedAt": "2025-11-24T09:05:00.000Z",
+      },
+      {
+        "id": 7,
+        "userId": 16,
+        "options": [
+          {"units": 2, "component": "abutment"},
+        ],
+        "totalPrice": 150.0,
+        "status": "Completed",
+        "invoiceId": 12007,
+        "createdAt": "2025-11-10T09:00:00.000Z",
+        "updatedAt": "2025-11-12T10:30:00.000Z",
+      },
+    ];
 
-    // final List<Order> orders = ordersData
-    //     .map((json) => Order.fromJson(json))
-    //     .toList();
+    final List<Order> orders = ordersData
+        .map((json) => Order.fromJson(json))
+        .toList();
 
     return Scaffold(
       body: SafeArea(
@@ -102,59 +103,21 @@ class _OrdersScreenState extends State<OrdersScreen> {
                 children: [
                   HomeHeader(),
                   ordersTitleSection(S.of(context).allorders, themeState),
-                  BlocListener<UserOrdersCubit, UserOrdersState>(
-                    listener: (context, state) {
-                      if (state is UserOrdersFailure) {
-                        ScaffoldMessenger.of(
-                          context,
-                        ).showSnackBar(SnackBar(content: Text(state.message)));
-                      }
+
+            
+                  ListView.separated(
+                    physics: const NeverScrollableScrollPhysics(),
+                    shrinkWrap: true,
+                    itemCount: orders.length,
+                    separatorBuilder: (context, index) =>
+                        const SizedBox(height: 16.0),
+                    itemBuilder: (context, index) {
+                      final order = orders[index];
+                      return BuildOrderItem(
+                        order: order,
+                        themeState: themeState,
+                      );
                     },
-                    child: BlocBuilder<UserOrdersCubit, UserOrdersState>(
-                      builder: (context, state) {
-                        if (state is UserOrdersLoading) {
-                          Center(child: CircularProgressIndicator());
-                        }
-                        if (state is UserOrdersFailure) {
-                          ErrorHandler.showSnack(
-                            context,
-                            state.message,
-                            Colors.red,
-                          );
-                        }
-                        if (state is UserOrdersSuccess) {
-                          final orders = state.userOrdersData.data.orders;
-                          if (orders.isEmpty) {
-                            return Center(
-                              child: Text(
-                                S.of(context).noOrders,
-                                style: TextStyle(
-                                  color: themeState.isDark
-                                      ? AppColors.whiteColor70
-                                      : AppColors.primBgColor,
-                                  fontSize: 18.0,
-                                ),
-                              ),
-                            );
-                          }
-                          return ListView.separated(
-                            physics: const NeverScrollableScrollPhysics(),
-                            shrinkWrap: true,
-                            itemCount: orders.length,
-                            separatorBuilder: (context, index) =>
-                                const SizedBox(height: 16.0),
-                            itemBuilder: (context, index) {
-                              final order = orders[index];
-                              return BuildOrderItem(
-                                order: order,
-                                themeState: themeState,
-                              );
-                            },
-                          );
-                        }
-                        return const SizedBox.shrink();
-                      },
-                    ),
                   ),
                 ],
               ),
@@ -163,6 +126,7 @@ class _OrdersScreenState extends State<OrdersScreen> {
         ),
       ),
     );
+    
   }
 }
 
