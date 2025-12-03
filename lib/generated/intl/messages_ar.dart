@@ -154,6 +154,7 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "next": MessageLookupByLibrary.simpleMessage("التالي"),
     "noOrders": MessageLookupByLibrary.simpleMessage("لا يوجد طلبات."),
+    "orthodontics": MessageLookupByLibrary.simpleMessage("تقويم الأسنان"),
     "ourServices": MessageLookupByLibrary.simpleMessage("خدماتنا"),
     "ourTeam": MessageLookupByLibrary.simpleMessage(
       "القوامات والمجالس المقابلة الدقة العالية المصنعة بالتقنية الرقمية",
