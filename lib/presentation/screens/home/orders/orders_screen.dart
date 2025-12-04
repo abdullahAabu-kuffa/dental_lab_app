@@ -4,6 +4,7 @@ import 'package:dental_lab_app/logic/cubit/theme_cubit/theme_cubit.dart';
 import 'package:dental_lab_app/logic/cubit/user_orders_cubit/user_orders_cubit.dart';
 import 'package:dental_lab_app/presentation/screens/home/widgets/home_header.dart';
 import 'package:dental_lab_app/presentation/screens/home/widgets/build_order_item.dart';
+import 'package:dental_lab_app/presentation/screens/home/widgets/search_section.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -100,6 +101,7 @@ class _OrdersScreenState extends State<OrdersScreen> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   HomeHeader(),
+                  SearchSection(),
                   ordersTitleSection('All Orders', themeState),
                   BlocListener<UserOrdersCubit, UserOrdersState>(
                     listener: (context, state) {
