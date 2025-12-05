@@ -18,7 +18,7 @@ class SettingsCard extends StatefulWidget {
 
 class _SettingsCardState extends State<SettingsCard> {
   bool isEnglish = true;
-  
+
   void logout() {
     CachHelper.setLoggdIn(false);
     CachHelper.clearProfileData();
@@ -116,7 +116,6 @@ class _SettingsCardState extends State<SettingsCard> {
                   onConfirm: () {
                     CachHelper.setLoggdIn(false);
                     CachHelper.clearProfileData();
-
                     Navigator.pushNamedAndRemoveUntil(
                       context,
                       Routes.loginRoute,

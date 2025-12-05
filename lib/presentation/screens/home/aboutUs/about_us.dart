@@ -9,7 +9,6 @@ class AboutUs extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final isWide = MediaQuery.of(context).size.width > 800;
     final themeState = context.watch<ThemeCubit>().isDark;
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -222,18 +221,6 @@ class SectionText extends StatelessWidget {
   }
 }
 
-/// Simulated "sticky" behavior: keeps child visible at the top as you scroll.
-/// For true stickiness, you can move this to a SliverPersistentHeader in a wider refactor.
-class _StickyImage extends StatelessWidget {
-  final Widget child;
-  const _StickyImage({required this.child});
-
-  @override
-  Widget build(BuildContext context) {
-    // Wrap in Align to avoid expanding vertically
-    return Align(alignment: Alignment.topCenter, child: child);
-  }
-}
 
 class SectionCard extends StatelessWidget {
   final String title;

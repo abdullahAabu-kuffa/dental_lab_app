@@ -1,5 +1,4 @@
 import 'package:dental_lab_app/generated/l10n.dart';
-import 'package:dental_lab_app/logic/cubit/localization/local_cubit.dart';
 import 'package:dental_lab_app/logic/cubit/theme_cubit/theme_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -25,8 +24,6 @@ class ConfirmModel extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = context.watch<ThemeCubit>();
-    final localeCubit = context.watch<LocalizationCubit>();
-    final isEnglish = localeCubit.state.languageCode == 'en';
     return Dialog(
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(18)),
       child: Padding(

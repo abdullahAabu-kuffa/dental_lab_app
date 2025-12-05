@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-import 'package:dental_lab_app/data/models/home/orders_response.dart';
+import 'package:dental_lab_app/data/models/home/order_response.dart';
 import 'package:dental_lab_app/data/models/profile_info/get_profile_info.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -106,16 +106,16 @@ class CachHelper {
     return await prefs.remove(_profileDataKey);
   }
 
-  static Future<bool> setUserOrdersData(OrdersResponse usreOrders) async {
+  static Future<bool> setUserOrdersData(OrderResponse usreOrders) async {
     final String jsonString = jsonEncode(usreOrders.toJson());
     return await prefs.setString(_userOrdersKey, jsonString);
   }
 
-  static OrdersResponse? getUserOrders() {
+  static OrderResponse? getUserOrders() {
     final String? jsonString = prefs.getString(_userOrdersKey);
     if (jsonString != null) {
       final Map<String, dynamic> jsonMap = jsonDecode(jsonString);
-      return OrdersResponse.fromJson(jsonMap);
+      return OrderResponse.fromJson(jsonMap);
     }
     return null;
   }

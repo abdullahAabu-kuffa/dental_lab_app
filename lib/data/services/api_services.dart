@@ -3,7 +3,8 @@ import 'package:dental_lab_app/core/networking/api_constants.dart';
 import 'package:dental_lab_app/data/models/Rag/rag_response.dart';
 import 'package:dental_lab_app/data/models/auth/register_models.dart';
 import 'package:dental_lab_app/data/models/auth/sign_in_models.dart';
-import 'package:dental_lab_app/data/models/home/orders_response.dart';
+import 'package:dental_lab_app/data/models/home/order_response.dart'
+    hide Options;
 import 'package:dental_lab_app/data/models/profile_info/edit_profile_info.dart';
 import 'package:dental_lab_app/data/models/profile_info/get_profile_info.dart';
 import 'package:dio/dio.dart';
@@ -103,7 +104,7 @@ class ApiServices {
         ),
       );
       if (response.statusCode == 200 || response.statusCode == 201) {
-        debugPrint('Response data: ${response.data}');
+        //debugPrint('Response data: ${response.data}');
         return UserResponse.fromJson(response.data);
       } else {
         throw Exception('Failed to fetch profile info: ${response.statusCode}');
@@ -133,7 +134,7 @@ class ApiServices {
   }) async {
     try {
       final id = CachHelper.getLoggedInUserId();
-      debugPrint('ID: $id');
+      //debugPrint('ID: $id');
       final response = await _dio.patch(
         '${ApiConstants.baseUrl}/users/$id',
         data: {
@@ -147,7 +148,7 @@ class ApiServices {
         ),
       );
       if (response.statusCode == 200 || response.statusCode == 201) {
-        debugPrint('Response data: ${response.data}');
+        //debugPrint('Response data: ${response.data}');
         return EditProfileInfo.fromJson(response.data);
       } else {
         throw Exception('Failed to fetch profile info: ${response.statusCode}');
@@ -167,14 +168,16 @@ class ApiServices {
       throw Exception(errorMessage);
     }
   }
+
   // calling the rag api
   Future<RagResponse> ragApi({required String question}) async {
     try {
-      final response = await _dio.post('${ApiConstants.baseUrl}/rag/query', data: {
-        'question': question,
-      });
+      final response = await _dio.post(
+        '${ApiConstants.baseUrl}/rag/query',
+        data: {'question': question},
+      );
       if (response.statusCode == 200 || response.statusCode == 201) {
-        debugPrint('Response data: ${response.data['answer']}');
+        //debugPrint('Response data: ${response.data['answer']}');
         return RagResponse.fromJson(response.data);
       } else {
         throw Exception('Failed to fetch profile info: ${response.statusCode}');
@@ -208,7 +211,7 @@ class ApiServices {
     );
 
   // fetec user orders
-  Future<OrdersResponse> fetchUserOrders() async {
+  Future<OrderResponse> fetchUserOrders() async {
     try {
       debugPrint('token: ${CachHelper.getAccessToken()}');
       final response = await _dio.get(
@@ -219,7 +222,7 @@ class ApiServices {
       );
       if (response.statusCode == 200 || response.statusCode == 201) {
         debugPrint('Response orders data: ${response.data}');
-        return OrdersResponse.fromJson(response.data);
+        return OrderResponse.fromJson(response.data);
       } else {
         throw Exception('Failed to fetch user orders: ${response.statusCode}');
       }
