@@ -41,10 +41,7 @@ class HomeNavBar extends StatelessWidget {
         items: [
           BottomNavigationBarItem(icon: AppIcons.homeIcon, label: ""),
           BottomNavigationBarItem(icon: AppIcons.ordersIcon, label: ""),
-          BottomNavigationBarItem(
-            icon: AppIcons.eventsIcon,
-            label: "",
-          ),
+          
           BottomNavigationBarItem(icon: AppIcons.personIcon, label: ""),
         ],
       ),
