@@ -19,7 +19,6 @@ class _AppHomeScreansState extends State<AppHomeScreans> {
   final List<Widget> screens = const [
     HomeScreen(),
     OrdersScreen(),
-    EventsScreen(),
     ProfileScreen(),
   ];
 
