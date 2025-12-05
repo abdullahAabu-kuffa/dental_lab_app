@@ -29,10 +29,10 @@ class _HomeScreenState extends State<HomeScreen> {
             SliverToBoxAdapter(child: const SizedBox(height: 20)),
             SliverToBoxAdapter(
               child: const Services(),
-            ), // ✅ Services is plain widget
+            ), 
             SliverToBoxAdapter(
               child: const AboutUs(),
-            ), // ✅ AboutUs is plain widget
+            ), 
           ],
         ),
       ),

@@ -1,4 +1,4 @@
-import 'package:dental_lab_app/data/models/home/order.dart';
+import 'package:dental_lab_app/data/models/home/order_response.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
@@ -28,8 +28,17 @@ class OrderDetailsScreen extends StatelessWidget {
                 'Status',
                 Chip(
                   label: Text(order.status),
-                  backgroundColor: Colors.black12,
+                  backgroundColor: order.status == 'Completed'
+                      ? Colors.green
+                      : order.status == 'In Progress'|| order.status == 'PENDING'
+                      ? Colors.orange
+                      : Colors.red,
                 ),
+              ),
+              _row(
+                Icons.person_outline_outlined,
+                'Patient Name',
+                Text(order.options.patientName),
               ),
               _row(
                 Icons.attach_money,
@@ -65,24 +74,36 @@ class OrderDetailsScreen extends StatelessWidget {
             ListView.separated(
               shrinkWrap: true,
               physics: const NeverScrollableScrollPhysics(),
-              itemCount: order.options.length,
+              itemCount: order.options.selectedServices.length,
               separatorBuilder: (_, __) => const Divider(),
               itemBuilder: (_, i) {
-                final opt = order.options[i];
+                final service = order.options.selectedServices[i];
                 return ExpansionTile(
                   leading: const Icon(Icons.settings),
-                  title: Text(
-                    opt.keys.join(', ').isEmpty
-                        ? 'Option ${i + 1}'
-                        : opt.keys.join(', '),
-                  ),
+                  title: Text(service.label),
                   children: [
                     Padding(
                       padding: const EdgeInsets.symmetric(
                         horizontal: 16,
                         vertical: 8,
                       ),
-                      child: Text(opt.values.join(', ')),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text(
+                            service.label,
+                            style: Theme.of(context).textTheme.bodyLarge,
+                          ),
+                          Text(
+                            '\$${service.price.toStringAsFixed(2)}',
+                            style: Theme.of(context).textTheme.bodyLarge!
+                                .copyWith(
+                                  color: Colors.green.shade700,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                          ),
+                        ],
+                      ),
                     ),
                   ],
                 );

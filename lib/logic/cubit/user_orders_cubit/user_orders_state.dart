@@ -9,7 +9,7 @@ class UserOrdersInitial extends UserOrdersState {}
 class UserOrdersLoading extends UserOrdersState {}
 
 class UserOrdersSuccess extends UserOrdersState {
-  final OrdersResponse userOrdersData;
+  final OrderResponse userOrdersData;
 
   const UserOrdersSuccess(this.userOrdersData);
 }

@@ -601,6 +601,286 @@ class S {
       args: [],
     );
   }
+
+  /// `Are you sure you want to logout?`
+  String get AreYouSure {
+    return Intl.message(
+      'Are you sure you want to logout?',
+      name: 'AreYouSure',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Confirm`
+  String get Confirm {
+    return Intl.message('Confirm', name: 'Confirm', desc: '', args: []);
+  }
+
+  /// `Cancel`
+  String get Cancel {
+    return Intl.message('Cancel', name: 'Cancel', desc: '', args: []);
+  }
+
+  /// `Login failed! Please check your email or password`
+  String get somethingWentWrong {
+    return Intl.message(
+      'Login failed! Please check your email or password',
+      name: 'somethingWentWrong',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Login successful!`
+  String get loginSuccessfully {
+    return Intl.message(
+      'Login successful!',
+      name: 'loginSuccessfully',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Registration successful!`
+  String get registerSuccessfully {
+    return Intl.message(
+      'Registration successful!',
+      name: 'registerSuccessfully',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `High precision crowns and bridges crafted digitally.`
+  String get crownAndBridges {
+    return Intl.message(
+      'High precision crowns and bridges crafted digitally.',
+      name: 'crownAndBridges',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Our Services`
+  String get ourServices {
+    return Intl.message(
+      'Our Services',
+      name: 'ourServices',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Contact Us`
+  String get contactUs {
+    return Intl.message('Contact Us', name: 'contactUs', desc: '', args: []);
+  }
+
+  /// `Our Clients`
+  String get ourClients {
+    return Intl.message('Our Clients', name: 'ourClients', desc: '', args: []);
+  }
+
+  /// `Our Partners`
+  String get ourPartners {
+    return Intl.message(
+      'Our Partners',
+      name: 'ourPartners',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Premium dental restorations crafted with precision and care`
+  String get ourTeam {
+    return Intl.message(
+      'Premium dental restorations crafted with precision and care',
+      name: 'ourTeam',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `About`
+  String get About {
+    return Intl.message('About', name: 'About', desc: '', args: []);
+  }
+
+  /// `Us`
+  String get Us {
+    return Intl.message('Us', name: 'Us', desc: '', args: []);
+  }
+
+  /// `Egypt's first fully digital dental laboratory, revolutionizing dental restorations with advanced ExoCAD integration, real-time tracking, and seamless online services.`
+  String get aboutUs {
+    return Intl.message(
+      'Egypt\'s first fully digital dental laboratory, revolutionizing dental restorations with advanced ExoCAD integration, real-time tracking, and seamless online services.',
+      name: 'aboutUs',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Who We Are`
+  String get whoweare {
+    return Intl.message('Who We Are', name: 'whoweare', desc: '', args: []);
+  }
+
+  /// `We are Egypt's first fully digital dental laboratory, combining expert craftsmanship with cutting-edge digital technologies...`
+  String get weare {
+    return Intl.message(
+      'We are Egypt\'s first fully digital dental laboratory, combining expert craftsmanship with cutting-edge digital technologies...',
+      name: 'weare',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `What Makes Us Unique`
+  String get uniqe {
+    return Intl.message(
+      'What Makes Us Unique',
+      name: 'uniqe',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Our digital workflow allows you to easily choose services and materials and track every stage of your case online...`
+  String get uniqeness {
+    return Intl.message(
+      'Our digital workflow allows you to easily choose services and materials and track every stage of your case online...',
+      name: 'uniqeness',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Educational Resources`
+  String get educational {
+    return Intl.message(
+      'Educational Resources',
+      name: 'educational',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `We provide comprehensive guides, workshops, and tutorials on ExoCAD best practices...`
+  String get educationaltext {
+    return Intl.message(
+      'We provide comprehensive guides, workshops, and tutorials on ExoCAD best practices...',
+      name: 'educationaltext',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Join Our Community`
+  String get community {
+    return Intl.message(
+      'Join Our Community',
+      name: 'community',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Partner with us and experience seamless digital dentistry — where technology, craftsmanship, and professional support come together.`
+  String get communitytext {
+    return Intl.message(
+      'Partner with us and experience seamless digital dentistry — where technology, craftsmanship, and professional support come together.',
+      name: 'communitytext',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Crown & Bridge`
+  String get crowbnridge {
+    return Intl.message(
+      'Crown & Bridge',
+      name: 'crowbnridge',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `High precision crowns and bridges crafted digitally.`
+  String get highprecision {
+    return Intl.message(
+      'High precision crowns and bridges crafted digitally.',
+      name: 'highprecision',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Implants`
+  String get implants {
+    return Intl.message('Implants', name: 'implants', desc: '', args: []);
+  }
+
+  /// `Digital implant planning with ExoCAD integration.`
+  String get digitalimplants {
+    return Intl.message(
+      'Digital implant planning with ExoCAD integration.',
+      name: 'digitalimplants',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Veneers`
+  String get veneers {
+    return Intl.message('Veneers', name: 'veneers', desc: '', args: []);
+  }
+
+  /// `Premium dental veneers crafted with precision and.`
+  String get premiumveneers {
+    return Intl.message(
+      'Premium dental veneers crafted with precision and.',
+      name: 'premiumveneers',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Orthodontics`
+  String get orthodontics {
+    return Intl.message(
+      'Orthodontics',
+      name: 'orthodontics',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Clear aligners and advanced orthodontic solutions.`
+  String get clearaligners {
+    return Intl.message(
+      'Clear aligners and advanced orthodontic solutions.',
+      name: 'clearaligners',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `All Orders`
+  String get allorders {
+    return Intl.message('All Orders', name: 'allorders', desc: '', args: []);
+  }
+
+  /// `No Orders Found.`
+  String get noOrders {
+    return Intl.message(
+      'No Orders Found.',
+      name: 'noOrders',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

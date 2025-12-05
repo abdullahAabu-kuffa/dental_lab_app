@@ -112,9 +112,16 @@ class _SettingsCardState extends State<SettingsCard> {
                 context: context,
                 builder: (context) => ConfirmModel(
                   title: S.of(context).Logout,
-                  message: "Are you sure you want to logout?",
-                  confirmText: "Logout",
-                  onConfirm: logout,
+                  message: S.of(context).AreYouSure,
+                  onConfirm: () {
+                    CachHelper.setLoggdIn(false);
+                    CachHelper.clearProfileData();
+                    Navigator.pushNamedAndRemoveUntil(
+                      context,
+                      Routes.loginRoute,
+                      (_) => false,
+                    );
+                  },
                 ),
               );
             },

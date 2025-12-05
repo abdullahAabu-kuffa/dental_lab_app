@@ -1,12 +1,14 @@
 import 'package:dental_lab_app/core/constants/app_icons.dart';
-import 'package:dental_lab_app/core/constants/app_strings.dart';
+import 'package:dental_lab_app/core/constants/app_images.dart';
 import 'package:dental_lab_app/core/errorHandler/error_handler.dart';
 import 'package:dental_lab_app/core/theme/app_colors.dart';
+import 'package:dental_lab_app/generated/l10n.dart';
 import 'package:dental_lab_app/logic/cubit/profile_info_cubit/profile_info_cubit.dart';
 import 'package:dental_lab_app/logic/cubit/profile_info_cubit/profile_info_state.dart';
 import 'package:dental_lab_app/logic/cubit/theme_cubit/theme_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_svg/svg.dart';
 
 class HomeHeader extends StatefulWidget {
   const HomeHeader({super.key});
@@ -32,21 +34,22 @@ class _HomeState extends State<HomeHeader> {
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Text(
-              AppStrings.quote,
-              style: TextStyle(
-                color: AppColors.yellowColor,
-                fontSize: 24.0,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
+            // Text(
+            //   S.of(context).quote,
+            //   style: TextStyle(
+            //     color: AppColors.yellowColor,
+            //     fontSize: 24.0,
+            //     fontWeight: FontWeight.bold,
+            //   ),
+            // ),
+            SvgPicture.asset(AppImages.logo, height: 35),
             CircleAvatar(
+              radius: 22,
               backgroundColor: AppColors.yellowColor,
               child: Icon(
                 AppIcons.notificationIcon.icon,
-                color: themeState.isDark
-                    ? AppColors.primBgColor
-                    : AppColors.whiteColor70,
+                size: 22,
+                color: themeState.isDark ? Colors.black : Colors.white,
               ),
             ),
           ],
@@ -58,11 +61,7 @@ class _HomeState extends State<HomeHeader> {
         BlocBuilder<ProfileCubit, ProfileState>(
           builder: (context, state) {
             if (state is ProfileLoading) {
-              showDialog(
-                context: context,
-                builder: (context) =>
-                    const Center(child: CircularProgressIndicator()),
-              );
+              const Center(child: CircularProgressIndicator());
             }
             if (state is ProfileFailure) {
               ErrorHandler.showSnack(context, state.message, Colors.red);
@@ -72,19 +71,18 @@ class _HomeState extends State<HomeHeader> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    'Welcome Dr/ ${state.profile.data.user.fullName}',
+                    '${S.of(context).welcomeBack} Dr/ ${state.profile.data.user.fullName}',
                     style: TextStyle(
+                      fontSize: 22,
+                      fontWeight: FontWeight.bold,
                       color: themeState.isDark
-                          ? AppColors.whiteColor70
-                          : AppColors.primBgColor,
-                      fontSize: 20.0,
-                      fontWeight: FontWeight.w800,
-                      overflow: TextOverflow.ellipsis,
+                          ? Colors.white
+                          : Color(0xff4B3F24),
                     ),
                   ),
                   const SizedBox(height: 8.0),
                   Text(
-                    'Egypt\'s first fully digital dental labioratory.',
+                    S.of(context).egyptavante,
                     style: TextStyle(
                       color: themeState.isDark
                           ? AppColors.whiteColor70
