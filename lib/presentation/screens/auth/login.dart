@@ -129,7 +129,7 @@ class _LoginState extends State<Login> {
                 ),
 
                 const SizedBox(height: 16),
-                _buildForgotPassword(isEnglish),
+               // _buildForgotPassword(isEnglish),
                 const SizedBox(height: 30),
                 CustomBtn(
                   onTap: () {
@@ -180,14 +180,14 @@ class _LoginState extends State<Login> {
     ),
   );
 
-  Widget _buildForgotPassword(bool isEnglish) => Align(
-    alignment: isEnglish ? Alignment.centerLeft : Alignment.centerRight,
-    child: CustomText(
-      txt: S.of(context).forgotPassword,
-      color: AppColors.yellowColor,
-      fontWeight: FontWeight.w500,
-    ),
-  );
+  // Widget _buildForgotPassword(bool isEnglish) => Align(
+  //   alignment: isEnglish ? Alignment.centerLeft : Alignment.centerRight,
+  //   child: CustomText(
+  //     txt: S.of(context).forgotPassword,
+  //     color: AppColors.yellowColor,
+  //     fontWeight: FontWeight.w500,
+  //   ),
+  // );
 
   Widget _buildSignUpPrompt(BuildContext context) => Row(
     mainAxisAlignment: MainAxisAlignment.center,

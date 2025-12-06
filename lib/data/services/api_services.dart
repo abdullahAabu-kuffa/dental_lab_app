@@ -213,7 +213,7 @@ class ApiServices {
   // fetec user orders
   Future<OrderResponse> fetchUserOrders() async {
     try {
-      debugPrint('token: ${CachHelper.getAccessToken()}');
+      //debugPrint('token: ${CachHelper.getAccessToken()}');
       final response = await _dio.get(
         '${ApiConstants.baseUrl}/orders',
         options: Options(
@@ -221,23 +221,40 @@ class ApiServices {
         ),
       );
       if (response.statusCode == 200 || response.statusCode == 201) {
-        debugPrint('Response orders data: ${response.data}');
+        // debugPrint('Response orders data: ${response.data}');
         return OrderResponse.fromJson(response.data);
       } else {
         throw Exception('Failed to fetch user orders: ${response.statusCode}');
       }
     } on DioException catch (e) {
-      String errorMessage = 'An error occurred during fetching user orders.';
-      if (e.type == DioExceptionType.connectionTimeout) {
-        errorMessage = 'Connection timed out. Please try again later.';
-      } else if (e.type == DioExceptionType.receiveTimeout) {
-        errorMessage = 'Server response timed out. Please try again later.';
-      } else if (e.type == DioExceptionType.badResponse) {
-        errorMessage =
-            'Server error: ${e.response?.statusCode} - ${e.response?.statusMessage}';
-      } else if (e.type == DioExceptionType.unknown) {
-        errorMessage = 'Network error: ${e.message}';
+      // Default message
+      String errorMessage = 'An error occurred while fetching user orders.';
+
+      switch (e.type) {
+        case DioExceptionType.connectionTimeout:
+          errorMessage = 'Connection timed out. Please try again later.';
+          break;
+        case DioExceptionType.sendTimeout:
+          errorMessage = 'Request timed out while sending data.';
+          break;
+        case DioExceptionType.receiveTimeout:
+          errorMessage = 'Server response timed out. Please try again later.';
+          break;
+        case DioExceptionType.badResponse:
+          final statusCode = e.response?.statusCode;
+          final statusMessage = e.response?.statusMessage ?? 'Unknown error';
+          errorMessage = 'Server error ($statusCode): $statusMessage';
+          break;
+        case DioExceptionType.cancel:
+          errorMessage = 'Request was cancelled. Please retry.';
+          break;
+        case DioExceptionType.unknown:
+          errorMessage = 'Network error: ${e.message ?? 'Unknown issue'}';
+          break;
+        default:
+          errorMessage = 'Unexpected error occurred. Please try again.';
       }
+
       throw Exception(errorMessage);
     }
   }

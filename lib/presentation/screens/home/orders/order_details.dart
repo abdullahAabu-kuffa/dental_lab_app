@@ -28,12 +28,13 @@ class OrderDetailsScreen extends StatelessWidget {
                 Icons.info,
                 S.of(context).status,
                 Chip(
-                  label: Text(order.status),
+                  label: Text(order.status, style: TextStyle(color:Colors.black ),),
                   backgroundColor: order.status == 'COMPLETED'
                       ? Colors.green
-                      : order.status == 'IN_PROGRESS' ||
-                            order.status == 'PENDING'
+                      : order.status == 'PENDING'
                       ? Colors.orange
+                      : order.status == 'IN_PROGRESS'
+                      ? Colors.blue
                       : Colors.red,
                 ),
               ),
@@ -63,7 +64,11 @@ class OrderDetailsScreen extends StatelessWidget {
                 S.of(context).Created,
                 Text(df.format(order.createdAt)),
               ),
-              _row(Icons.update, S.of(context).Updated, Text(df.format(order.updatedAt))),
+              _row(
+                Icons.update,
+                S.of(context).Updated,
+                Text(df.format(order.updatedAt)),
+              ),
             ]),
             const SizedBox(height: 20),
             Text(
