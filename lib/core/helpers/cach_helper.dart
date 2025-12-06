@@ -106,8 +106,8 @@ class CachHelper {
     return await prefs.remove(_profileDataKey);
   }
 
-  static Future<bool> setUserOrdersData(OrderResponse usreOrders) async {
-    final String jsonString = jsonEncode(usreOrders.toJson());
+  static Future<bool> setUserOrdersData(OrderResponse userOrders) async {
+    final String jsonString = jsonEncode(userOrders.toJson());
     return await prefs.setString(_userOrdersKey, jsonString);
   }
 

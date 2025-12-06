@@ -75,7 +75,7 @@ class BuildOrderItem extends StatelessWidget {
                         fontSize: 18.0,
                       ),
                     ),
-                     Text(
+                    Text(
                       order.options.patientName,
                       style: TextStyle(
                         color: themeState.isDark
@@ -95,8 +95,10 @@ class BuildOrderItem extends StatelessWidget {
                       style: TextStyle(
                         color: order.status == 'COMPLETED'
                             ? Colors.green
-                            : order.status == 'In Progress' || order.status == 'PENDING'
+                            : order.status == 'PENDING'
                             ? Colors.orange
+                            : order.status == 'IN_PROGRESS'
+                            ? Colors.blue
                             : Colors.red,
                         fontSize: 16.0,
                         fontWeight: FontWeight.bold,

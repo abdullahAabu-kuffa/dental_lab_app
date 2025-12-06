@@ -40,6 +40,15 @@ class _OrdersScreenState extends State<OrdersScreen> {
                   //SearchSection(),
                   ordersTitleSection(S.of(context).allorders, themeState),
                   BlocBuilder<UserOrdersCubit, UserOrdersState>(
+                    buildWhen: (previous, current) {
+                      if (previous is UserOrdersSuccess &&
+                          current is UserOrdersSuccess) {
+                        return previous.userOrdersData.data.orders !=
+                            current.userOrdersData.data.orders;
+                      }
+                      return true; 
+                    },
+
                     builder: (context, state) {
                       if (state is UserOrdersLoading) {
                         return const Center(child: CircularProgressIndicator());
@@ -54,15 +63,15 @@ class _OrdersScreenState extends State<OrdersScreen> {
                         final orders = state.userOrdersData.data.orders;
 
                         if (orders.isEmpty) {
-                          return Center(child: Text('NO ORDERS'));
+                          return Center(child: Text(S.of(context).noOrders));
                         }
-                        debugPrint(orders[1].status);
+                        
                         return ListView.separated(
                           physics: const NeverScrollableScrollPhysics(),
                           shrinkWrap: true,
                           itemCount: orders.length,
                           separatorBuilder: (context, index) =>
-                              const SizedBox(height: 16.0),
+                              const SizedBox(height: 10.0),
                           itemBuilder: (context, index) {
                             final order = orders[index];
                             return BuildOrderItem(
