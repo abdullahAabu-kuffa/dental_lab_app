@@ -102,5 +102,12 @@
   "orthodontics": "Orthodontics",
   "clearaligners": "Clear aligners and advanced orthodontic solutions.",
   "allorders":"All Orders",
-  "noOrders":"No Orders Found."
+  "noOrders":"No Orders Found.",
+  "patientname":"Patient Name",
+  "totalprice":"Total Price",
+  "invoiceId":"Invoice ID",
+  "Created":"Created",
+  "Updated":"Updated",
+  "status":"Status",
+  "options":"Options"
 }

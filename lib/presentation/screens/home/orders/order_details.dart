@@ -1,4 +1,5 @@
 import 'package:dental_lab_app/data/models/home/order_response.dart';
+import 'package:dental_lab_app/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
@@ -25,24 +26,25 @@ class OrderDetailsScreen extends StatelessWidget {
             _infoCard(context, [
               _row(
                 Icons.info,
-                'Status',
+                S.of(context).status,
                 Chip(
                   label: Text(order.status),
-                  backgroundColor: order.status == 'Completed'
+                  backgroundColor: order.status == 'COMPLETED'
                       ? Colors.green
-                      : order.status == 'In Progress'|| order.status == 'PENDING'
+                      : order.status == 'IN_PROGRESS' ||
+                            order.status == 'PENDING'
                       ? Colors.orange
                       : Colors.red,
                 ),
               ),
               _row(
                 Icons.person_outline_outlined,
-                'Patient Name',
+                S.of(context).patientname,
                 Text(order.options.patientName),
               ),
               _row(
                 Icons.attach_money,
-                'Total Price',
+                S.of(context).totalprice,
                 Text(
                   '\$${order.totalPrice.toStringAsFixed(2)}',
                   style: theme.textTheme.titleMedium!.copyWith(
@@ -53,19 +55,19 @@ class OrderDetailsScreen extends StatelessWidget {
               ),
               _row(
                 Icons.receipt_long,
-                'Invoice Id',
+                S.of(context).invoiceId,
                 Text(order.invoiceId.toString()),
               ),
               _row(
                 Icons.calendar_today,
-                'Created',
+                S.of(context).Created,
                 Text(df.format(order.createdAt)),
               ),
-              _row(Icons.update, 'Updated', Text(df.format(order.updatedAt))),
+              _row(Icons.update, S.of(context).Updated, Text(df.format(order.updatedAt))),
             ]),
             const SizedBox(height: 20),
             Text(
-              'Options',
+              S.of(context).options,
               style: theme.textTheme.titleLarge!.copyWith(
                 fontWeight: FontWeight.bold,
               ),

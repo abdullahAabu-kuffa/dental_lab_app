@@ -101,5 +101,12 @@
   "crowbnridge": "تاج وجسر",
   "allorders":"كل الطلبات",
   "noOrders":"لا يوجد طلبات.",
-  "orthodontics": "تقويم الأسنان"
+  "orthodontics": "تقويم الأسنان",
+  "patientname":"اسم المريض",
+  "totalprice":"السعر الكلي",
+  "invoiceId":"رقم الفاتورة",
+  "Created":"تم الإنشاء",
+  "Updated":"تم التحديث",
+  "status":"الحالة",
+  "options":"خيارات"
 }

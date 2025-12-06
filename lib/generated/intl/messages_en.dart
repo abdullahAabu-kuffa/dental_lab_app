@@ -31,6 +31,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "Canceled": MessageLookupByLibrary.simpleMessage("Canceled"),
     "Completed": MessageLookupByLibrary.simpleMessage("Completed"),
     "Confirm": MessageLookupByLibrary.simpleMessage("Confirm"),
+    "Created": MessageLookupByLibrary.simpleMessage("Created"),
     "Current": MessageLookupByLibrary.simpleMessage("Current Orders"),
     "English": MessageLookupByLibrary.simpleMessage("English"),
     "In_progress": MessageLookupByLibrary.simpleMessage("In Progress"),
@@ -42,6 +43,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "Profile": MessageLookupByLibrary.simpleMessage("Profile"),
     "Save": MessageLookupByLibrary.simpleMessage("Save"),
     "Settings": MessageLookupByLibrary.simpleMessage("Settings"),
+    "Updated": MessageLookupByLibrary.simpleMessage("Updated"),
     "Us": MessageLookupByLibrary.simpleMessage("Us"),
     "aboutUs": MessageLookupByLibrary.simpleMessage(
       "Egypt\'s first fully digital dental laboratory, revolutionizing dental restorations with advanced ExoCAD integration, real-time tracking, and seamless online services.",
@@ -139,6 +141,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "High precision crowns and bridges crafted digitally.",
     ),
     "implants": MessageLookupByLibrary.simpleMessage("Implants"),
+    "invoiceId": MessageLookupByLibrary.simpleMessage("Invoice ID"),
     "light_mode": MessageLookupByLibrary.simpleMessage("Light Mode"),
     "login": MessageLookupByLibrary.simpleMessage("Login"),
     "loginSuccessfully": MessageLookupByLibrary.simpleMessage(
@@ -154,6 +157,7 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "next": MessageLookupByLibrary.simpleMessage("Next"),
     "noOrders": MessageLookupByLibrary.simpleMessage("No Orders Found."),
+    "options": MessageLookupByLibrary.simpleMessage("Options"),
     "orthodontics": MessageLookupByLibrary.simpleMessage("Orthodontics"),
     "ourClients": MessageLookupByLibrary.simpleMessage("Our Clients"),
     "ourPartners": MessageLookupByLibrary.simpleMessage("Our Partners"),
@@ -162,6 +166,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "Premium dental restorations crafted with precision and care",
     ),
     "password": MessageLookupByLibrary.simpleMessage("Password"),
+    "patientname": MessageLookupByLibrary.simpleMessage("Patient Name"),
     "personalInfo": MessageLookupByLibrary.simpleMessage(
       "Personal Information",
     ),
@@ -193,7 +198,9 @@ class MessageLookup extends MessageLookupByLibrary {
       "Login failed! Please check your email or password",
     ),
     "specialization": MessageLookupByLibrary.simpleMessage("Specialization"),
+    "status": MessageLookupByLibrary.simpleMessage("Status"),
     "title": MessageLookupByLibrary.simpleMessage("Avante dental solution"),
+    "totalprice": MessageLookupByLibrary.simpleMessage("Total Price"),
     "uniqe": MessageLookupByLibrary.simpleMessage("What Makes Us Unique"),
     "uniqeness": MessageLookupByLibrary.simpleMessage(
       "Our digital workflow allows you to easily choose services and materials and track every stage of your case online...",

@@ -31,6 +31,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "Canceled": MessageLookupByLibrary.simpleMessage("ملغية"),
     "Completed": MessageLookupByLibrary.simpleMessage("مكتملة"),
     "Confirm": MessageLookupByLibrary.simpleMessage("تأكيد"),
+    "Created": MessageLookupByLibrary.simpleMessage("تم الإنشاء"),
     "Current": MessageLookupByLibrary.simpleMessage("الطلبات الحالية"),
     "English": MessageLookupByLibrary.simpleMessage("الانجليزية"),
     "In_progress": MessageLookupByLibrary.simpleMessage("قيد التنفيذ"),
@@ -42,6 +43,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "Profile": MessageLookupByLibrary.simpleMessage("الملف الشخصي"),
     "Save": MessageLookupByLibrary.simpleMessage("حفظ"),
     "Settings": MessageLookupByLibrary.simpleMessage("الاعدادات"),
+    "Updated": MessageLookupByLibrary.simpleMessage("تم التحديث"),
     "Us": MessageLookupByLibrary.simpleMessage("نحن"),
     "aboutUs": MessageLookupByLibrary.simpleMessage(
       "أول مختبر أسنان رقمي بالكامل في مصر، يعمل على إحداث ثورة في ترميم الأسنان من خلال التكامل المتقدم مع برنامج ExoCAD، والتتبع في الوقت الفعلي، والخدمات عبر الإنترنت ",
@@ -139,6 +141,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "تيجان وجسور عالية الدقة مصنوعة باستخدام التقنيات الرقمية.",
     ),
     "implants": MessageLookupByLibrary.simpleMessage("زراعات الأسنان"),
+    "invoiceId": MessageLookupByLibrary.simpleMessage("رقم الفاتورة"),
     "light_mode": MessageLookupByLibrary.simpleMessage("الوضع الفاتح"),
     "login": MessageLookupByLibrary.simpleMessage("تسجيل الدخول"),
     "loginSuccessfully": MessageLookupByLibrary.simpleMessage(
@@ -154,12 +157,14 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "next": MessageLookupByLibrary.simpleMessage("التالي"),
     "noOrders": MessageLookupByLibrary.simpleMessage("لا يوجد طلبات."),
+    "options": MessageLookupByLibrary.simpleMessage("خيارات"),
     "orthodontics": MessageLookupByLibrary.simpleMessage("تقويم الأسنان"),
     "ourServices": MessageLookupByLibrary.simpleMessage("خدماتنا"),
     "ourTeam": MessageLookupByLibrary.simpleMessage(
       "القوامات والمجالس المقابلة الدقة العالية المصنعة بالتقنية الرقمية",
     ),
     "password": MessageLookupByLibrary.simpleMessage("كلمة المرور"),
+    "patientname": MessageLookupByLibrary.simpleMessage("اسم المريض"),
     "personalInfo": MessageLookupByLibrary.simpleMessage("المعلومات الشخصية"),
     "phoneNumber": MessageLookupByLibrary.simpleMessage("رقم الهاتف"),
     "premiumveneers": MessageLookupByLibrary.simpleMessage(
@@ -189,7 +194,9 @@ class MessageLookup extends MessageLookupByLibrary {
       "فشل تسجيل الدخول! يرجى التحقق من البريد الالكتروني أو كلمة المرور.",
     ),
     "specialization": MessageLookupByLibrary.simpleMessage("التخصص"),
+    "status": MessageLookupByLibrary.simpleMessage("الحالة"),
     "title": MessageLookupByLibrary.simpleMessage("حل أفانتي لطب الأسنان"),
+    "totalprice": MessageLookupByLibrary.simpleMessage("السعر الكلي"),
     "uniqe": MessageLookupByLibrary.simpleMessage("ما الذي يميزنا"),
     "uniqeness": MessageLookupByLibrary.simpleMessage(
       "يتيح لك سير العمل الرقمي لدينا اختيار الخدمات والمواد بسهولة ومتابعة كل مرحلة من مراحل قضيتك عبر الإنترنت...",

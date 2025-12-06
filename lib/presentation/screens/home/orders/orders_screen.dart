@@ -56,6 +56,7 @@ class _OrdersScreenState extends State<OrdersScreen> {
                         if (orders.isEmpty) {
                           return Center(child: Text('NO ORDERS'));
                         }
+                        debugPrint(orders[1].status);
                         return ListView.separated(
                           physics: const NeverScrollableScrollPhysics(),
                           shrinkWrap: true,
