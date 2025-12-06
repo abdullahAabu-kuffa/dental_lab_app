@@ -55,8 +55,8 @@ class _OrdersScreenState extends State<OrdersScreen> {
                       } else if (state is UserOrdersFailure) {
                         return Center(
                           child: Text(
-                            state.message,
-                            style: const TextStyle(color: Colors.red),
+                            'No Orders Yet',
+                            style: const TextStyle(color: Colors.red, fontSize: 20),
                           ),
                         );
                       } else if (state is UserOrdersSuccess) {

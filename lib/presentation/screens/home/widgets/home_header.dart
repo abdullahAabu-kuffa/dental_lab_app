@@ -1,4 +1,3 @@
-import 'package:dental_lab_app/core/constants/app_icons.dart';
 import 'package:dental_lab_app/core/constants/app_images.dart';
 import 'package:dental_lab_app/core/errorHandler/error_handler.dart';
 import 'package:dental_lab_app/core/theme/app_colors.dart';
@@ -6,6 +5,7 @@ import 'package:dental_lab_app/generated/l10n.dart';
 import 'package:dental_lab_app/logic/cubit/profile_info_cubit/profile_info_cubit.dart';
 import 'package:dental_lab_app/logic/cubit/profile_info_cubit/profile_info_state.dart';
 import 'package:dental_lab_app/logic/cubit/theme_cubit/theme_cubit.dart';
+import 'package:dental_lab_app/presentation/screens/auth/widgets/custom_txt.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
@@ -44,13 +44,12 @@ class _HomeState extends State<HomeHeader> {
             // ),
             SvgPicture.asset(AppImages.logo, height: 35),
             CircleAvatar(
-              radius: 22,
+              radius: 26,
               backgroundColor: AppColors.yellowColor,
-              child: Icon(
-                AppIcons.notificationIcon.icon,
-                size: 22,
-                color: themeState.isDark ? Colors.black : Colors.white,
-              ),
+              child: Center(child: Padding(
+                padding: const EdgeInsets.only(left: 8.0),
+                child: CustomText(txt: 'Egypt Avante', color: Colors.white,fontSize: 12,),
+              )),
             ),
           ],
         ),
